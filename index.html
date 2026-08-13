@@ -20,11 +20,11 @@
       <div class="home-cards">
         <button class="home-card" id="home-items">
           <span class="home-card-title">Combos d'objets</span>
-          <span class="home-card-score">Score : <strong id="home-items-score">0</strong> / <span id="home-items-count">0</span></span>
+          <span class="home-card-score">Record compétitif : <strong id="home-items-highscore">--</strong></span>
         </button>
         <button class="home-card" id="home-champions">
           <span class="home-card-title">Traits de personnages</span>
-          <span class="home-card-score">Score : <strong id="home-champions-score">0</strong> / <span id="home-champions-count">0</span></span>
+          <span class="home-card-score">Record compétitif : <strong id="home-champions-highscore">--</strong></span>
         </button>
       </div>
     </section>
@@ -47,16 +47,39 @@
       </div>
     </section>
 
+    <!-- Sous-menu du mode de jeu : entrainement ou competitif. -->
+    <section id="mode-submenu-screen" class="hidden">
+      <div class="quiz-toolbar">
+        <button id="mode-submenu-back-btn" class="text-btn">&larr; Retour</button>
+      </div>
+      <p class="prompt">Mode de jeu :</p>
+      <div class="home-cards">
+        <button class="home-card" id="mode-training">
+          <span class="home-card-title">Entraînement</span>
+          <span class="home-card-score">Questions illimitées, le score repart de 0 a chaque partie</span>
+        </button>
+        <button class="home-card" id="mode-competitive">
+          <span class="home-card-title">Compétitif</span>
+          <span class="home-card-score">30 bonnes réponses d'affilée contre le chrono, la moindre erreur remet a 0</span>
+        </button>
+      </div>
+    </section>
+
     <!-- Ecran de quiz : cache tant qu'aucun quiz n'a ete choisi depuis l'accueil. -->
     <section id="quiz-screen" class="hidden">
       <div class="quiz-toolbar">
-        <button id="back-home-btn" class="text-btn">&larr; Accueil</button>
-        <button id="reset-btn" class="text-btn">Relancer a zero</button>
+        <button id="back-home-btn" class="text-btn">&larr; Retour</button>
       </div>
 
-      <div class="score-bar">
+      <div class="score-bar" id="score-bar">
         <span>Score : <strong id="score">0</strong></span>
         <span>Questions : <strong id="question-count">0</strong></span>
+      </div>
+
+      <div class="score-bar hidden" id="competitive-bar">
+        <span>Série : <strong id="streak">0</strong> / 30</span>
+        <span>Temps : <strong id="timer">00:00.0</strong></span>
+        <span>Record : <strong id="highscore">--</strong></span>
       </div>
 
       <section class="quiz-card">
@@ -72,6 +95,7 @@
 
         <button id="submit-btn" class="hidden">Valider</button>
         <button id="next-btn" class="hidden">Question suivante</button>
+        <button id="retry-btn" class="hidden">Rejouer</button>
       </section>
     </section>
   </main>

@@ -1,45 +1,66 @@
 // "state" regroupe toutes les infos qui changent pendant que le quiz tourne.
 // On evite les variables eparpillees partout : tout est ici, au meme endroit.
 const state = {
-  data: null,             // contenu de items.json une fois charge
-  champData: null,        // contenu de champions.json une fois charge
-  mode: null,              // null = accueil, sinon 'items' ou 'champions'
+  data: null,              // contenu de items.json une fois charge
+  champData: null,         // contenu de champions.json une fois charge
+  mode: null,               // null = pas encore dans un quiz, sinon 'items' ou 'champions'
+  pendingMode: null,        // mode en cours de choix, avant d'avoir choisi entrainement/competitif
+  gameMode: 'training',     // 'training' ou 'competitive'
   itemsEmblemFilter: 'with', // 'with' ou 'without' : filtre choisi dans le sous-menu "objets"
-  itemQuestionType: null,  // 'forward' (composants -> objet) ou 'reverse' (objet -> composants)
-  currentQuestion: null,   // question du mode "items" (forward) affichee en ce moment
+  itemQuestionType: null,   // 'forward' (composants -> objet) ou 'reverse' (objet -> composants)
+  currentQuestion: null,    // question du mode "items" (forward) affichee en ce moment
   currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
-  currentChampion: null,   // personnage du mode "champions" affiche en ce moment
-  answered: false,        // empeche de valider 2 fois la meme question
+  currentChampion: null,    // personnage du mode "champions" affiche en ce moment
+  answered: false,         // empeche de valider 2 fois la meme question
   scores: {
+    // Score du mode entrainement : reinitialise a chaque lancement de partie.
     items: { score: 0, questionCount: 0 },
     champions: { score: 0, questionCount: 0 },
+  },
+  competitive: {
+    streak: 0,
+    startTime: null,
+    intervalId: null,
   },
 };
 
 // On recupere une bonne fois pour toutes les elements HTML qu'on va manipuler.
 const homeScreen = document.getElementById('home-screen');
 const itemsSubmenuScreen = document.getElementById('items-submenu-screen');
+const modeSubmenuScreen = document.getElementById('mode-submenu-screen');
 const quizScreen = document.getElementById('quiz-screen');
+
 const homeItemsBtn = document.getElementById('home-items');
 const homeChampionsBtn = document.getElementById('home-champions');
-const homeItemsScoreEl = document.getElementById('home-items-score');
-const homeItemsCountEl = document.getElementById('home-items-count');
-const homeChampionsScoreEl = document.getElementById('home-champions-score');
-const homeChampionsCountEl = document.getElementById('home-champions-count');
+const homeItemsHighscoreEl = document.getElementById('home-items-highscore');
+const homeChampionsHighscoreEl = document.getElementById('home-champions-highscore');
+
 const itemsSubmenuBackBtn = document.getElementById('items-submenu-back-btn');
 const itemsWithEmblemsBtn = document.getElementById('items-with-emblems');
 const itemsWithoutEmblemsBtn = document.getElementById('items-without-emblems');
-const backHomeBtn = document.getElementById('back-home-btn');
-const resetBtn = document.getElementById('reset-btn');
 
+const modeSubmenuBackBtn = document.getElementById('mode-submenu-back-btn');
+const modeTrainingBtn = document.getElementById('mode-training');
+const modeCompetitiveBtn = document.getElementById('mode-competitive');
+
+const backHomeBtn = document.getElementById('back-home-btn');
+
+const scoreBarEl = document.getElementById('score-bar');
 const scoreEl = document.getElementById('score');
 const questionCountEl = document.getElementById('question-count');
+
+const competitiveBarEl = document.getElementById('competitive-bar');
+const streakEl = document.getElementById('streak');
+const timerEl = document.getElementById('timer');
+const highscoreEl = document.getElementById('highscore');
+
 const promptEl = document.getElementById('prompt-text');
 const componentsEl = document.getElementById('components');
 const answersEl = document.getElementById('answers');
 const feedbackEl = document.getElementById('feedback');
 const nextBtn = document.getElementById('next-btn');
 const submitBtn = document.getElementById('submit-btn');
+const retryBtn = document.getElementById('retry-btn');
 
 // Charge les fichiers JSON avec fetch (comme un "GET http" fait par le navigateur).
 // fetch() est asynchrone : il renvoie une Promise, d'ou le "await".
@@ -193,8 +214,6 @@ function renderItemForwardQuestion() {
 function handleItemAnswer(choiceId, btnEl) {
   if (state.answered) return;
   state.answered = true;
-  const progress = state.scores.items;
-  progress.questionCount++;
 
   const question = state.currentQuestion;
   const isCorrect = choiceId === question.correctId;
@@ -207,8 +226,6 @@ function handleItemAnswer(choiceId, btnEl) {
   `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
-  if (isCorrect) progress.score++;
-
   // Quoi qu'il arrive, on met en evidence la bonne reponse et on bloque les boutons.
   [...answersEl.children].forEach((btn) => {
     btn.disabled = true;
@@ -219,10 +236,7 @@ function handleItemAnswer(choiceId, btnEl) {
     }
   });
 
-  updateScoreBar();
-  saveProgress();
-
-  nextBtn.classList.remove('hidden');
+  finishQuestion(isCorrect);
 }
 
 const ITEM_REVERSE_OPTIONS_COUNT = 4;
@@ -296,8 +310,6 @@ function renderItemReverseQuestion() {
 function handleItemReverseSubmit() {
   if (state.answered) return;
   state.answered = true;
-  const progress = state.scores.items;
-  progress.questionCount++;
 
   const item = state.currentReverseItem;
   const options = [...answersEl.children];
@@ -340,13 +352,7 @@ function handleItemReverseSubmit() {
   `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
-  if (isCorrect) progress.score++;
-
-  updateScoreBar();
-  saveProgress();
-
-  submitBtn.classList.add('hidden');
-  nextBtn.classList.remove('hidden');
+  finishQuestion(isCorrect);
 }
 
 // Choisit au hasard le sens de la question "objets" (environ 50/50 a chaque fois,
@@ -419,8 +425,6 @@ function renderChampionQuestion() {
 function handleChampionSubmit() {
   if (state.answered) return;
   state.answered = true;
-  const progress = state.scores.champions;
-  progress.questionCount++;
 
   const champion = state.currentChampion;
   const correctIds = new Set(champion.traits);
@@ -474,70 +478,185 @@ function handleChampionSubmit() {
   feedbackEl.innerHTML = `<div class="feedback-title">${iconHtml}${titleText}</div>`;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
-  if (isCorrect) progress.score++;
-
-  updateScoreBar();
-  saveProgress();
-
-  submitBtn.classList.add('hidden');
-  nextBtn.classList.remove('hidden');
+  finishQuestion(isCorrect);
 }
 
 // ---------------------------------------------------------------------------
-// Navigation entre l'accueil et les quiz
+// Mode de jeu : entrainement (score classique) ou competitif (serie + chrono)
 // ---------------------------------------------------------------------------
 
-// Met a jour le score/nombre de questions affiches en haut du quiz actif.
+// Appelee par les 3 handlers de reponse une fois qu'on sait si la reponse est
+// correcte. En entrainement, met a jour le score et propose la question
+// suivante. En competitif, delegue a handleCompetitiveResult.
+function finishQuestion(isCorrect) {
+  submitBtn.classList.add('hidden');
+
+  if (state.gameMode === 'competitive') {
+    handleCompetitiveResult(isCorrect);
+    return;
+  }
+
+  const progress = state.scores[state.mode];
+  progress.questionCount++;
+  if (isCorrect) progress.score++;
+  updateScoreBar();
+  nextBtn.classList.remove('hidden');
+}
+
+// Formatte un nombre de millisecondes en "MM:SS.d" (ex: 01:23.4).
+function formatTime(ms) {
+  const totalSeconds = ms / 1000;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = (totalSeconds % 60).toFixed(1);
+  return `${String(minutes).padStart(2, '0')}:${seconds.padStart(4, '0')}`;
+}
+
+// (Re)demarre la serie competitive : serie a 0, chrono a 0 et lance le
+// rafraichissement de l'affichage du temps toutes les 100ms.
+function startCompetitiveTimer() {
+  stopCompetitiveTimer();
+  state.competitive.streak = 0;
+  state.competitive.startTime = Date.now();
+  streakEl.textContent = '0';
+  timerEl.textContent = '00:00.0';
+  state.competitive.intervalId = setInterval(() => {
+    timerEl.textContent = formatTime(Date.now() - state.competitive.startTime);
+  }, 100);
+}
+
+function stopCompetitiveTimer() {
+  if (state.competitive.intervalId !== null) {
+    clearInterval(state.competitive.intervalId);
+    state.competitive.intervalId = null;
+  }
+}
+
+function getHighscoreMs(mode) {
+  const raw = localStorage.getItem(`tft_${mode}_highscore_ms`);
+  return raw !== null ? parseInt(raw, 10) : null;
+}
+
+function updateHighscoreDisplay() {
+  const ms = getHighscoreMs(state.mode);
+  highscoreEl.textContent = ms !== null ? formatTime(ms) : '--';
+}
+
+function updateHomeHighscores() {
+  const itemsMs = getHighscoreMs('items');
+  const champMs = getHighscoreMs('champions');
+  homeItemsHighscoreEl.textContent = itemsMs !== null ? formatTime(itemsMs) : '--';
+  homeChampionsHighscoreEl.textContent = champMs !== null ? formatTime(champMs) : '--';
+}
+
+// Appelee a chaque reponse en mode competitif : fait avancer la serie, ou
+// termine immediatement la partie a la moindre erreur.
+function handleCompetitiveResult(isCorrect) {
+  if (!isCorrect) {
+    finishCompetitiveRun(false);
+    return;
+  }
+
+  state.competitive.streak++;
+  streakEl.textContent = state.competitive.streak;
+
+  if (state.competitive.streak >= 30) {
+    finishCompetitiveRun(true);
+  } else {
+    nextBtn.classList.remove('hidden');
+  }
+}
+
+// Arrete le chrono et affiche soit un message de victoire (avec record
+// eventuel), soit un message de game over.
+function finishCompetitiveRun(won) {
+  stopCompetitiveTimer();
+  const elapsedMs = Date.now() - state.competitive.startTime;
+
+  const noteEl = document.createElement('div');
+  noteEl.className = 'feedback-effect';
+
+  if (won) {
+    const key = `tft_${state.mode}_highscore_ms`;
+    const currentBest = getHighscoreMs(state.mode);
+    const isNewRecord = currentBest === null || elapsedMs < currentBest;
+    if (isNewRecord) localStorage.setItem(key, String(elapsedMs));
+    noteEl.textContent = `Bravo ! 30 bonnes reponses d'affilee en ${formatTime(elapsedMs)}.${isNewRecord ? ' Nouveau record !' : ''}`;
+  } else {
+    noteEl.textContent = `Partie terminee : ${state.competitive.streak} bonne(s) reponse(s) d'affilee avant l'erreur.`;
+  }
+  feedbackEl.appendChild(noteEl);
+
+  updateHighscoreDisplay();
+  retryBtn.classList.remove('hidden');
+}
+
+// ---------------------------------------------------------------------------
+// Navigation entre l'accueil, les sous-menus et les quiz
+// ---------------------------------------------------------------------------
+
+// Met a jour le score/nombre de questions affiches en haut du quiz actif
+// (mode entrainement uniquement).
 function updateScoreBar() {
   const progress = state.scores[state.mode];
   scoreEl.textContent = progress.score;
   questionCountEl.textContent = progress.questionCount;
 }
 
-// Met a jour l'aperçu de score affiche sur les cartes de l'accueil.
-function updateHomeCards() {
-  homeItemsScoreEl.textContent = state.scores.items.score;
-  homeItemsCountEl.textContent = state.scores.items.questionCount;
-  homeChampionsScoreEl.textContent = state.scores.champions.score;
-  homeChampionsCountEl.textContent = state.scores.champions.questionCount;
-}
-
 function showHome() {
   state.mode = null;
-  updateHomeCards();
+  updateHomeHighscores();
   homeScreen.classList.remove('hidden');
   itemsSubmenuScreen.classList.add('hidden');
+  modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
 }
 
 // Sous-menu du quiz "objets" : demande d'abord avec ou sans emblemes.
 function showItemsSubmenu() {
-  state.mode = null;
   homeScreen.classList.add('hidden');
   itemsSubmenuScreen.classList.remove('hidden');
+  modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
 }
 
-function enterItemsQuiz(emblemFilter) {
-  state.mode = 'items';
-  state.itemsEmblemFilter = emblemFilter;
-  itemsSubmenuScreen.classList.add('hidden');
-  quizScreen.classList.remove('hidden');
-  renderQuestion();
-}
-
-function enterQuiz(mode) {
-  state.mode = mode;
+// Sous-menu du mode de jeu : entrainement ou competitif.
+function showModeSubmenu() {
   homeScreen.classList.add('hidden');
   itemsSubmenuScreen.classList.add('hidden');
-  quizScreen.classList.remove('hidden');
-  renderQuestion();
+  modeSubmenuScreen.classList.remove('hidden');
+  quizScreen.classList.add('hidden');
 }
 
-// Remet a zero le score du quiz actuellement affiche, puis relance une question.
-function resetCurrentQuiz() {
-  state.scores[state.mode] = { score: 0, questionCount: 0 };
-  saveProgress();
+function chooseItemsFilter(emblemFilter) {
+  state.pendingMode = 'items';
+  state.itemsEmblemFilter = emblemFilter;
+  showModeSubmenu();
+}
+
+function chooseChampionsMode() {
+  state.pendingMode = 'champions';
+  showModeSubmenu();
+}
+
+// Lance vraiment le quiz une fois le mode de jeu choisi.
+function startQuiz(gameMode) {
+  state.mode = state.pendingMode;
+  state.gameMode = gameMode;
+  modeSubmenuScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+
+  if (gameMode === 'competitive') {
+    scoreBarEl.classList.add('hidden');
+    competitiveBarEl.classList.remove('hidden');
+    updateHighscoreDisplay();
+    startCompetitiveTimer();
+  } else {
+    scoreBarEl.classList.remove('hidden');
+    competitiveBarEl.classList.add('hidden');
+    // Le score d'entrainement repart toujours de 0 a chaque nouvelle partie.
+    state.scores[state.mode] = { score: 0, questionCount: 0 };
+  }
+
   renderQuestion();
 }
 
@@ -548,7 +667,8 @@ function renderQuestion() {
   feedbackEl.className = 'feedback';
   nextBtn.classList.add('hidden');
   submitBtn.classList.add('hidden');
-  updateScoreBar();
+  retryBtn.classList.add('hidden');
+  if (state.gameMode === 'training') updateScoreBar();
 
   if (state.mode === 'items') {
     renderItemQuestion();
@@ -557,40 +677,34 @@ function renderQuestion() {
   }
 }
 
-// Sauvegarde les scores dans le navigateur (survivent a un rechargement de la page).
-function saveProgress() {
-  localStorage.setItem('tft_items_score', String(state.scores.items.score));
-  localStorage.setItem('tft_items_question_count', String(state.scores.items.questionCount));
-  localStorage.setItem('tft_champions_score', String(state.scores.champions.score));
-  localStorage.setItem('tft_champions_question_count', String(state.scores.champions.questionCount));
-}
-
-function loadProgress() {
-  const savedItemsScore = localStorage.getItem('tft_items_score');
-  const savedItemsCount = localStorage.getItem('tft_items_question_count');
-  const savedChampScore = localStorage.getItem('tft_champions_score');
-  const savedChampCount = localStorage.getItem('tft_champions_question_count');
-
-  if (savedItemsScore !== null) state.scores.items.score = parseInt(savedItemsScore, 10);
-  if (savedItemsCount !== null) state.scores.items.questionCount = parseInt(savedItemsCount, 10);
-  if (savedChampScore !== null) state.scores.champions.score = parseInt(savedChampScore, 10);
-  if (savedChampCount !== null) state.scores.champions.questionCount = parseInt(savedChampCount, 10);
-}
-
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
-homeChampionsBtn.addEventListener('click', () => enterQuiz('champions'));
+homeChampionsBtn.addEventListener('click', chooseChampionsMode);
+
 itemsSubmenuBackBtn.addEventListener('click', showHome);
-itemsWithEmblemsBtn.addEventListener('click', () => enterItemsQuiz('with'));
-itemsWithoutEmblemsBtn.addEventListener('click', () => enterItemsQuiz('without'));
-backHomeBtn.addEventListener('click', () => {
-  if (state.mode === 'items') {
+itemsWithEmblemsBtn.addEventListener('click', () => chooseItemsFilter('with'));
+itemsWithoutEmblemsBtn.addEventListener('click', () => chooseItemsFilter('without'));
+
+modeSubmenuBackBtn.addEventListener('click', () => {
+  if (state.pendingMode === 'items') {
     showItemsSubmenu();
   } else {
     showHome();
   }
 });
-resetBtn.addEventListener('click', resetCurrentQuiz);
+modeTrainingBtn.addEventListener('click', () => startQuiz('training'));
+modeCompetitiveBtn.addEventListener('click', () => startQuiz('competitive'));
+
+backHomeBtn.addEventListener('click', () => {
+  stopCompetitiveTimer();
+  showModeSubmenu();
+});
+
 nextBtn.addEventListener('click', renderQuestion);
+retryBtn.addEventListener('click', () => {
+  retryBtn.classList.add('hidden');
+  startCompetitiveTimer();
+  renderQuestion();
+});
 submitBtn.addEventListener('click', () => {
   if (state.mode === 'items') {
     handleItemReverseSubmit();
@@ -601,7 +715,6 @@ submitBtn.addEventListener('click', () => {
 
 async function init() {
   await loadData();
-  loadProgress();
   showHome();
 }
 

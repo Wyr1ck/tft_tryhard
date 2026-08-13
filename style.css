@@ -32,7 +32,8 @@ header h1 {
 }
 
 #home-screen,
-#items-submenu-screen {
+#items-submenu-screen,
+#mode-submenu-screen {
   width: 100%;
   max-width: 480px;
   text-align: center;
@@ -332,7 +333,8 @@ header h1 {
 }
 
 #next-btn,
-#submit-btn {
+#submit-btn,
+#retry-btn {
   padding: 0.6rem 1.5rem;
   border-radius: 8px;
   border: none;
@@ -343,7 +345,8 @@ header h1 {
 }
 
 #next-btn:hover,
-#submit-btn:hover {
+#submit-btn:hover,
+#retry-btn:hover {
   background: #f5c25c;
 }
 
