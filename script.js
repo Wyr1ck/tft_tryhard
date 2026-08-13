@@ -212,6 +212,26 @@ function handleItemAnswer(choiceId, btnEl) {
   nextBtn.classList.remove('hidden');
 }
 
+const ITEM_REVERSE_OPTIONS_COUNT = 4;
+
+// Construit la liste de composants proposee comme cases a cocher : les vrais
+// composants de l'objet + juste assez de composants au hasard pour arriver a 4.
+// Si l'objet n'est pas un embleme/Tacticien, on ne propose jamais Spatule ou
+// Poele a frire comme "faux" composant : ils ne servent jamais a fabriquer
+// un objet normal, ce serait un choix absurde.
+function buildComponentOptions(item) {
+  const correctIds = new Set(item.components);
+  const correctComponents = state.data.components.filter((c) => correctIds.has(c.id));
+  let wrongPool = state.data.components.filter((c) => !correctIds.has(c.id));
+  if (!isEmblemFamily(item)) {
+    wrongPool = wrongPool.filter((c) => !EMBLEM_COMPONENT_IDS.includes(c.id));
+  }
+  shuffle(wrongPool);
+  const neededWrong = Math.max(0, ITEM_REVERSE_OPTIONS_COUNT - correctComponents.length);
+  const wrongComponents = wrongPool.slice(0, neededWrong);
+  return shuffle([...correctComponents, ...wrongComponents]);
+}
+
 // Affiche la question "objets" dans le sens inverse : objet -> composants,
 // avec des cases a cocher (meme principe que le mode "personnages").
 function renderItemReverseQuestion() {
@@ -226,16 +246,18 @@ function renderItemReverseQuestion() {
 
   answersEl.className = 'answers trait-list';
   answersEl.innerHTML = '';
-  state.data.components.forEach((comp) => {
+  buildComponentOptions(item).forEach((comp) => {
     const option = document.createElement('label');
     option.className = 'trait-option';
     option.dataset.componentId = comp.id;
     option.innerHTML = `
       <input type="checkbox" value="${comp.id}">
+      <img class="answer-icon" src="${getComponentImagePath(comp.id)}" alt="">
       <span class="trait-option-text">
         <span class="trait-name">${formatNameWithEn(comp.name, comp.nameEn)}</span>
       </span>
     `;
+    hideImageOnError(option.querySelector('.answer-icon'));
     answersEl.appendChild(option);
   });
 
