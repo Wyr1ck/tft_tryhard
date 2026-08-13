@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFT TryHard - Quiz Combos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>TFT TryHard</h1>
+    <p class="subtitle">Entraine-toi sur TFT</p>
+  </header>
+
+  <main>
+    <!-- Ecran d'accueil : choix du quiz. C'est ce qu'on voit au chargement de la page. -->
+    <section id="home-screen">
+      <p class="prompt">Choisis un quiz :</p>
+      <div class="home-cards">
+        <button class="home-card" id="home-items">
+          <span class="home-card-title">Combos d'objets</span>
+          <span class="home-card-score">Score : <strong id="home-items-score">0</strong> / <span id="home-items-count">0</span></span>
+        </button>
+        <button class="home-card" id="home-champions">
+          <span class="home-card-title">Traits de personnages</span>
+          <span class="home-card-score">Score : <strong id="home-champions-score">0</strong> / <span id="home-champions-count">0</span></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Ecran de quiz : cache tant qu'aucun quiz n'a ete choisi depuis l'accueil. -->
+    <section id="quiz-screen" class="hidden">
+      <div class="quiz-toolbar">
+        <button id="back-home-btn" class="text-btn">&larr; Accueil</button>
+        <button id="reset-btn" class="text-btn">Relancer a zero</button>
+      </div>
+
+      <div class="score-bar">
+        <span>Score : <strong id="score">0</strong></span>
+        <span>Questions : <strong id="question-count">0</strong></span>
+      </div>
+
+      <section class="quiz-card">
+        <p class="prompt" id="prompt-text">Quel objet obtient-on avec :</p>
+
+        <!-- Les 2 composants de la question sont injectes ici par script.js -->
+        <div class="components" id="components"></div>
+
+        <!-- Les choix de reponse sont injectes ici par script.js (boutons ou cases a cocher selon le mode) -->
+        <div class="answers" id="answers"></div>
+
+        <p id="feedback" class="feedback"></p>
+
+        <button id="submit-btn" class="hidden">Valider</button>
+        <button id="next-btn" class="hidden">Question suivante</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
