@@ -4,7 +4,9 @@ const state = {
   data: null,             // contenu de items.json une fois charge
   champData: null,        // contenu de champions.json une fois charge
   mode: null,              // null = accueil, sinon 'items' ou 'champions'
-  currentQuestion: null,   // question du mode "items" affichee en ce moment
+  itemQuestionType: null,  // 'forward' (composants -> objet) ou 'reverse' (objet -> composants)
+  currentQuestion: null,   // question du mode "items" (forward) affichee en ce moment
+  currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
   currentChampion: null,   // personnage du mode "champions" affiche en ce moment
   answered: false,        // empeche de valider 2 fois la meme question
   scores: {
@@ -147,8 +149,9 @@ function buildItemQuestion() {
   };
 }
 
-// Affiche la question "objets" : sujet + 4 boutons de reponse.
-function renderItemQuestion() {
+// Affiche la question "objets" dans le sens classique : composants -> objet,
+// sujet + 4 boutons de reponse.
+function renderItemForwardQuestion() {
   const question = buildItemQuestion();
   state.currentQuestion = question;
 
@@ -207,6 +210,104 @@ function handleItemAnswer(choiceId, btnEl) {
   saveProgress();
 
   nextBtn.classList.remove('hidden');
+}
+
+// Affiche la question "objets" dans le sens inverse : objet -> composants,
+// avec des cases a cocher (meme principe que le mode "personnages").
+function renderItemReverseQuestion() {
+  const item = pickRandomItem();
+  state.currentReverseItem = item;
+
+  promptEl.textContent = 'Avec quels composants peut-on fabriquer cet objet :';
+  componentsEl.innerHTML = `
+    <span class="chip"><img class="chip-icon" src="${getItemImagePath(item.id)}" alt=""> ${formatNameWithEn(item.name, item.nameEn)}</span>
+  `;
+  componentsEl.querySelectorAll('.chip-icon').forEach(hideImageOnError);
+
+  answersEl.className = 'answers trait-list';
+  answersEl.innerHTML = '';
+  state.data.components.forEach((comp) => {
+    const option = document.createElement('label');
+    option.className = 'trait-option';
+    option.dataset.componentId = comp.id;
+    option.innerHTML = `
+      <input type="checkbox" value="${comp.id}">
+      <span class="trait-option-text">
+        <span class="trait-name">${formatNameWithEn(comp.name, comp.nameEn)}</span>
+      </span>
+    `;
+    answersEl.appendChild(option);
+  });
+
+  submitBtn.classList.remove('hidden');
+}
+
+// Appele quand le joueur clique sur "Valider" en mode "objets" (sens inverse).
+// Un objet fait de 2 fois le meme composant (ex: Armure de Warmog) n'a qu'un
+// seul composant "distinct" a retrouver : on compare des ensembles, pas des listes.
+function handleItemReverseSubmit() {
+  if (state.answered) return;
+  state.answered = true;
+  const progress = state.scores.items;
+  progress.questionCount++;
+
+  const item = state.currentReverseItem;
+  const correctIds = new Set(item.components);
+  const checkedIds = new Set(
+    [...answersEl.querySelectorAll('input[type="checkbox"]:checked')].map((cb) => cb.value)
+  );
+
+  const isCorrect =
+    checkedIds.size === correctIds.size && [...checkedIds].every((id) => correctIds.has(id));
+
+  [...answersEl.children].forEach((option) => {
+    const compId = option.dataset.componentId;
+    const checkbox = option.querySelector('input[type="checkbox"]');
+    checkbox.disabled = true;
+    const wasChecked = checkedIds.has(compId);
+    const isRightComponent = correctIds.has(compId);
+
+    if (isRightComponent) {
+      option.classList.add(wasChecked ? 'correct' : 'missed');
+      checkbox.checked = true;
+    } else if (wasChecked) {
+      option.classList.add('wrong');
+    } else {
+      option.classList.add('hidden');
+    }
+  });
+
+  const correctOptions = [...answersEl.querySelectorAll('.trait-option.correct')];
+  const wrongOptions = [...answersEl.querySelectorAll('.trait-option.wrong')];
+  answersEl.prepend(...correctOptions);
+  answersEl.append(...wrongOptions);
+
+  const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
+  const iconHtml = `<img class="feedback-icon" src="${getItemImagePath(item.id)}" alt="" onerror="this.style.display='none'">`;
+  feedbackEl.innerHTML = `
+    <div class="feedback-title">${iconHtml}${titleText}</div>
+    <div class="feedback-effect">${item.effect || 'Effet non renseigne.'}</div>
+  `;
+  feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+
+  if (isCorrect) progress.score++;
+
+  updateScoreBar();
+  saveProgress();
+
+  submitBtn.classList.add('hidden');
+  nextBtn.classList.remove('hidden');
+}
+
+// Choisit au hasard le sens de la question "objets" (environ 50/50 a chaque fois,
+// pas une stricte alternance).
+function renderItemQuestion() {
+  state.itemQuestionType = Math.random() < 0.5 ? 'forward' : 'reverse';
+  if (state.itemQuestionType === 'forward') {
+    renderItemForwardQuestion();
+  } else {
+    renderItemReverseQuestion();
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -413,7 +514,13 @@ homeChampionsBtn.addEventListener('click', () => enterQuiz('champions'));
 backHomeBtn.addEventListener('click', showHome);
 resetBtn.addEventListener('click', resetCurrentQuiz);
 nextBtn.addEventListener('click', renderQuestion);
-submitBtn.addEventListener('click', handleChampionSubmit);
+submitBtn.addEventListener('click', () => {
+  if (state.mode === 'items') {
+    handleItemReverseSubmit();
+  } else {
+    handleChampionSubmit();
+  }
+});
 
 async function init() {
   await loadData();
