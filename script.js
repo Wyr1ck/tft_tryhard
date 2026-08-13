@@ -50,6 +50,17 @@ function getComponentName(id) {
   return state.data.components.find((c) => c.id === id).name;
 }
 
+function getComponentNameEn(id) {
+  return state.data.components.find((c) => c.id === id).nameEn || '';
+}
+
+// Construit le petit bloc "Nom francais (Nom anglais)". La partie anglaise est
+// omise si elle n'est pas encore renseignee dans le JSON.
+function formatNameWithEn(nameFr, nameEn) {
+  const enHtml = nameEn ? `<span class="name-en">(${nameEn})</span>` : '';
+  return `<span class="name-block"><span class="name-fr">${nameFr}</span>${enHtml}</span>`;
+}
+
 // Convention : l'image d'un composant/objet/personnage doit s'appeler "<id>.png"
 // et etre placee dans le bon dossier. Pas besoin de toucher au JSON ni au JS
 // pour ajouter une image : il suffit de deposer le fichier au bon endroit.
@@ -112,6 +123,7 @@ function buildItemChoices(correctItem) {
   return shuffle(picked).map((item) => ({
     id: item.id,
     label: item.name,
+    labelEn: item.nameEn || '',
     imagePath: getItemImagePath(item.id),
   }));
 }
@@ -120,9 +132,9 @@ function buildItemQuestion() {
   const item = pickRandomItem();
   const [comp1, comp2] = item.components;
   const subjectHtml = `
-    <span class="chip"><img class="chip-icon" src="${getComponentImagePath(comp1)}" alt=""> ${getComponentName(comp1)}</span>
+    <span class="chip"><img class="chip-icon" src="${getComponentImagePath(comp1)}" alt=""> ${formatNameWithEn(getComponentName(comp1), getComponentNameEn(comp1))}</span>
     <span class="chip-plus">+</span>
-    <span class="chip"><img class="chip-icon" src="${getComponentImagePath(comp2)}" alt=""> ${getComponentName(comp2)}</span>
+    <span class="chip"><img class="chip-icon" src="${getComponentImagePath(comp2)}" alt=""> ${formatNameWithEn(getComponentName(comp2), getComponentNameEn(comp2))}</span>
   `;
 
   return {
@@ -153,7 +165,7 @@ function renderItemQuestion() {
     const iconHtml = choice.imagePath
       ? `<img class="answer-icon" src="${choice.imagePath}" alt="">`
       : '';
-    btn.innerHTML = `${iconHtml}<span>${choice.label}</span>`;
+    btn.innerHTML = `${iconHtml}${formatNameWithEn(choice.label, choice.labelEn)}`;
     const iconEl = btn.querySelector('.answer-icon');
     if (iconEl) hideImageOnError(iconEl);
     btn.addEventListener('click', () => handleItemAnswer(choice.id, btn));

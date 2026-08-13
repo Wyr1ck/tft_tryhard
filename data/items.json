@@ -1,401 +1,671 @@
 {
   "components": [
-    { "id": "gants_entrainement", "name": "Gants d'entraînement", "effect": "+20% de chances de coup critique" },
-    { "id": "bf_glaive", "name": "B.F. Glaive", "effect": "+10% dégâts d'attaque" },
-    { "id": "arc_courbe", "name": "Arc courbe", "effect": "+10% vitesse d'attaque" },
-    { "id": "ceinture_geant", "name": "Ceinture du géant", "effect": "+150 PV" },
-    { "id": "manteau_negatron", "name": "Manteau de Négatron", "effect": "+20 résistance magique" },
-    { "id": "cotte_mailles", "name": "Cotte de mailles", "effect": "+20 d'armure" },
-    { "id": "baguette_trop_grosse", "name": "Baguette trop grosse", "effect": "+10% puissance" },
-    { "id": "larme_deesse", "name": "Larme de la déesse", "effect": "+1 de régénération de mana" },
-    { "id": "spatule", "name": "Spatule", "effect": "" },
-    { "id": "poele_a_frire", "name": "Poêle à frire", "effect": "" }
+    {
+      "id": "gants_entrainement",
+      "name": "Gants d'entraînement",
+      "effect": "+20% de chances de coup critique",
+      "nameEn": "Sparring Gloves"
+    },
+    {
+      "id": "bf_glaive",
+      "name": "B.F. Glaive",
+      "effect": "+10% dégâts d'attaque",
+      "nameEn": "B.F. Sword"
+    },
+    {
+      "id": "arc_courbe",
+      "name": "Arc courbe",
+      "effect": "+10% vitesse d'attaque",
+      "nameEn": "Recurve Bow"
+    },
+    {
+      "id": "ceinture_geant",
+      "name": "Ceinture du géant",
+      "effect": "+150 PV",
+      "nameEn": "Giant's Belt"
+    },
+    {
+      "id": "manteau_negatron",
+      "name": "Manteau de Négatron",
+      "effect": "+20 résistance magique",
+      "nameEn": "Negatron Cloak"
+    },
+    {
+      "id": "cotte_mailles",
+      "name": "Cotte de mailles",
+      "effect": "+20 d'armure",
+      "nameEn": "Chain Vest"
+    },
+    {
+      "id": "baguette_trop_grosse",
+      "name": "Baguette trop grosse",
+      "effect": "+10% puissance",
+      "nameEn": "Needlessly Large Rod"
+    },
+    {
+      "id": "larme_deesse",
+      "name": "Larme de la déesse",
+      "effect": "+1 de régénération de mana",
+      "nameEn": "Tear of the Goddess"
+    },
+    {
+      "id": "spatule",
+      "name": "Spatule",
+      "effect": "",
+      "nameEn": "Spatula"
+    },
+    {
+      "id": "poele_a_frire",
+      "name": "Poêle à frire",
+      "effect": "",
+      "nameEn": "Frying Pan"
+    }
   ],
   "items": [
     {
       "id": "lithoplastron_gargouille",
       "name": "Lithoplastron de gargouille",
-      "components": ["cotte_mailles", "manteau_negatron"],
+      "components": [
+        "cotte_mailles",
+        "manteau_negatron"
+      ],
       "effect": "Le porteur gagne 10 d'armure et 10 de résistance magique pour chaque ennemi qui le cible.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Gargoyle Stoneplate"
     },
     {
       "id": "lame_guinsoo",
       "name": "Lame enragée de Guinsoo",
-      "components": ["arc_courbe", "baguette_trop_grosse"],
+      "components": [
+        "arc_courbe",
+        "baguette_trop_grosse"
+      ],
       "effect": "Le porteur gagne 7% de vitesse d'attaque cumulable toutes les secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Guinsoo's Rageblade"
     },
     {
       "id": "armure_warmog",
       "name": "Armure de Warmog",
-      "components": ["ceinture_geant", "ceinture_geant"],
+      "components": [
+        "ceinture_geant",
+        "ceinture_geant"
+      ],
       "effect": "Ce champion gagne 18% de PV max.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Warmog's Armor"
     },
     {
       "id": "gantelet_precieux",
       "name": "Gantelet précieux",
-      "components": ["gants_entrainement", "baguette_trop_grosse"],
+      "components": [
+        "gants_entrainement",
+        "baguette_trop_grosse"
+      ],
       "effect": "Le porteur gagne Précision (les dégâts des compétences peuvent infliger un coup critique ; +10% de dégâts de coup critique).",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Jeweled Gauntlet"
     },
     {
       "id": "lance_shojin",
       "name": "Lance de Shojin",
-      "components": ["larme_deesse", "bf_glaive"],
+      "components": [
+        "larme_deesse",
+        "bf_glaive"
+      ],
       "effect": "Les attaques du champion lui rendent 5 pts de mana bonus.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Spear of Shojin"
     },
     {
       "id": "visage_spirituel",
       "name": "Visage spirituel",
-      "components": ["ceinture_geant", "larme_deesse"],
+      "components": [
+        "ceinture_geant",
+        "larme_deesse"
+      ],
       "effect": "Le porteur récupère 2% de ses PV manquants chaque seconde.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Spirit Visage"
     },
     {
       "id": "larme_infini",
       "name": "Larme d'infini",
-      "components": ["bf_glaive", "gants_entrainement"],
+      "components": [
+        "bf_glaive",
+        "gants_entrainement"
+      ],
       "effect": "Le porteur gagne Précision (les dégâts des compétences peuvent infliger un coup critique ; +10% de dégâts de coup critique).",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Infinity Edge"
     },
     {
       "id": "tueur_geants",
       "name": "Tueur de géants",
-      "components": ["arc_courbe", "bf_glaive"],
+      "components": [
+        "arc_courbe",
+        "bf_glaive"
+      ],
       "effect": "Le porteur gagne 15% d'amplification des dégâts bonus contre les tanks.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Giant Slayer"
     },
     {
       "id": "gants_voleur",
       "name": "Gants de voleur",
-      "components": ["gants_entrainement", "gants_entrainement"],
+      "components": [
+        "gants_entrainement",
+        "gants_entrainement"
+      ],
       "effect": "A chaque manche, le porteur s'équipe de 2 objets aléatoires. (Occupe 3 emplacements d'objets.)",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Thief's Gloves"
     },
     {
       "id": "voeu_protecteur",
       "name": "Vœu du protecteur",
-      "components": ["cotte_mailles", "larme_deesse"],
+      "components": [
+        "cotte_mailles",
+        "larme_deesse"
+      ],
       "effect": "Début du combat : le porteur gagne 20 pts de mana. Quand le porteur tombe à 40% de PV, il gagne 15 pts de mana et un bouclier de 20% de ses PV max.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Protector's Vow"
     },
     {
       "id": "cape_solaire",
       "name": "Cape solaire",
-      "components": ["cotte_mailles", "ceinture_geant"],
+      "components": [
+        "cotte_mailles",
+        "ceinture_geant"
+      ],
       "effect": "Le porteur gagne 8% PV max. Toutes les 2 secondes, il applique 1% de brûlure et 33% d'hémorragie pendant 10 secondes sur un ennemi dans un rayon de 2 hexagones.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Sunfire Cape"
     },
     {
       "id": "soif_de_sang",
       "name": "Soif-de-sang",
-      "components": ["bf_glaive", "manteau_negatron"],
+      "components": [
+        "bf_glaive",
+        "manteau_negatron"
+      ],
       "effect": "Une fois par combat, quand le porteur tombe sous 40% de ses PV, il gagne un bouclier de 25% de ses PV max qui dure jusqu'à 5 secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Bloodthirster"
     },
     {
       "id": "baton_vide",
       "name": "Bâton du vide",
-      "components": ["arc_courbe", "larme_deesse"],
+      "components": [
+        "arc_courbe",
+        "larme_deesse"
+      ],
       "effect": "Les attaques et les compétences infligent 30% de scission magique à la cible pendant 5 secondes. Cet effet n'est pas cumulable.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Void Staff"
     },
     {
       "id": "casque_adaptatif",
       "name": "Casque adaptatif",
-      "components": ["larme_deesse", "manteau_negatron"],
+      "components": [
+        "larme_deesse",
+        "manteau_negatron"
+      ],
       "effect": "Le porteur gagne 15% de mana bonus, toutes sources confondues. Tanks et combattants : +30 d'armure et de résistance magique. Autres rôles : +10% de dégâts d'attaque et de puissance.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Adaptive Helm"
     },
     {
       "id": "dernier_souffle",
       "name": "Dernier souffle",
-      "components": ["arc_courbe", "gants_entrainement"],
+      "components": [
+        "arc_courbe",
+        "gants_entrainement"
+      ],
       "effect": "Les attaques et les compétences infligent 30% de scission à la cible pendant 3 secondes. Cet effet n'est pas cumulable.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Last Whisper"
     },
     {
       "id": "lame_funeste",
       "name": "Lame funeste",
-      "components": ["bf_glaive", "bf_glaive"],
+      "components": [
+        "bf_glaive",
+        "bf_glaive"
+      ],
       "effect": "Objet purement statistique, sans effet special : +55% de degats d'attaque et +10% d'amplification des degats.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Deathblade"
     },
     {
       "id": "coiffe_rabadon",
       "name": "Coiffe de Rabadon",
-      "components": ["baguette_trop_grosse", "baguette_trop_grosse"],
+      "components": [
+        "baguette_trop_grosse",
+        "baguette_trop_grosse"
+      ],
       "effect": "Objet purement statistique, sans effet special : +55% de puissance et +15% d'amplification des degats.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Rabadon's Deathcap"
     },
     {
       "id": "gage_sterak",
       "name": "Gage de Sterak",
-      "components": ["bf_glaive", "ceinture_geant"],
+      "components": [
+        "bf_glaive",
+        "ceinture_geant"
+      ],
       "effect": "Lorsqu'il tombe sous 60% de ses PV, le porteur gagne un bouclier de 40% de ses PV max. Ce bouclier se désagrège rapidement en 4 secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Sterak's Gage"
     },
     {
       "id": "buff_bleu",
       "name": "Buff bleu",
-      "components": ["larme_deesse", "larme_deesse"],
+      "components": [
+        "larme_deesse",
+        "larme_deesse"
+      ],
       "effect": "Le porteur gagne 10% de dégâts d'attaque et de puissance bonus (toutes sources confondues).",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Blue Buff"
     },
     {
       "id": "main_justice",
       "name": "Main de la justice",
-      "components": ["larme_deesse", "gants_entrainement"],
+      "components": [
+        "larme_deesse",
+        "gants_entrainement"
+      ],
       "effect": "Le porteur gagne 15% de dégâts d'attaque et 15% de puissance, et 12% d'omnivampirisme. Quand il a plus de 50% de ses PV, dégâts d'attaque et puissance sont doublés. Quand il a moins de 50% de ses PV, l'omnivampirisme est doublé.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Hand Of Justice"
     },
     {
       "id": "griffe_dragon",
       "name": "Griffe du dragon",
-      "components": ["manteau_negatron", "manteau_negatron"],
+      "components": [
+        "manteau_negatron",
+        "manteau_negatron"
+      ],
       "effect": "Ce champion gagne 6% PV max. Toutes les 2 secondes, il récupère 2.5% PV max.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Dragon's Claw"
     },
     {
       "id": "determination_titan",
       "name": "Détermination du titan",
-      "components": ["arc_courbe", "cotte_mailles"],
+      "components": [
+        "arc_courbe",
+        "cotte_mailles"
+      ],
       "effect": "Quand le porteur attaque ou subit des dégâts, il gagne 2% de dégâts d'attaque et de puissance (cumulable jusqu'à 25 fois). Au maximum d'effets cumulés, il gagne 10% d'amplification des dégâts et une immunité aux contrôles de foule.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Titan's Resolve"
     },
     {
       "id": "fleau_vengeur",
       "name": "Fléau vengeur",
-      "components": ["ceinture_geant", "gants_entrainement"],
+      "components": [
+        "ceinture_geant",
+        "gants_entrainement"
+      ],
       "effect": "Les coups critiques octroient 5% d'amplification des dégâts pendant 5 secondes, cumulable 4 fois.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Striker's Flail"
     },
     {
       "id": "buff_rouge",
       "name": "Buff rouge",
-      "components": ["arc_courbe", "arc_courbe"],
+      "components": [
+        "arc_courbe",
+        "arc_courbe"
+      ],
       "effect": "Les attaques et les compétences du porteur appliquent 1% de brûlure et 33% d'hémorragie sur les ennemis pendant 5 secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Red Buff"
     },
     {
       "id": "coeur_intrepide",
       "name": "Cœur intrépide",
-      "components": ["cotte_mailles", "gants_entrainement"],
+      "components": [
+        "cotte_mailles",
+        "gants_entrainement"
+      ],
       "effect": "Le porteur gagne 5% de durabilité. Quand le porteur a plus de 50% PV, il gagne à la place 15% de durabilité.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Steadfast Heart"
     },
     {
       "id": "linceul_confluence",
       "name": "Linceul de la confluence",
-      "components": ["manteau_negatron", "ceinture_geant"],
+      "components": [
+        "manteau_negatron",
+        "ceinture_geant"
+      ],
       "effect": "Le porteur applique 30% de scission sur les ennemis dans un rayon de 2 hexagones. Le porteur gagne 15 d'armure et de résistance magique pendant les 15 premières secondes de combat.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Evenshroud"
     },
     {
       "id": "pistolame_hextech",
       "name": "Pistolame Hextech",
-      "components": ["bf_glaive", "baguette_trop_grosse"],
+      "components": [
+        "bf_glaive",
+        "baguette_trop_grosse"
+      ],
       "effect": "Le porteur rend des PV équivalents à 20% des dégâts qu'il inflige à l'allié qui a le pourcentage de PV le plus bas.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Hextech Gunblade"
     },
     {
       "id": "couronne_reine",
       "name": "Couronne de la reine",
-      "components": ["baguette_trop_grosse", "cotte_mailles"],
+      "components": [
+        "baguette_trop_grosse",
+        "cotte_mailles"
+      ],
       "effect": "Début du combat : le porteur gagne un bouclier de 25% de ses PV max pendant 8 secondes. Quand le bouclier expire, le porteur gagne 25% de puissance.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Crownguard"
     },
     {
       "id": "armure_ronciere",
       "name": "Armure roncière",
-      "components": ["cotte_mailles", "cotte_mailles"],
+      "components": [
+        "cotte_mailles",
+        "cotte_mailles"
+      ],
       "effect": "Le porteur gagne 6% de PV max. Les attaques lui infligent 5% de dégâts en moins. Quand le porteur est touché par une attaque, il inflige 100 pts de dégâts magiques à tous les ennemis adjacents.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Bramble Vest"
     },
     {
       "id": "manteau_nuit",
       "name": "Manteau de la nuit",
-      "components": ["bf_glaive", "cotte_mailles"],
+      "components": [
+        "bf_glaive",
+        "cotte_mailles"
+      ],
       "effect": "Quand le porteur tombe à 60% de ses PV, il devient brièvement impossible à cibler, dissipe les effets négatifs qui l'affectent et récupère 20% de ses PV manquants.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Edge of Night"
     },
     {
       "id": "dent_nashor",
       "name": "Dent de Nashor",
-      "components": ["arc_courbe", "ceinture_geant"],
+      "components": [
+        "arc_courbe",
+        "ceinture_geant"
+      ],
       "effect": "Les attaques du porteur lui octroient 2 de mana bonus, ou 4 de mana bonus en cas de coup critique.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Nashor's Tooth"
     },
     {
       "id": "morellonomicon",
       "name": "Morellonomicon",
-      "components": ["ceinture_geant", "baguette_trop_grosse"],
+      "components": [
+        "ceinture_geant",
+        "baguette_trop_grosse"
+      ],
       "effect": "Les attaques et les compétences du porteur appliquent 1% de brûlure et 33% d'hémorragie sur les ennemis pendant 10 secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Morellonomicon"
     },
     {
       "id": "fureur_kraken",
       "name": "Fureur du kraken",
-      "components": ["arc_courbe", "manteau_negatron"],
+      "components": [
+        "arc_courbe",
+        "manteau_negatron"
+      ],
       "effect": "Les attaques du porteur lui octroient 3.5% de dégâts d'attaque cumulable, jusqu'à 15 attaques. Après 15 attaques, le porteur gagne 15% de vitesse d'attaque.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Kraken's Fury"
     },
     {
       "id": "baton_archange",
       "name": "Bâton de l'archange",
-      "components": ["baguette_trop_grosse", "larme_deesse"],
+      "components": [
+        "baguette_trop_grosse",
+        "larme_deesse"
+      ],
       "effect": "Début du combat : le porteur gagne 20% de puissance toutes les 5 secondes en combat.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Archangel's Staff"
     },
     {
       "id": "etincelle_ionique",
       "name": "Étincelle ionique",
-      "components": ["baguette_trop_grosse", "manteau_negatron"],
+      "components": [
+        "baguette_trop_grosse",
+        "manteau_negatron"
+      ],
       "effect": "Le porteur applique 30% de scission magique sur les ennemis dans un rayon de 2 hexagones. Quand les ennemis lancent une compétence, le porteur leur inflige des dégâts magiques équivalents à 150% du mana dépensé.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Ionic Spark"
     },
     {
       "id": "mercure",
       "name": "Mercure",
-      "components": ["manteau_negatron", "gants_entrainement"],
+      "components": [
+        "manteau_negatron",
+        "gants_entrainement"
+      ],
       "effect": "Début du combat : immunise le porteur contre les contrôles de foule pendant 18 secondes. Le porteur gagne 3% de vitesse d'attaque cumulable toutes les secondes.",
-      "category": "combat"
+      "category": "combat",
+      "nameEn": "Quicksilver"
     },
     {
       "id": "embleme_executeur",
       "name": "Emblème d'Exécuteur",
-      "components": ["poele_a_frire", "gants_entrainement"],
+      "components": [
+        "poele_a_frire",
+        "gants_entrainement"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": "Executioner Emblem"
     },
     {
       "id": "embleme_bagarreur",
       "name": "Emblème de Bagarreur",
-      "components": ["poele_a_frire", "ceinture_geant"],
+      "components": [
+        "poele_a_frire",
+        "ceinture_geant"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": "Brawler Emblem"
     },
     {
       "id": "embleme_fleur_spirituelle",
       "name": "Emblème de Fleur spirituelle",
-      "components": ["spatule", "baguette_trop_grosse"],
+      "components": [
+        "spatule",
+        "baguette_trop_grosse"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_initiateur",
       "name": "Emblème d'Initiateur",
-      "components": ["poele_a_frire", "cotte_mailles"],
+      "components": [
+        "poele_a_frire",
+        "cotte_mailles"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": "Vanguard Emblem"
     },
     {
       "id": "embleme_sylvestre",
       "name": "Emblème de Sylvestre",
-      "components": ["spatule", "cotte_mailles"],
+      "components": [
+        "spatule",
+        "cotte_mailles"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_ultrarapide",
       "name": "Emblème d'Ultrarapide",
-      "components": ["poele_a_frire", "arc_courbe"],
+      "components": [
+        "poele_a_frire",
+        "arc_courbe"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": "Rapidfire Emblem"
     },
     {
       "id": "embleme_lunaire",
       "name": "Emblème de Lunaire",
-      "components": ["spatule", "larme_deesse"],
+      "components": [
+        "spatule",
+        "larme_deesse"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_infernal",
       "name": "Emblème d'Infernal",
-      "components": ["spatule", "arc_courbe"],
+      "components": [
+        "spatule",
+        "arc_courbe"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_tisseur_sorts",
       "name": "Emblème de Tisseur de sorts",
-      "components": ["poele_a_frire", "baguette_trop_grosse"],
+      "components": [
+        "poele_a_frire",
+        "baguette_trop_grosse"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_incantateur",
       "name": "Emblème d'Incantateur",
-      "components": ["poele_a_frire", "larme_deesse"],
+      "components": [
+        "poele_a_frire",
+        "larme_deesse"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": "Invoker Emblem"
     },
     {
       "id": "embleme_ami_foret",
       "name": "Emblème d'Ami de la forêt",
-      "components": ["spatule", "manteau_negatron"],
+      "components": [
+        "spatule",
+        "manteau_negatron"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_fae",
       "name": "Emblème de Fæ",
-      "components": ["spatule", "bf_glaive"],
+      "components": [
+        "spatule",
+        "bf_glaive"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_saccageur",
       "name": "Emblème de Saccageur",
-      "components": ["poele_a_frire", "manteau_negatron"],
+      "components": [
+        "poele_a_frire",
+        "manteau_negatron"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_chasseur",
       "name": "Emblème de Chasseur",
-      "components": ["poele_a_frire", "bf_glaive"],
+      "components": [
+        "poele_a_frire",
+        "bf_glaive"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_ronce_obscure",
       "name": "Emblème de Ronce-obscure",
-      "components": ["spatule", "ceinture_geant"],
+      "components": [
+        "spatule",
+        "ceinture_geant"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "embleme_primitif",
       "name": "Emblème de Primitif",
-      "components": ["spatule", "gants_entrainement"],
+      "components": [
+        "spatule",
+        "gants_entrainement"
+      ],
       "effect": "",
-      "category": "emblem"
+      "category": "emblem",
+      "nameEn": ""
     },
     {
       "id": "bouclier_tacticien",
       "name": "Bouclier du Tacticien",
-      "components": ["poele_a_frire", "poele_a_frire"],
+      "components": [
+        "poele_a_frire",
+        "poele_a_frire"
+      ],
       "effect": "La taille maximale de votre équipe augmente de 1. 10% de chances de générer 1 PO quand le porteur meurt.",
-      "category": "tactician"
+      "category": "tactician",
+      "nameEn": "Tactician's Shield"
     },
     {
       "id": "cape_tacticien",
       "name": "Cape du Tacticien",
-      "components": ["spatule", "poele_a_frire"],
+      "components": [
+        "spatule",
+        "poele_a_frire"
+      ],
       "effect": "La taille maximale de votre équipe augmente de 1. 10% de chances de générer 1 PO après 10 secondes au combat.",
-      "category": "tactician"
+      "category": "tactician",
+      "nameEn": "Tactician's Cape"
     },
     {
       "id": "couronne_tacticien",
       "name": "Couronne du Tacticien",
-      "components": ["spatule", "spatule"],
+      "components": [
+        "spatule",
+        "spatule"
+      ],
       "effect": "La taille maximale de votre équipe augmente de 1. 10% de chances de générer 1 PO quand vous gagnez un combat.",
-      "category": "tactician"
+      "category": "tactician",
+      "nameEn": "Tactician's Crown"
     }
   ]
 }
