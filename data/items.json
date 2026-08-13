@@ -72,7 +72,7 @@
       "id": "gants_voleur",
       "name": "Gants de voleur",
       "components": ["gants_entrainement", "gants_entrainement"],
-      "effect": "A chaque manche, le porteur s'équipe de 2 objets aléatoires.",
+      "effect": "A chaque manche, le porteur s'équipe de 2 objets aléatoires. (Occupe 3 emplacements d'objets.)",
       "category": "combat"
     },
     {
@@ -107,7 +107,7 @@
       "id": "casque_adaptatif",
       "name": "Casque adaptatif",
       "components": ["larme_deesse", "manteau_negatron"],
-      "effect": "Le porteur gagne 15% de mana bonus, toutes sources confondues. Tanks et combattants : +80 d'armure et de résistance magique. Autres rôles : +10% de dégâts d'attaque et de puissance.",
+      "effect": "Le porteur gagne 15% de mana bonus, toutes sources confondues. Tanks et combattants : +30 d'armure et de résistance magique. Autres rôles : +10% de dégâts d'attaque et de puissance.",
       "category": "combat"
     },
     {
@@ -121,14 +121,14 @@
       "id": "lame_funeste",
       "name": "Lame funeste",
       "components": ["bf_glaive", "bf_glaive"],
-      "effect": "",
+      "effect": "Objet purement statistique, sans effet special : +55% de degats d'attaque et +10% d'amplification des degats.",
       "category": "combat"
     },
     {
       "id": "coiffe_rabadon",
       "name": "Coiffe de Rabadon",
       "components": ["baguette_trop_grosse", "baguette_trop_grosse"],
-      "effect": "",
+      "effect": "Objet purement statistique, sans effet special : +55% de puissance et +15% d'amplification des degats.",
       "category": "combat"
     },
     {
@@ -212,7 +212,7 @@
       "id": "armure_ronciere",
       "name": "Armure roncière",
       "components": ["cotte_mailles", "cotte_mailles"],
-      "effect": "Les attaques lui infligent 5% de dégâts en moins. Quand le porteur est touché par une attaque, il inflige 100 pts de dégâts magiques à tous les ennemis adjacents.",
+      "effect": "Le porteur gagne 6% de PV max. Les attaques lui infligent 5% de dégâts en moins. Quand le porteur est touché par une attaque, il inflige 100 pts de dégâts magiques à tous les ennemis adjacents.",
       "category": "combat"
     },
     {
