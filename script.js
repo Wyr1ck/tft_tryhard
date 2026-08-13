@@ -4,6 +4,7 @@ const state = {
   data: null,             // contenu de items.json une fois charge
   champData: null,        // contenu de champions.json une fois charge
   mode: null,              // null = accueil, sinon 'items' ou 'champions'
+  itemsEmblemFilter: 'with', // 'with' ou 'without' : filtre choisi dans le sous-menu "objets"
   itemQuestionType: null,  // 'forward' (composants -> objet) ou 'reverse' (objet -> composants)
   currentQuestion: null,   // question du mode "items" (forward) affichee en ce moment
   currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
@@ -17,6 +18,7 @@ const state = {
 
 // On recupere une bonne fois pour toutes les elements HTML qu'on va manipuler.
 const homeScreen = document.getElementById('home-screen');
+const itemsSubmenuScreen = document.getElementById('items-submenu-screen');
 const quizScreen = document.getElementById('quiz-screen');
 const homeItemsBtn = document.getElementById('home-items');
 const homeChampionsBtn = document.getElementById('home-champions');
@@ -24,6 +26,9 @@ const homeItemsScoreEl = document.getElementById('home-items-score');
 const homeItemsCountEl = document.getElementById('home-items-count');
 const homeChampionsScoreEl = document.getElementById('home-champions-score');
 const homeChampionsCountEl = document.getElementById('home-champions-count');
+const itemsSubmenuBackBtn = document.getElementById('items-submenu-back-btn');
+const itemsWithEmblemsBtn = document.getElementById('items-with-emblems');
+const itemsWithoutEmblemsBtn = document.getElementById('items-without-emblems');
 const backHomeBtn = document.getElementById('back-home-btn');
 const resetBtn = document.getElementById('reset-btn');
 
@@ -99,11 +104,6 @@ function shuffle(array) {
 // Mode "Combos d'objets" (QCM a 4 choix, une seule bonne reponse)
 // ---------------------------------------------------------------------------
 
-function pickRandomItem() {
-  const items = state.data.items;
-  return items[Math.floor(Math.random() * items.length)];
-}
-
 // Un objet fabrique avec Spatule ou Poele a frire est un embleme (ou un objet
 // Tacticien). On s'en sert pour ne jamais melanger ces objets-la avec les
 // objets "normaux" dans les choix de reponse.
@@ -111,6 +111,19 @@ const EMBLEM_COMPONENT_IDS = ['spatule', 'poele_a_frire'];
 
 function isEmblemFamily(item) {
   return item.components.some((id) => EMBLEM_COMPONENT_IDS.includes(id));
+}
+
+// Respecte le choix fait dans le sous-menu "objets" : avec ou sans emblemes.
+function getItemPool() {
+  if (state.itemsEmblemFilter === 'without') {
+    return state.data.items.filter((item) => !isEmblemFamily(item));
+  }
+  return state.data.items;
+}
+
+function pickRandomItem() {
+  const items = getItemPool();
+  return items[Math.floor(Math.random() * items.length)];
 }
 
 // Construit les 4 choix affiches : le bon objet + 3 "distracteurs" pris au hasard,
@@ -493,12 +506,30 @@ function showHome() {
   state.mode = null;
   updateHomeCards();
   homeScreen.classList.remove('hidden');
+  itemsSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
+}
+
+// Sous-menu du quiz "objets" : demande d'abord avec ou sans emblemes.
+function showItemsSubmenu() {
+  state.mode = null;
+  homeScreen.classList.add('hidden');
+  itemsSubmenuScreen.classList.remove('hidden');
+  quizScreen.classList.add('hidden');
+}
+
+function enterItemsQuiz(emblemFilter) {
+  state.mode = 'items';
+  state.itemsEmblemFilter = emblemFilter;
+  itemsSubmenuScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  renderQuestion();
 }
 
 function enterQuiz(mode) {
   state.mode = mode;
   homeScreen.classList.add('hidden');
+  itemsSubmenuScreen.classList.add('hidden');
   quizScreen.classList.remove('hidden');
   renderQuestion();
 }
@@ -546,9 +577,18 @@ function loadProgress() {
   if (savedChampCount !== null) state.scores.champions.questionCount = parseInt(savedChampCount, 10);
 }
 
-homeItemsBtn.addEventListener('click', () => enterQuiz('items'));
+homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', () => enterQuiz('champions'));
-backHomeBtn.addEventListener('click', showHome);
+itemsSubmenuBackBtn.addEventListener('click', showHome);
+itemsWithEmblemsBtn.addEventListener('click', () => enterItemsQuiz('with'));
+itemsWithoutEmblemsBtn.addEventListener('click', () => enterItemsQuiz('without'));
+backHomeBtn.addEventListener('click', () => {
+  if (state.mode === 'items') {
+    showItemsSubmenu();
+  } else {
+    showHome();
+  }
+});
 resetBtn.addEventListener('click', resetCurrentQuiz);
 nextBtn.addEventListener('click', renderQuestion);
 submitBtn.addEventListener('click', () => {

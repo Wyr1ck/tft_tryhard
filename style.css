@@ -31,7 +31,8 @@ header h1 {
   margin-top: 0.25rem;
 }
 
-#home-screen {
+#home-screen,
+#items-submenu-screen {
   width: 100%;
   max-width: 480px;
   text-align: center;
