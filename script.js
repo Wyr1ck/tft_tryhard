@@ -216,20 +216,32 @@ const ITEM_REVERSE_OPTIONS_COUNT = 4;
 
 // Construit la liste de composants proposee comme cases a cocher : les vrais
 // composants de l'objet + juste assez de composants au hasard pour arriver a 4.
+// Si un objet se fabrique avec 2 fois le meme composant (ex: Armure de Warmog),
+// ce composant apparait deux fois dans la liste : il faut cocher les 2 cases
+// pour valider, sinon on ne saurait jamais qu'il en faut 2.
 // Si l'objet n'est pas un embleme/Tacticien, on ne propose jamais Spatule ou
 // Poele a frire comme "faux" composant : ils ne servent jamais a fabriquer
 // un objet normal, ce serait un choix absurde.
 function buildComponentOptions(item) {
-  const correctIds = new Set(item.components);
-  const correctComponents = state.data.components.filter((c) => correctIds.has(c.id));
-  let wrongPool = state.data.components.filter((c) => !correctIds.has(c.id));
+  const correctEntries = item.components.map((id) => ({
+    ...state.data.components.find((c) => c.id === id),
+    isCorrect: true,
+  }));
+
+  let wrongPool = state.data.components.filter((c) => !item.components.includes(c.id));
   if (!isEmblemFamily(item)) {
     wrongPool = wrongPool.filter((c) => !EMBLEM_COMPONENT_IDS.includes(c.id));
   }
   shuffle(wrongPool);
-  const neededWrong = Math.max(0, ITEM_REVERSE_OPTIONS_COUNT - correctComponents.length);
-  const wrongComponents = wrongPool.slice(0, neededWrong);
-  return shuffle([...correctComponents, ...wrongComponents]);
+  const neededWrong = Math.max(0, ITEM_REVERSE_OPTIONS_COUNT - correctEntries.length);
+  const wrongEntries = wrongPool.slice(0, neededWrong).map((c) => ({ ...c, isCorrect: false }));
+
+  // On donne une cle unique a chaque case (slotKey) : deux cases peuvent
+  // representer le meme composant (id) mais restent 2 elements distincts.
+  return shuffle([...correctEntries, ...wrongEntries]).map((entry, index) => ({
+    ...entry,
+    slotKey: `${entry.id}__${index}`,
+  }));
 }
 
 // Affiche la question "objets" dans le sens inverse : objet -> composants,
@@ -249,9 +261,10 @@ function renderItemReverseQuestion() {
   buildComponentOptions(item).forEach((comp) => {
     const option = document.createElement('label');
     option.className = 'trait-option';
-    option.dataset.componentId = comp.id;
+    option.dataset.slotKey = comp.slotKey;
+    option.dataset.isCorrect = comp.isCorrect ? '1' : '0';
     option.innerHTML = `
-      <input type="checkbox" value="${comp.id}">
+      <input type="checkbox" value="${comp.slotKey}">
       <img class="answer-icon" src="${getComponentImagePath(comp.id)}" alt="">
       <span class="trait-option-text">
         <span class="trait-name">${formatNameWithEn(comp.name, comp.nameEn)}</span>
@@ -265,8 +278,8 @@ function renderItemReverseQuestion() {
 }
 
 // Appele quand le joueur clique sur "Valider" en mode "objets" (sens inverse).
-// Un objet fait de 2 fois le meme composant (ex: Armure de Warmog) n'a qu'un
-// seul composant "distinct" a retrouver : on compare des ensembles, pas des listes.
+// Chaque case est independante (voir buildComponentOptions) : une reponse est
+// bonne seulement si toutes les cases "correctes" sont cochees et aucune "fausse".
 function handleItemReverseSubmit() {
   if (state.answered) return;
   state.answered = true;
@@ -274,20 +287,22 @@ function handleItemReverseSubmit() {
   progress.questionCount++;
 
   const item = state.currentReverseItem;
-  const correctIds = new Set(item.components);
-  const checkedIds = new Set(
+  const options = [...answersEl.children];
+  const checkedSlotKeys = new Set(
     [...answersEl.querySelectorAll('input[type="checkbox"]:checked')].map((cb) => cb.value)
   );
 
-  const isCorrect =
-    checkedIds.size === correctIds.size && [...checkedIds].every((id) => correctIds.has(id));
+  const isCorrect = options.every((option) => {
+    const wasChecked = checkedSlotKeys.has(option.dataset.slotKey);
+    const isRightComponent = option.dataset.isCorrect === '1';
+    return wasChecked === isRightComponent;
+  });
 
-  [...answersEl.children].forEach((option) => {
-    const compId = option.dataset.componentId;
+  options.forEach((option) => {
     const checkbox = option.querySelector('input[type="checkbox"]');
     checkbox.disabled = true;
-    const wasChecked = checkedIds.has(compId);
-    const isRightComponent = correctIds.has(compId);
+    const wasChecked = checkedSlotKeys.has(option.dataset.slotKey);
+    const isRightComponent = option.dataset.isCorrect === '1';
 
     if (isRightComponent) {
       option.classList.add(wasChecked ? 'correct' : 'missed');
