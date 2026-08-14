@@ -3,7 +3,8 @@
 const state = {
   data: null,              // contenu de items.json une fois charge
   champData: null,         // contenu de champions.json une fois charge
-  mode: null,               // null = pas encore dans un quiz, sinon 'items' ou 'champions'
+  lexiqueData: null,       // contenu de lexique.json une fois charge
+  mode: null,               // null = pas encore dans un quiz, sinon 'items', 'champions' ou 'lexique'
   pendingMode: null,        // mode en cours de choix, avant d'avoir choisi entrainement/competitif
   gameMode: 'training',     // 'training' ou 'competitive'
   itemsEmblemFilter: 'with', // 'with' ou 'without' : filtre choisi dans le sous-menu "objets"
@@ -11,13 +12,16 @@ const state = {
   currentQuestion: null,    // question du mode "items" (forward) affichee en ce moment
   currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
   currentChampion: null,    // personnage du mode "champions" affiche en ce moment
+  currentLexiqueTerm: null, // terme du mode "lexique" affiche en ce moment
   lastItemId: null,         // id du dernier objet pose en question (mode "objets"), pour ne pas le repeter
   lastChampionId: null,     // id du dernier personnage pose en question, pour ne pas le repeter
+  lastLexiqueId: null,      // id du dernier terme pose en question (mode "lexique"), pour ne pas le repeter
   answered: false,         // empeche de valider 2 fois la meme question
   scores: {
     // Score du mode entrainement : reinitialise a chaque lancement de partie.
     items: { score: 0, questionCount: 0 },
     champions: { score: 0, questionCount: 0 },
+    lexique: { score: 0, questionCount: 0 },
   },
   competitive: {
     streak: 0,
@@ -34,8 +38,10 @@ const quizScreen = document.getElementById('quiz-screen');
 
 const homeItemsBtn = document.getElementById('home-items');
 const homeChampionsBtn = document.getElementById('home-champions');
+const homeLexiqueBtn = document.getElementById('home-lexique');
 const homeItemsHighscoreEl = document.getElementById('home-items-highscore');
 const homeChampionsHighscoreEl = document.getElementById('home-champions-highscore');
+const homeLexiqueHighscoreEl = document.getElementById('home-lexique-highscore');
 
 const itemsSubmenuBackBtn = document.getElementById('items-submenu-back-btn');
 const itemsWithEmblemsBtn = document.getElementById('items-with-emblems');
@@ -55,10 +61,12 @@ const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
 const leaderboardItemsWithEl = document.getElementById('leaderboard-items-with');
 const leaderboardItemsWithoutEl = document.getElementById('leaderboard-items-without');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
+const leaderboardLexiqueEl = document.getElementById('leaderboard-lexique');
 
 const podiumItemsWithEl = document.getElementById('podium-items-with');
 const podiumItemsWithoutEl = document.getElementById('podium-items-without');
 const podiumChampionsEl = document.getElementById('podium-champions');
+const podiumLexiqueEl = document.getElementById('podium-lexique');
 
 const homeItemsImgEl = document.getElementById('home-items-img');
 const homeChampionsImgEl = document.getElementById('home-champions-img');
@@ -142,12 +150,14 @@ function escapeHtml(text) {
 // Charge les fichiers JSON avec fetch (comme un "GET http" fait par le navigateur).
 // fetch() est asynchrone : il renvoie une Promise, d'ou le "await".
 async function loadData() {
-  const [itemsResponse, champResponse] = await Promise.all([
+  const [itemsResponse, champResponse, lexiqueResponse] = await Promise.all([
     fetch('data/items.json'),
     fetch('data/champions.json'),
+    fetch('data/lexique.json'),
   ]);
   state.data = await itemsResponse.json();
   state.champData = await champResponse.json();
+  state.lexiqueData = await lexiqueResponse.json();
 }
 
 // Retrouve le nom lisible d'un composant a partir de son id (ex: "bf_sword" -> "B.F. Sword").
@@ -624,6 +634,127 @@ function handleChampionSubmit() {
 }
 
 // ---------------------------------------------------------------------------
+// Mode "Lexique TFT" (reponse tapee au clavier, tolerante aux fautes de
+// frappe, a l'ordre des mots et au choix francais/anglais)
+// ---------------------------------------------------------------------------
+
+// Quelques mots vides francais a ignorer pour comparer le sens plutot que la
+// formulation exacte (utile pour "les degats d'attaque" vs "degats attaque").
+const FRENCH_STOPWORDS = new Set([
+  'le', 'la', 'les', 'de', 'des', 'du', 'un', 'une', 'et', 'ou', 'a', 'au', 'aux',
+  'd', 'l', 'en', 'ce', 'ces', 'son', 'sa', 'ses', 'est', 'sont', 'que', 'qui',
+]);
+
+// Enleve les accents, la ponctuation, met en minuscules et normalise les espaces.
+function normalizeAnswerText(text) {
+  return text
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Transforme un texte en "sac de mots" tries (mots vides francais retires) :
+// ca rend la comparaison insensible a l'ordre des mots.
+function toWordBag(text) {
+  return normalizeAnswerText(text)
+    .split(' ')
+    .filter((word) => word && !FRENCH_STOPWORDS.has(word))
+    .sort()
+    .join(' ');
+}
+
+// Distance de Levenshtein : nombre minimal de lettres a ajouter/retirer/
+// remplacer pour passer d'une chaine a l'autre. Sert a tolerer les fautes
+// de frappe sans accepter n'importe quelle reponse.
+function levenshteinDistance(a, b) {
+  const rows = a.length + 1;
+  const cols = b.length + 1;
+  const matrix = Array.from({ length: rows }, () => new Array(cols).fill(0));
+  for (let i = 0; i < rows; i++) matrix[i][0] = i;
+  for (let j = 0; j < cols; j++) matrix[0][j] = j;
+  for (let i = 1; i < rows; i++) {
+    for (let j = 1; j < cols; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1,
+        matrix[i][j - 1] + 1,
+        matrix[i - 1][j - 1] + cost
+      );
+    }
+  }
+  return matrix[rows - 1][cols - 1];
+}
+
+// Une reponse tapee est correcte si son "sac de mots" est proche (quelques
+// fautes de frappe pres) de l'une des formulations acceptees pour ce terme
+// (chaque terme a ses formulations en francais ET en anglais).
+function isLexiqueAnswerCorrect(userAnswer, acceptedAnswers) {
+  const userBag = toWordBag(userAnswer);
+  if (!userBag) return false;
+  return acceptedAnswers.some((accepted) => {
+    const acceptedBag = toWordBag(accepted);
+    const tolerance = Math.max(1, Math.round(Math.max(userBag.length, acceptedBag.length) * 0.15));
+    return levenshteinDistance(userBag, acceptedBag) <= tolerance;
+  });
+}
+
+// Tire un terme au hasard, en evitant de reposer le meme qu'a la question precedente.
+function pickRandomLexiqueTerm() {
+  const terms = state.lexiqueData;
+  const candidates = terms.length > 1 ? terms.filter((t) => t.id !== state.lastLexiqueId) : terms;
+  const picked = candidates[Math.floor(Math.random() * candidates.length)];
+  state.lastLexiqueId = picked.id;
+  return picked;
+}
+
+// Affiche la question "lexique" : le terme + un champ de saisie libre.
+function renderLexiqueQuestion() {
+  const term = pickRandomLexiqueTerm();
+  state.currentLexiqueTerm = term;
+
+  promptEl.textContent = 'Que signifie ce terme :';
+  componentsEl.innerHTML = `<span class="lexique-term">${escapeHtml(term.term)}</span>`;
+
+  answersEl.className = 'answers lexique-answer';
+  answersEl.innerHTML = `
+    <input type="text" id="lexique-input" class="lexique-input" placeholder="Ta reponse (francais ou anglais)" autocomplete="off">
+  `;
+  const inputEl = document.getElementById('lexique-input');
+  inputEl.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleLexiqueSubmit();
+    }
+  });
+  inputEl.focus();
+
+  submitBtn.classList.remove('hidden');
+}
+
+// Appele quand le joueur clique sur "Valider" (ou appuie sur Entree) en mode "lexique".
+function handleLexiqueSubmit() {
+  if (state.answered) return;
+  state.answered = true;
+
+  const term = state.currentLexiqueTerm;
+  const inputEl = document.getElementById('lexique-input');
+  const isCorrect = isLexiqueAnswerCorrect(inputEl.value, term.acceptedAnswers);
+  inputEl.disabled = true;
+
+  const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
+  feedbackEl.innerHTML = `
+    <div class="feedback-title">${titleText}</div>
+    <div class="feedback-effect">${escapeHtml(term.definition)}</div>
+  `;
+  feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+
+  finishQuestion(isCorrect);
+}
+
+// ---------------------------------------------------------------------------
 // Mode de jeu : entrainement (score classique) ou competitif (serie + chrono)
 // ---------------------------------------------------------------------------
 
@@ -690,8 +821,10 @@ function updateHomeHighscores() {
     .filter((ms) => ms !== null)
     .sort((a, b) => a - b)[0];
   const champMs = getHighscoreMs('champions');
+  const lexiqueMs = getHighscoreMs('lexique');
   homeItemsHighscoreEl.textContent = itemsMs !== undefined ? formatTime(itemsMs) : '--';
   homeChampionsHighscoreEl.textContent = champMs !== null ? formatTime(champMs) : '--';
+  homeLexiqueHighscoreEl.textContent = lexiqueMs !== null ? formatTime(lexiqueMs) : '--';
 }
 
 // Appelee a chaque reponse en mode competitif : fait avancer la serie, ou
@@ -823,27 +956,31 @@ function renderPodium(containerEl, scores) {
     .join('');
 }
 
+// Charge et affiche une categorie de score independamment des autres : si une
+// categorie echoue (ex: regles Firestore pas encore a jour pour une toute
+// nouvelle collection), les autres s'affichent quand meme normalement.
+async function loadScoreCategory(containerEl, category, limitCount, renderFn) {
+  try {
+    const scores = await fetchTopScores(category, limitCount);
+    renderFn(containerEl, scores);
+  } catch (err) {
+    containerEl.innerHTML = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
+  }
+}
+
 async function updateHomePodiums() {
   const loadingHtml = '<p class="leaderboard-empty">Chargement...</p>';
   podiumItemsWithEl.innerHTML = loadingHtml;
   podiumItemsWithoutEl.innerHTML = loadingHtml;
   podiumChampionsEl.innerHTML = loadingHtml;
+  podiumLexiqueEl.innerHTML = loadingHtml;
 
-  try {
-    const [withScores, withoutScores, championsScores] = await Promise.all([
-      fetchTopScores('items_with', 3),
-      fetchTopScores('items_without', 3),
-      fetchTopScores('champions', 3),
-    ]);
-    renderPodium(podiumItemsWithEl, withScores);
-    renderPodium(podiumItemsWithoutEl, withoutScores);
-    renderPodium(podiumChampionsEl, championsScores);
-  } catch (err) {
-    const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
-    podiumItemsWithEl.innerHTML = errorHtml;
-    podiumItemsWithoutEl.innerHTML = errorHtml;
-    podiumChampionsEl.innerHTML = errorHtml;
-  }
+  await Promise.all([
+    loadScoreCategory(podiumItemsWithEl, 'items_with', 3, renderPodium),
+    loadScoreCategory(podiumItemsWithoutEl, 'items_without', 3, renderPodium),
+    loadScoreCategory(podiumChampionsEl, 'champions', 3, renderPodium),
+    loadScoreCategory(podiumLexiqueEl, 'lexique', 3, renderPodium),
+  ]);
 }
 
 async function showLeaderboard() {
@@ -857,22 +994,14 @@ async function showLeaderboard() {
   leaderboardItemsWithEl.innerHTML = loadingHtml;
   leaderboardItemsWithoutEl.innerHTML = loadingHtml;
   leaderboardChampionsEl.innerHTML = loadingHtml;
+  leaderboardLexiqueEl.innerHTML = loadingHtml;
 
-  try {
-    const [withScores, withoutScores, championsScores] = await Promise.all([
-      fetchTopScores('items_with'),
-      fetchTopScores('items_without'),
-      fetchTopScores('champions'),
-    ]);
-    renderLeaderboardList(leaderboardItemsWithEl, withScores);
-    renderLeaderboardList(leaderboardItemsWithoutEl, withoutScores);
-    renderLeaderboardList(leaderboardChampionsEl, championsScores);
-  } catch (err) {
-    const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
-    leaderboardItemsWithEl.innerHTML = errorHtml;
-    leaderboardItemsWithoutEl.innerHTML = errorHtml;
-    leaderboardChampionsEl.innerHTML = errorHtml;
-  }
+  await Promise.all([
+    loadScoreCategory(leaderboardItemsWithEl, 'items_with', 10, renderLeaderboardList),
+    loadScoreCategory(leaderboardItemsWithoutEl, 'items_without', 10, renderLeaderboardList),
+    loadScoreCategory(leaderboardChampionsEl, 'champions', 10, renderLeaderboardList),
+    loadScoreCategory(leaderboardLexiqueEl, 'lexique', 10, renderLeaderboardList),
+  ]);
 }
 
 // ---------------------------------------------------------------------------
@@ -927,6 +1056,11 @@ function chooseChampionsMode() {
   showModeSubmenu();
 }
 
+function chooseLexiqueMode() {
+  state.pendingMode = 'lexique';
+  showModeSubmenu();
+}
+
 // Lance vraiment le quiz une fois le mode de jeu choisi.
 function startQuiz(gameMode) {
   state.mode = state.pendingMode;
@@ -961,8 +1095,10 @@ function renderQuestion() {
 
   if (state.mode === 'items') {
     renderItemQuestion();
-  } else {
+  } else if (state.mode === 'champions') {
     renderChampionQuestion();
+  } else {
+    renderLexiqueQuestion();
   }
 }
 
@@ -973,6 +1109,7 @@ siteTitleEl.addEventListener('click', () => {
 
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
+homeLexiqueBtn.addEventListener('click', chooseLexiqueMode);
 showLeaderboardBtn.addEventListener('click', showLeaderboard);
 leaderboardBackBtn.addEventListener('click', showHome);
 
@@ -1004,8 +1141,10 @@ retryBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', () => {
   if (state.mode === 'items') {
     handleItemReverseSubmit();
-  } else {
+  } else if (state.mode === 'champions') {
     handleChampionSubmit();
+  } else {
+    handleLexiqueSubmit();
   }
 });
 
