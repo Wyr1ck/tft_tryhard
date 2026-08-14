@@ -52,10 +52,12 @@ const siteTitleEl = document.getElementById('site-title');
 const showLeaderboardBtn = document.getElementById('show-leaderboard-btn');
 const leaderboardScreen = document.getElementById('leaderboard-screen');
 const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
-const leaderboardItemsEl = document.getElementById('leaderboard-items');
+const leaderboardItemsWithEl = document.getElementById('leaderboard-items-with');
+const leaderboardItemsWithoutEl = document.getElementById('leaderboard-items-without');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
 
-const podiumItemsEl = document.getElementById('podium-items');
+const podiumItemsWithEl = document.getElementById('podium-items-with');
+const podiumItemsWithoutEl = document.getElementById('podium-items-without');
 const podiumChampionsEl = document.getElementById('podium-champions');
 
 const homeItemsImgEl = document.getElementById('home-items-img');
@@ -97,23 +99,32 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Chaque mode a sa propre collection ("tiroir") plutot qu'une seule collection
-// filtree par mode : ca evite d'avoir a creer un index compose dans Firestore.
-function getScoresCollectionName(mode) {
-  return mode === 'items' ? 'scores_items' : 'scores_champions';
+// Chaque categorie a sa propre collection ("tiroir") plutot qu'une seule
+// collection filtree : ca evite d'avoir a creer un index compose dans
+// Firestore. Categorie = 'items_with', 'items_without' ou 'champions' (les
+// objets "avec" et "sans" emblemes sont 2 pools de questions differents, donc
+// 2 classements distincts).
+function getScoresCollectionName(category) {
+  return `scores_${category}`;
 }
 
-async function submitScoreToLeaderboard(mode, pseudo, timeMs) {
-  await db.collection(getScoresCollectionName(mode)).add({
+// Deduit la categorie de score actuelle a partir de l'etat en cours.
+function getScoreCategory() {
+  if (state.mode !== 'items') return state.mode;
+  return state.itemsEmblemFilter === 'without' ? 'items_without' : 'items_with';
+}
+
+async function submitScoreToLeaderboard(category, pseudo, timeMs) {
+  await db.collection(getScoresCollectionName(category)).add({
     pseudo: pseudo.trim().slice(0, 20),
     timeMs,
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
   });
 }
 
-async function fetchTopScores(mode, limitCount = 10) {
+async function fetchTopScores(category, limitCount = 10) {
   const snapshot = await db
-    .collection(getScoresCollectionName(mode))
+    .collection(getScoresCollectionName(category))
     .orderBy('timeMs', 'asc')
     .limit(limitCount)
     .get();
@@ -662,20 +673,24 @@ function stopCompetitiveTimer() {
   }
 }
 
-function getHighscoreMs(mode) {
-  const raw = localStorage.getItem(`tft_${mode}_highscore_ms`);
+function getHighscoreMs(category) {
+  const raw = localStorage.getItem(`tft_${category}_highscore_ms`);
   return raw !== null ? parseInt(raw, 10) : null;
 }
 
 function updateHighscoreDisplay() {
-  const ms = getHighscoreMs(state.mode);
+  const ms = getHighscoreMs(getScoreCategory());
   highscoreEl.textContent = ms !== null ? formatTime(ms) : '--';
 }
 
+// La carte d'accueil "Combos d'objets" precede le choix avec/sans emblemes :
+// on y affiche le meilleur des 2 records, faute de savoir lequel afficher.
 function updateHomeHighscores() {
-  const itemsMs = getHighscoreMs('items');
+  const itemsMs = [getHighscoreMs('items_with'), getHighscoreMs('items_without')]
+    .filter((ms) => ms !== null)
+    .sort((a, b) => a - b)[0];
   const champMs = getHighscoreMs('champions');
-  homeItemsHighscoreEl.textContent = itemsMs !== null ? formatTime(itemsMs) : '--';
+  homeItemsHighscoreEl.textContent = itemsMs !== undefined ? formatTime(itemsMs) : '--';
   homeChampionsHighscoreEl.textContent = champMs !== null ? formatTime(champMs) : '--';
 }
 
@@ -702,10 +717,11 @@ function handleCompetitiveResult(isCorrect) {
 function finishCompetitiveRun(won) {
   stopCompetitiveTimer();
   const elapsedMs = Date.now() - state.competitive.startTime;
+  const category = getScoreCategory();
 
   if (won) {
-    const key = `tft_${state.mode}_highscore_ms`;
-    const currentBest = getHighscoreMs(state.mode);
+    const key = `tft_${category}_highscore_ms`;
+    const currentBest = getHighscoreMs(category);
     const isNewRecord = currentBest === null || elapsedMs < currentBest;
     if (isNewRecord) localStorage.setItem(key, String(elapsedMs));
 
@@ -721,7 +737,7 @@ function finishCompetitiveRun(won) {
       </div>
     `;
     feedbackEl.appendChild(banner);
-    wireScoreSubmitForm(banner, state.mode, elapsedMs);
+    wireScoreSubmitForm(banner, category, elapsedMs);
   } else {
     const noteEl = document.createElement('div');
     noteEl.className = 'feedback-effect';
@@ -735,7 +751,7 @@ function finishCompetitiveRun(won) {
 
 // Branche le formulaire "pseudo + bouton" affiche dans la banniere de victoire
 // pour envoyer le score au tableau partage.
-function wireScoreSubmitForm(banner, mode, timeMs) {
+function wireScoreSubmitForm(banner, category, timeMs) {
   const pseudoInput = banner.querySelector('#pseudo-input');
   const submitScoreBtn = banner.querySelector('#submit-score-btn');
   const submitContainer = banner.querySelector('.leaderboard-submit');
@@ -749,7 +765,7 @@ function wireScoreSubmitForm(banner, mode, timeMs) {
     submitScoreBtn.disabled = true;
     submitScoreBtn.textContent = 'Enregistrement...';
     try {
-      await submitScoreToLeaderboard(mode, pseudo, timeMs);
+      await submitScoreToLeaderboard(category, pseudo, timeMs);
       submitContainer.innerHTML = '<p class="leaderboard-submitted">Score enregistre !</p>';
     } catch (err) {
       submitScoreBtn.disabled = false;
@@ -808,19 +824,24 @@ function renderPodium(containerEl, scores) {
 }
 
 async function updateHomePodiums() {
-  podiumItemsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
-  podiumChampionsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+  const loadingHtml = '<p class="leaderboard-empty">Chargement...</p>';
+  podiumItemsWithEl.innerHTML = loadingHtml;
+  podiumItemsWithoutEl.innerHTML = loadingHtml;
+  podiumChampionsEl.innerHTML = loadingHtml;
 
   try {
-    const [itemsScores, championsScores] = await Promise.all([
-      fetchTopScores('items', 3),
+    const [withScores, withoutScores, championsScores] = await Promise.all([
+      fetchTopScores('items_with', 3),
+      fetchTopScores('items_without', 3),
       fetchTopScores('champions', 3),
     ]);
-    renderPodium(podiumItemsEl, itemsScores);
+    renderPodium(podiumItemsWithEl, withScores);
+    renderPodium(podiumItemsWithoutEl, withoutScores);
     renderPodium(podiumChampionsEl, championsScores);
   } catch (err) {
     const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
-    podiumItemsEl.innerHTML = errorHtml;
+    podiumItemsWithEl.innerHTML = errorHtml;
+    podiumItemsWithoutEl.innerHTML = errorHtml;
     podiumChampionsEl.innerHTML = errorHtml;
   }
 }
@@ -832,19 +853,24 @@ async function showLeaderboard() {
   quizScreen.classList.add('hidden');
   leaderboardScreen.classList.remove('hidden');
 
-  leaderboardItemsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
-  leaderboardChampionsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+  const loadingHtml = '<p class="leaderboard-empty">Chargement...</p>';
+  leaderboardItemsWithEl.innerHTML = loadingHtml;
+  leaderboardItemsWithoutEl.innerHTML = loadingHtml;
+  leaderboardChampionsEl.innerHTML = loadingHtml;
 
   try {
-    const [itemsScores, championsScores] = await Promise.all([
-      fetchTopScores('items'),
+    const [withScores, withoutScores, championsScores] = await Promise.all([
+      fetchTopScores('items_with'),
+      fetchTopScores('items_without'),
       fetchTopScores('champions'),
     ]);
-    renderLeaderboardList(leaderboardItemsEl, itemsScores);
+    renderLeaderboardList(leaderboardItemsWithEl, withScores);
+    renderLeaderboardList(leaderboardItemsWithoutEl, withoutScores);
     renderLeaderboardList(leaderboardChampionsEl, championsScores);
   } catch (err) {
     const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
-    leaderboardItemsEl.innerHTML = errorHtml;
+    leaderboardItemsWithEl.innerHTML = errorHtml;
+    leaderboardItemsWithoutEl.innerHTML = errorHtml;
     leaderboardChampionsEl.innerHTML = errorHtml;
   }
 }
