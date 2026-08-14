@@ -376,7 +376,17 @@ function buildComponentOptions(item) {
   }
   shuffle(wrongPool);
   const neededWrong = Math.max(0, ITEM_REVERSE_OPTIONS_COUNT - correctEntries.length);
-  const wrongEntries = wrongPool.slice(0, neededWrong).map((c) => ({ ...c, isCorrect: false }));
+
+  // Si l'objet se fabrique avec 2 fois le meme composant, la bonne reponse
+  // serait la seule paire de cases identiques parmi les 4 : trop facile a
+  // reperer sans meme connaitre la recette. On duplique donc aussi un
+  // composant au hasard parmi les fausses reponses.
+  const isDuplicateRecipe = correctEntries.length === 2 && correctEntries[0].id === correctEntries[1].id;
+
+  const wrongEntries =
+    isDuplicateRecipe && neededWrong >= 2
+      ? Array.from({ length: neededWrong }, () => ({ ...wrongPool[0], isCorrect: false }))
+      : wrongPool.slice(0, neededWrong).map((c) => ({ ...c, isCorrect: false }));
 
   // On donne une cle unique a chaque case (slotKey) : deux cases peuvent
   // representer le meme composant (id) mais restent 2 elements distincts.
