@@ -572,19 +572,26 @@ function finishCompetitiveRun(won) {
   stopCompetitiveTimer();
   const elapsedMs = Date.now() - state.competitive.startTime;
 
-  const noteEl = document.createElement('div');
-  noteEl.className = 'feedback-effect';
-
   if (won) {
     const key = `tft_${state.mode}_highscore_ms`;
     const currentBest = getHighscoreMs(state.mode);
     const isNewRecord = currentBest === null || elapsedMs < currentBest;
     if (isNewRecord) localStorage.setItem(key, String(elapsedMs));
-    noteEl.textContent = `Bravo ! 30 bonnes reponses d'affilee en ${formatTime(elapsedMs)}.${isNewRecord ? ' Nouveau record !' : ''}`;
+
+    const banner = document.createElement('div');
+    banner.className = 'victory-banner';
+    banner.innerHTML = `
+      <div class="victory-title">Bravo !</div>
+      <div class="victory-time">${formatTime(elapsedMs)}</div>
+      ${isNewRecord ? '<div class="victory-note">Nouveau record !</div>' : ''}
+    `;
+    feedbackEl.appendChild(banner);
   } else {
+    const noteEl = document.createElement('div');
+    noteEl.className = 'feedback-effect';
     noteEl.textContent = `Partie terminee : ${state.competitive.streak} bonne(s) reponse(s) d'affilee avant l'erreur.`;
+    feedbackEl.appendChild(noteEl);
   }
-  feedbackEl.appendChild(noteEl);
 
   updateHighscoreDisplay();
   retryBtn.classList.remove('hidden');

@@ -324,6 +324,34 @@ header h1 {
   font-size: 0.95rem;
 }
 
+.victory-banner {
+  margin-top: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1f6f43, #17542f);
+  border: 1px solid #2c9c5e;
+}
+
+.victory-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.victory-time {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #f0b132;
+  line-height: 1.2;
+}
+
+.victory-note {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.25rem;
+}
+
 .feedback.correct .feedback-title {
   color: #4fd88a;
 }
