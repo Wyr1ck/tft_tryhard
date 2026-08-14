@@ -13,6 +13,11 @@ const state = {
   currentChampion: null,    // personnage du mode "champions" affiche en ce moment
   lastItemId: null,         // id du dernier objet pose en question (mode "objets"), pour ne pas le repeter
   lastChampionId: null,     // id du dernier personnage pose en question, pour ne pas le repeter
+  // "Sac a pioche" : on tire dans une liste melangee sans remise, on ne remelange
+  // un nouveau sac que quand il est vide. Ca garantit qu'on ne retombe jamais sur
+  // le meme objet/personnage tant que tous les autres ne sont pas deja passes.
+  itemBag: { key: null, queue: [] }, // key = filtre emblemes pour lequel le sac a ete prepare
+  championBag: [],
   answered: false,         // empeche de valider 2 fois la meme question
   scores: {
     // Score du mode entrainement : reinitialise a chaque lancement de partie.
@@ -262,15 +267,31 @@ function getItemPool() {
   return state.data.items;
 }
 
-// Tire un objet au hasard, en evitant de reposer le meme qu'a la question
-// precedente (sauf si le pool ne contient qu'un seul objet).
+// Tire un objet au hasard via un "sac a pioche" : on melange tout le pool une
+// fois, on pioche dedans sans remise, et on ne remelange un nouveau sac que
+// quand il est vide. Garantit qu'on ne retombe pas sur le meme objet tant que
+// tous les autres n'y sont pas deja passes (contrairement a un tirage 100%
+// aleatoire, qui peut statistiquement retomber plusieurs fois sur le meme).
 function pickRandomItem() {
   const items = getItemPool();
-  const candidates =
-    items.length > 1 ? items.filter((item) => item.id !== state.lastItemId) : items;
-  const picked = candidates[Math.floor(Math.random() * candidates.length)];
-  state.lastItemId = picked.id;
-  return picked;
+  const poolKey = state.itemsEmblemFilter;
+
+  if (state.itemBag.key !== poolKey || state.itemBag.queue.length === 0) {
+    state.itemBag.key = poolKey;
+    state.itemBag.queue = shuffle(items.map((item) => item.id));
+    // Evite qu'un nouveau sac commence par le meme objet que la fin du precedent.
+    if (state.itemBag.queue.length > 1 && state.itemBag.queue[0] === state.lastItemId) {
+      const swapIndex = 1 + Math.floor(Math.random() * (state.itemBag.queue.length - 1));
+      [state.itemBag.queue[0], state.itemBag.queue[swapIndex]] = [
+        state.itemBag.queue[swapIndex],
+        state.itemBag.queue[0],
+      ];
+    }
+  }
+
+  const nextId = state.itemBag.queue.shift();
+  state.lastItemId = nextId;
+  return items.find((item) => item.id === nextId);
 }
 
 // Construit les 4 choix affiches : le bon objet + 3 "distracteurs" pris au hasard,
@@ -508,15 +529,25 @@ function renderItemQuestion() {
 
 const TRAIT_OPTIONS_COUNT = 6;
 
-// Tire un personnage au hasard, en evitant de reposer le meme qu'a la
-// question precedente.
+// Tire un personnage au hasard via le meme principe de "sac a pioche" que
+// pickRandomItem() (voir son commentaire pour le detail).
 function pickRandomChampion() {
   const champions = state.champData.champions;
-  const candidates =
-    champions.length > 1 ? champions.filter((c) => c.id !== state.lastChampionId) : champions;
-  const picked = candidates[Math.floor(Math.random() * candidates.length)];
-  state.lastChampionId = picked.id;
-  return picked;
+
+  if (state.championBag.length === 0) {
+    state.championBag = shuffle(champions.map((c) => c.id));
+    if (state.championBag.length > 1 && state.championBag[0] === state.lastChampionId) {
+      const swapIndex = 1 + Math.floor(Math.random() * (state.championBag.length - 1));
+      [state.championBag[0], state.championBag[swapIndex]] = [
+        state.championBag[swapIndex],
+        state.championBag[0],
+      ];
+    }
+  }
+
+  const nextId = state.championBag.shift();
+  state.lastChampionId = nextId;
+  return champions.find((c) => c.id === nextId);
 }
 
 // Construit la liste de traits proposee comme cases a cocher : tous les vrais
