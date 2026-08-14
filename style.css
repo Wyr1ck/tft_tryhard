@@ -217,6 +217,33 @@ header h1 {
   border-color: #3d4356;
 }
 
+.home-card-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 84px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #262b38, #1b1f2a);
+  border: 1px solid #3d4356;
+  margin-bottom: 0.2rem;
+}
+
+.home-card:hover .home-card-visual {
+  border-color: #f0b132;
+}
+
+.home-card-visual-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.home-card-visual-icon {
+  width: 40px;
+  height: 40px;
+}
+
 .home-card-title {
   font-size: 1.2rem;
   font-weight: 700;

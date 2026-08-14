@@ -19,10 +19,12 @@
       <p class="prompt">Choisis un quiz :</p>
       <div class="home-cards">
         <button class="home-card" id="home-items">
+          <div class="home-card-visual"><img class="home-card-visual-img" src="assets/images/items/coiffe_rabadon.png" alt=""></div>
           <span class="home-card-title">Combos d'objets</span>
           <span class="home-card-score">Record compétitif : <strong id="home-items-highscore">--</strong></span>
         </button>
         <button class="home-card" id="home-champions">
+          <div class="home-card-visual"><img class="home-card-visual-img" src="assets/images/champions/dragon_ancestral.png" alt=""></div>
           <span class="home-card-title">Traits de personnages</span>
           <span class="home-card-score">Record compétitif : <strong id="home-champions-highscore">--</strong></span>
         </button>
@@ -68,10 +70,12 @@
       <p class="prompt">Combos d'objets :</p>
       <div class="home-cards">
         <button class="home-card" id="items-with-emblems">
+          <div class="home-card-visual"><img class="home-card-visual-img" src="assets/images/items/embleme_bagarreur.png" alt=""></div>
           <span class="home-card-title">Avec emblèmes</span>
           <span class="home-card-score">Objets de combat, emblèmes et objets Tacticien</span>
         </button>
         <button class="home-card" id="items-without-emblems">
+          <div class="home-card-visual"><img class="home-card-visual-img" src="assets/images/items/lame_guinsoo.png" alt=""></div>
           <span class="home-card-title">Sans emblèmes</span>
           <span class="home-card-score">Uniquement les objets de combat</span>
         </button>
@@ -86,10 +90,28 @@
       <p class="prompt">Mode de jeu :</p>
       <div class="home-cards">
         <button class="home-card" id="mode-training">
+          <div class="home-card-visual">
+            <svg class="home-card-visual-icon" viewBox="0 0 24 24" fill="none" stroke="#f0b132" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 2l4 4-4 4" />
+              <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+              <path d="M7 22l-4-4 4-4" />
+              <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+            </svg>
+          </div>
           <span class="home-card-title">Entraînement</span>
           <span class="home-card-score">Questions illimitées, le score repart de 0 a chaque partie</span>
         </button>
         <button class="home-card" id="mode-competitive">
+          <div class="home-card-visual">
+            <svg class="home-card-visual-icon" viewBox="0 0 24 24" fill="none" stroke="#f0b132" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
+              <path d="M8 5H5.5a2 2 0 0 0 0 4H7" />
+              <path d="M16 5h2.5a2 2 0 0 1 0 4H17" />
+              <path d="M12 11v3" />
+              <path d="M9 20h6" />
+              <path d="M10 17h4l.5 3h-5l.5-3Z" />
+            </svg>
+          </div>
           <span class="home-card-title">Compétitif</span>
           <span class="home-card-score">30 bonnes réponses d'affilée contre le chrono, la moindre erreur remet a 0</span>
         </button>
