@@ -11,6 +11,8 @@ const state = {
   currentQuestion: null,    // question du mode "items" (forward) affichee en ce moment
   currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
   currentChampion: null,    // personnage du mode "champions" affiche en ce moment
+  lastItemId: null,         // id du dernier objet pose en question (mode "objets"), pour ne pas le repeter
+  lastChampionId: null,     // id du dernier personnage pose en question, pour ne pas le repeter
   answered: false,         // empeche de valider 2 fois la meme question
   scores: {
     // Score du mode entrainement : reinitialise a chaque lancement de partie.
@@ -196,9 +198,15 @@ function getItemPool() {
   return state.data.items;
 }
 
+// Tire un objet au hasard, en evitant de reposer le meme qu'a la question
+// precedente (sauf si le pool ne contient qu'un seul objet).
 function pickRandomItem() {
   const items = getItemPool();
-  return items[Math.floor(Math.random() * items.length)];
+  const candidates =
+    items.length > 1 ? items.filter((item) => item.id !== state.lastItemId) : items;
+  const picked = candidates[Math.floor(Math.random() * candidates.length)];
+  state.lastItemId = picked.id;
+  return picked;
 }
 
 // Construit les 4 choix affiches : le bon objet + 3 "distracteurs" pris au hasard,
@@ -426,9 +434,15 @@ function renderItemQuestion() {
 
 const TRAIT_OPTIONS_COUNT = 6;
 
+// Tire un personnage au hasard, en evitant de reposer le meme qu'a la
+// question precedente.
 function pickRandomChampion() {
   const champions = state.champData.champions;
-  return champions[Math.floor(Math.random() * champions.length)];
+  const candidates =
+    champions.length > 1 ? champions.filter((c) => c.id !== state.lastChampionId) : champions;
+  const picked = candidates[Math.floor(Math.random() * candidates.length)];
+  state.lastChampionId = picked.id;
+  return picked;
 }
 
 // Construit la liste de traits proposee comme cases a cocher : tous les vrais
