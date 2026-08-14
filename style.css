@@ -392,37 +392,6 @@ header h1 {
   gap: 0.5rem;
 }
 
-.lexique-definition {
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  background: #2c3140;
-  border: 1px solid #3d4356;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: #e8e8e8;
-  text-align: center;
-}
-
-.answers.lexique-answer {
-  display: flex;
-  justify-content: center;
-}
-
-.lexique-input {
-  width: 100%;
-  max-width: 360px;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #3d4356;
-  background: #1b1f2a;
-  color: #e8e8e8;
-  font-size: 1rem;
-}
-
-.lexique-input:disabled {
-  opacity: 0.7;
-}
-
 .trait-option {
   display: flex;
   align-items: flex-start;
