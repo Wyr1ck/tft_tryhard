@@ -201,15 +201,22 @@ header h1 {
 
 .home-card {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1.5rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 12px;
   border: 1px solid #2c3140;
   background: #1b1f2a;
   color: #e8e8e8;
   text-align: left;
   cursor: pointer;
+}
+
+.home-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .home-card:hover {
@@ -221,12 +228,12 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 84px;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
   border-radius: 10px;
   background: linear-gradient(180deg, #262b38, #1b1f2a);
   border: 1px solid #3d4356;
-  margin-bottom: 0.2rem;
 }
 
 .home-card:hover .home-card-visual {
@@ -234,14 +241,14 @@ header h1 {
 }
 
 .home-card-visual-img {
-  width: 56px;
-  height: 56px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
 }
 
 .home-card-visual-icon {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
 }
 
 .home-card-title {
