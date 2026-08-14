@@ -53,6 +53,9 @@ const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
 const leaderboardItemsEl = document.getElementById('leaderboard-items');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
 
+const podiumItemsEl = document.getElementById('podium-items');
+const podiumChampionsEl = document.getElementById('podium-champions');
+
 const scoreBarEl = document.getElementById('score-bar');
 const scoreEl = document.getElementById('score');
 const questionCountEl = document.getElementById('question-count');
@@ -714,6 +717,54 @@ function renderLeaderboardList(containerEl, scores) {
     .join('');
 }
 
+const PODIUM_MEDALS = ['🥇', '🥈', '🥉'];
+
+// Affiche un mini-podium (top 3) pour un mode donne sur l'ecran d'accueil.
+// L'ordre visuel est 2e / 1er / 3e, avec des marches de hauteur decroissante
+// gerees en CSS via podium-rank-1/2/3.
+function renderPodium(containerEl, scores) {
+  if (scores.length === 0) {
+    containerEl.innerHTML = '<p class="leaderboard-empty">Aucun score pour l\'instant.</p>';
+    return;
+  }
+
+  const displayOrder = [1, 0, 2];
+  containerEl.innerHTML = displayOrder
+    .map((i) => {
+      const rank = i + 1;
+      const s = scores[i];
+      const pseudo = s ? escapeHtml(s.pseudo) : '--';
+      const time = s ? formatTime(s.timeMs) : '--';
+      return `
+        <div class="podium-place podium-rank-${rank}${s ? '' : ' podium-empty'}">
+          <div class="podium-medal">${PODIUM_MEDALS[i]}</div>
+          <div class="podium-pseudo">${pseudo}</div>
+          <div class="podium-time">${time}</div>
+          <div class="podium-bar"></div>
+        </div>
+      `;
+    })
+    .join('');
+}
+
+async function updateHomePodiums() {
+  podiumItemsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+  podiumChampionsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+
+  try {
+    const [itemsScores, championsScores] = await Promise.all([
+      fetchTopScores('items', 3),
+      fetchTopScores('champions', 3),
+    ]);
+    renderPodium(podiumItemsEl, itemsScores);
+    renderPodium(podiumChampionsEl, championsScores);
+  } catch (err) {
+    const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
+    podiumItemsEl.innerHTML = errorHtml;
+    podiumChampionsEl.innerHTML = errorHtml;
+  }
+}
+
 async function showLeaderboard() {
   homeScreen.classList.add('hidden');
   itemsSubmenuScreen.classList.add('hidden');
@@ -753,6 +804,7 @@ function updateScoreBar() {
 function showHome() {
   state.mode = null;
   updateHomeHighscores();
+  updateHomePodiums();
   homeScreen.classList.remove('hidden');
   itemsSubmenuScreen.classList.add('hidden');
   modeSubmenuScreen.classList.add('hidden');
