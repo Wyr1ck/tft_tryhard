@@ -58,6 +58,11 @@ const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
 const podiumItemsEl = document.getElementById('podium-items');
 const podiumChampionsEl = document.getElementById('podium-champions');
 
+const homeItemsImgEl = document.getElementById('home-items-img');
+const homeChampionsImgEl = document.getElementById('home-champions-img');
+const itemsWithEmblemsImgEl = document.getElementById('items-with-emblems-img');
+const itemsWithoutEmblemsImgEl = document.getElementById('items-without-emblems-img');
+
 const scoreBarEl = document.getElementById('score-bar');
 const scoreEl = document.getElementById('score');
 const questionCountEl = document.getElementById('question-count');
@@ -165,6 +170,12 @@ function getChampionImagePath(id) {
   return `assets/images/champions/${id}.png`;
 }
 
+// Tres peu de personnages ont deja un visuel (contrairement aux objets, ou la
+// plupart en ont). On garde une liste courte de ceux qui existent vraiment
+// pour la carte d'accueil, plutot que de tenter tous les personnages et
+// enchainer des dizaines de 404 avant d'en trouver un valide.
+const CHAMPION_IDS_WITH_IMAGE = ['alune', 'dragon_ancestral', 'kobuko', 'krug'];
+
 // Si le fichier image n'existe pas encore, on cache juste la balise <img>
 // au lieu d'afficher l'icone "image cassee" du navigateur.
 function hideImageOnError(imgEl) {
@@ -180,6 +191,43 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+}
+
+// Choisit une image au hasard dans un pool (objets ou personnages) pour
+// illustrer une carte de choix. Comme certaines entrees n'ont pas encore de
+// visuel, l'ordre melange sert de liste de repli : si une image casse, on
+// tente la suivante, jusqu'a en trouver une valide.
+function setRandomCardImage(imgEl, pool, getPathFn) {
+  const order = shuffle([...pool]);
+
+  function tryNext(index) {
+    if (index >= order.length) {
+      imgEl.style.display = 'none';
+      return;
+    }
+    imgEl.style.display = '';
+    imgEl.onerror = () => tryNext(index + 1);
+    imgEl.src = getPathFn(order[index].id);
+  }
+
+  tryNext(0);
+}
+
+function randomizeHomeCardImages() {
+  if (!state.data || !state.champData) return;
+  setRandomCardImage(homeItemsImgEl, state.data.items, getItemImagePath);
+  const championsWithImage = CHAMPION_IDS_WITH_IMAGE.map((id) => ({ id }));
+  setRandomCardImage(homeChampionsImgEl, championsWithImage, getChampionImagePath);
+}
+
+function randomizeItemsSubmenuImages() {
+  if (!state.data) return;
+  setRandomCardImage(itemsWithEmblemsImgEl, state.data.items.filter(isEmblemFamily), getItemImagePath);
+  setRandomCardImage(
+    itemsWithoutEmblemsImgEl,
+    state.data.items.filter((item) => !isEmblemFamily(item)),
+    getItemImagePath
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -807,6 +855,7 @@ function showHome() {
   state.mode = null;
   updateHomeHighscores();
   updateHomePodiums();
+  randomizeHomeCardImages();
   homeScreen.classList.remove('hidden');
   itemsSubmenuScreen.classList.add('hidden');
   modeSubmenuScreen.classList.add('hidden');
@@ -816,6 +865,7 @@ function showHome() {
 
 // Sous-menu du quiz "objets" : demande d'abord avec ou sans emblemes.
 function showItemsSubmenu() {
+  randomizeItemsSubmenuImages();
   homeScreen.classList.add('hidden');
   itemsSubmenuScreen.classList.remove('hidden');
   modeSubmenuScreen.classList.add('hidden');
