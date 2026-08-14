@@ -47,6 +47,8 @@ const modeCompetitiveBtn = document.getElementById('mode-competitive');
 
 const backHomeBtn = document.getElementById('back-home-btn');
 
+const siteTitleEl = document.getElementById('site-title');
+
 const showLeaderboardBtn = document.getElementById('show-leaderboard-btn');
 const leaderboardScreen = document.getElementById('leaderboard-screen');
 const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
@@ -877,6 +879,11 @@ function renderQuestion() {
     renderChampionQuestion();
   }
 }
+
+siteTitleEl.addEventListener('click', () => {
+  stopCompetitiveTimer();
+  showHome();
+});
 
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);

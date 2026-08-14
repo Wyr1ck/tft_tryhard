@@ -26,6 +26,14 @@ header h1 {
   color: #f0b132;
 }
 
+.site-title {
+  cursor: pointer;
+}
+
+.site-title:hover {
+  color: #f5c25c;
+}
+
 .subtitle {
   color: #9a9ca5;
   margin-top: 0.25rem;
