@@ -634,8 +634,8 @@ function handleChampionSubmit() {
 }
 
 // ---------------------------------------------------------------------------
-// Mode "Lexique TFT" (reponse tapee au clavier, tolerante aux fautes de
-// frappe, a l'ordre des mots et au choix francais/anglais)
+// Mode "Lexique TFT" : on affiche la definition, le joueur tape le terme ou
+// l'abreviation attendue (reponse courte, tolerante aux fautes de frappe).
 // ---------------------------------------------------------------------------
 
 // Quelques mots vides francais a ignorer pour comparer le sens plutot que la
@@ -688,15 +688,24 @@ function levenshteinDistance(a, b) {
   return matrix[rows - 1][cols - 1];
 }
 
+// Marge de tolerance aux fautes de frappe, proportionnelle a la longueur.
+// En dessous de 5 caracteres (beaucoup de termes sont des sigles a 2-3
+// lettres comme AD/AP/BB), on exige une correspondance exacte : sinon des
+// sigles differents mais proches (AD vs AP) seraient acceptes l'un pour l'autre.
+function typoTolerance(length) {
+  if (length <= 4) return 0;
+  return Math.max(1, Math.round(length * 0.15));
+}
+
 // Une reponse tapee est correcte si son "sac de mots" est proche (quelques
-// fautes de frappe pres) de l'une des formulations acceptees pour ce terme
-// (chaque terme a ses formulations en francais ET en anglais).
-function isLexiqueAnswerCorrect(userAnswer, acceptedAnswers) {
+// fautes de frappe pres) de l'un des termes acceptes (abreviation ou variante
+// orthographique).
+function isLexiqueAnswerCorrect(userAnswer, acceptedTerms) {
   const userBag = toWordBag(userAnswer);
   if (!userBag) return false;
-  return acceptedAnswers.some((accepted) => {
+  return acceptedTerms.some((accepted) => {
     const acceptedBag = toWordBag(accepted);
-    const tolerance = Math.max(1, Math.round(Math.max(userBag.length, acceptedBag.length) * 0.15));
+    const tolerance = typoTolerance(Math.max(userBag.length, acceptedBag.length));
     return levenshteinDistance(userBag, acceptedBag) <= tolerance;
   });
 }
@@ -710,17 +719,18 @@ function pickRandomLexiqueTerm() {
   return picked;
 }
 
-// Affiche la question "lexique" : le terme + un champ de saisie libre.
+// Affiche la question "lexique" : la definition + un champ de saisie libre
+// pour taper le terme ou l'abreviation attendue.
 function renderLexiqueQuestion() {
   const term = pickRandomLexiqueTerm();
   state.currentLexiqueTerm = term;
 
-  promptEl.textContent = 'Que signifie ce terme :';
-  componentsEl.innerHTML = `<span class="lexique-term">${escapeHtml(term.term)}</span>`;
+  promptEl.textContent = 'Quel terme correspond a cette definition :';
+  componentsEl.innerHTML = `<p class="lexique-definition">${escapeHtml(term.definition)}</p>`;
 
   answersEl.className = 'answers lexique-answer';
   answersEl.innerHTML = `
-    <input type="text" id="lexique-input" class="lexique-input" placeholder="Ta reponse (francais ou anglais)" autocomplete="off">
+    <input type="text" id="lexique-input" class="lexique-input" placeholder="Terme ou abreviation" autocomplete="off">
   `;
   const inputEl = document.getElementById('lexique-input');
   inputEl.addEventListener('keydown', (event) => {
@@ -741,13 +751,16 @@ function handleLexiqueSubmit() {
 
   const term = state.currentLexiqueTerm;
   const inputEl = document.getElementById('lexique-input');
-  const isCorrect = isLexiqueAnswerCorrect(inputEl.value, term.acceptedAnswers);
+  const isCorrect = isLexiqueAnswerCorrect(inputEl.value, term.acceptedTerms);
   inputEl.disabled = true;
 
   const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
+  const answerLine = isCorrect
+    ? `<strong>${escapeHtml(term.term)}</strong>`
+    : `La bonne reponse etait : <strong>${escapeHtml(term.term)}</strong>`;
   feedbackEl.innerHTML = `
     <div class="feedback-title">${titleText}</div>
-    <div class="feedback-effect">${escapeHtml(term.definition)}</div>
+    <div class="feedback-effect">${answerLine}</div>
   `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
