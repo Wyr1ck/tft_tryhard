@@ -33,10 +33,65 @@ header h1 {
 
 #home-screen,
 #items-submenu-screen,
-#mode-submenu-screen {
+#mode-submenu-screen,
+#leaderboard-screen {
   width: 100%;
   max-width: 480px;
   text-align: center;
+}
+
+.leaderboard-link {
+  display: block;
+  margin: 1.5rem auto 0;
+}
+
+.leaderboard-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.leaderboard-column h3 {
+  color: #f0b132;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #2c3140;
+  background: #1b1f2a;
+  margin-bottom: 0.4rem;
+}
+
+.leaderboard-rank {
+  color: #9a9ca5;
+  font-weight: 700;
+  width: 2rem;
+  flex-shrink: 0;
+}
+
+.leaderboard-pseudo {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.leaderboard-time {
+  color: #f0b132;
+  font-weight: 700;
+}
+
+.leaderboard-empty,
+.leaderboard-error {
+  color: #9a9ca5;
+  text-align: left;
 }
 
 #quiz-screen:not(.hidden) {
@@ -350,6 +405,45 @@ header h1 {
   font-weight: 700;
   color: #ffffff;
   margin-top: 0.25rem;
+}
+
+.leaderboard-submit {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.leaderboard-submit input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #3d4356;
+  background: #1b1f2a;
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  max-width: 160px;
+}
+
+.leaderboard-submit button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #f0b132;
+  color: #1b1f2a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.leaderboard-submit button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.leaderboard-submitted {
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 1rem;
 }
 
 .feedback.correct .feedback-title {

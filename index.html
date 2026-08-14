@@ -27,6 +27,25 @@
           <span class="home-card-score">Record compétitif : <strong id="home-champions-highscore">--</strong></span>
         </button>
       </div>
+      <button id="show-leaderboard-btn" class="text-btn leaderboard-link">Voir le tableau des scores</button>
+    </section>
+
+    <!-- Tableau des scores partage (Firestore), visible par tout le monde. -->
+    <section id="leaderboard-screen" class="hidden">
+      <div class="quiz-toolbar">
+        <button id="leaderboard-back-btn" class="text-btn">&larr; Accueil</button>
+      </div>
+      <p class="prompt">Tableau des scores (mode compétitif) :</p>
+      <div class="leaderboard-columns">
+        <div class="leaderboard-column">
+          <h3>Combos d'objets</h3>
+          <div id="leaderboard-items"></div>
+        </div>
+        <div class="leaderboard-column">
+          <h3>Traits de personnages</h3>
+          <div id="leaderboard-champions"></div>
+        </div>
+      </div>
     </section>
 
     <!-- Sous-menu du quiz "objets" : avec ou sans emblemes. -->
@@ -100,6 +119,9 @@
     </section>
   </main>
 
+  <!-- SDK Firebase (version "compat", API classique sans import/export, plus simple ici). -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

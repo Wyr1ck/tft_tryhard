@@ -45,6 +45,12 @@ const modeCompetitiveBtn = document.getElementById('mode-competitive');
 
 const backHomeBtn = document.getElementById('back-home-btn');
 
+const showLeaderboardBtn = document.getElementById('show-leaderboard-btn');
+const leaderboardScreen = document.getElementById('leaderboard-screen');
+const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
+const leaderboardItemsEl = document.getElementById('leaderboard-items');
+const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
+
 const scoreBarEl = document.getElementById('score-bar');
 const scoreEl = document.getElementById('score');
 const questionCountEl = document.getElementById('question-count');
@@ -61,6 +67,54 @@ const feedbackEl = document.getElementById('feedback');
 const nextBtn = document.getElementById('next-btn');
 const submitBtn = document.getElementById('submit-btn');
 const retryBtn = document.getElementById('retry-btn');
+
+// ---------------------------------------------------------------------------
+// Tableau des scores partage (Firebase Firestore)
+// ---------------------------------------------------------------------------
+
+// Cette cle n'est pas un secret : elle est censee etre visible dans le code
+// public d'un site. La vraie securite vient des regles Firestore (cote serveur).
+const firebaseConfig = {
+  apiKey: 'AIzaSyAfIqIWBeos1PMvAKvuU9lRdoiPDUb3KJk',
+  authDomain: 'tft-tryhard.firebaseapp.com',
+  projectId: 'tft-tryhard',
+  storageBucket: 'tft-tryhard.firebasestorage.app',
+  messagingSenderId: '133512694133',
+  appId: '1:133512694133:web:96215d5e75cee894b9ab3c',
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Chaque mode a sa propre collection ("tiroir") plutot qu'une seule collection
+// filtree par mode : ca evite d'avoir a creer un index compose dans Firestore.
+function getScoresCollectionName(mode) {
+  return mode === 'items' ? 'scores_items' : 'scores_champions';
+}
+
+async function submitScoreToLeaderboard(mode, pseudo, timeMs) {
+  await db.collection(getScoresCollectionName(mode)).add({
+    pseudo: pseudo.trim().slice(0, 20),
+    timeMs,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+  });
+}
+
+async function fetchTopScores(mode, limitCount = 10) {
+  const snapshot = await db
+    .collection(getScoresCollectionName(mode))
+    .orderBy('timeMs', 'asc')
+    .limit(limitCount)
+    .get();
+  return snapshot.docs.map((doc) => doc.data());
+}
+
+// Echappe le texte avant de l'inserer en HTML : indispensable car le pseudo
+// vient d'un autre joueur, on ne peut pas lui faire confiance telle quelle.
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
 
 // Charge les fichiers JSON avec fetch (comme un "GET http" fait par le navigateur).
 // fetch() est asynchrone : il renvoie une Promise, d'ou le "await".
@@ -584,8 +638,13 @@ function finishCompetitiveRun(won) {
       <div class="victory-title">Bravo !</div>
       <div class="victory-time">${formatTime(elapsedMs)}</div>
       ${isNewRecord ? '<div class="victory-note">Nouveau record !</div>' : ''}
+      <div class="leaderboard-submit">
+        <input type="text" id="pseudo-input" placeholder="Ton pseudo" maxlength="20">
+        <button id="submit-score-btn">Enregistrer au tableau des scores</button>
+      </div>
     `;
     feedbackEl.appendChild(banner);
+    wireScoreSubmitForm(banner, state.mode, elapsedMs);
   } else {
     const noteEl = document.createElement('div');
     noteEl.className = 'feedback-effect';
@@ -595,6 +654,74 @@ function finishCompetitiveRun(won) {
 
   updateHighscoreDisplay();
   retryBtn.classList.remove('hidden');
+}
+
+// Branche le formulaire "pseudo + bouton" affiche dans la banniere de victoire
+// pour envoyer le score au tableau partage.
+function wireScoreSubmitForm(banner, mode, timeMs) {
+  const pseudoInput = banner.querySelector('#pseudo-input');
+  const submitScoreBtn = banner.querySelector('#submit-score-btn');
+  const submitContainer = banner.querySelector('.leaderboard-submit');
+
+  submitScoreBtn.addEventListener('click', async () => {
+    const pseudo = pseudoInput.value.trim();
+    if (!pseudo) {
+      pseudoInput.focus();
+      return;
+    }
+    submitScoreBtn.disabled = true;
+    submitScoreBtn.textContent = 'Enregistrement...';
+    try {
+      await submitScoreToLeaderboard(mode, pseudo, timeMs);
+      submitContainer.innerHTML = '<p class="leaderboard-submitted">Score enregistre !</p>';
+    } catch (err) {
+      submitScoreBtn.disabled = false;
+      submitScoreBtn.textContent = 'Reessayer';
+    }
+  });
+}
+
+// Affiche le classement pour un mode ("Aucun score" / erreur / liste triee).
+function renderLeaderboardList(containerEl, scores) {
+  if (scores.length === 0) {
+    containerEl.innerHTML = '<p class="leaderboard-empty">Aucun score pour l\'instant.</p>';
+    return;
+  }
+  containerEl.innerHTML = scores
+    .map(
+      (s, i) => `
+        <div class="leaderboard-row">
+          <span class="leaderboard-rank">#${i + 1}</span>
+          <span class="leaderboard-pseudo">${escapeHtml(s.pseudo)}</span>
+          <span class="leaderboard-time">${formatTime(s.timeMs)}</span>
+        </div>
+      `
+    )
+    .join('');
+}
+
+async function showLeaderboard() {
+  homeScreen.classList.add('hidden');
+  itemsSubmenuScreen.classList.add('hidden');
+  modeSubmenuScreen.classList.add('hidden');
+  quizScreen.classList.add('hidden');
+  leaderboardScreen.classList.remove('hidden');
+
+  leaderboardItemsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+  leaderboardChampionsEl.innerHTML = '<p class="leaderboard-empty">Chargement...</p>';
+
+  try {
+    const [itemsScores, championsScores] = await Promise.all([
+      fetchTopScores('items'),
+      fetchTopScores('champions'),
+    ]);
+    renderLeaderboardList(leaderboardItemsEl, itemsScores);
+    renderLeaderboardList(leaderboardChampionsEl, championsScores);
+  } catch (err) {
+    const errorHtml = '<p class="leaderboard-error">Impossible de charger le classement.</p>';
+    leaderboardItemsEl.innerHTML = errorHtml;
+    leaderboardChampionsEl.innerHTML = errorHtml;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -616,6 +743,7 @@ function showHome() {
   itemsSubmenuScreen.classList.add('hidden');
   modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
+  leaderboardScreen.classList.add('hidden');
 }
 
 // Sous-menu du quiz "objets" : demande d'abord avec ou sans emblemes.
@@ -686,6 +814,8 @@ function renderQuestion() {
 
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
+showLeaderboardBtn.addEventListener('click', showLeaderboard);
+leaderboardBackBtn.addEventListener('click', showHome);
 
 itemsSubmenuBackBtn.addEventListener('click', showHome);
 itemsWithEmblemsBtn.addEventListener('click', () => chooseItemsFilter('with'));
