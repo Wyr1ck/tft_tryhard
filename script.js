@@ -836,7 +836,7 @@ function buildAugmentNameChoices(correctAugment) {
   const pool = state.augData.augments.filter((a) => a.id !== correctAugment.id);
   shuffle(pool);
   const picked = [correctAugment, ...pool.slice(0, 3)];
-  return shuffle(picked).map((a) => ({ id: a.id, label: a.name }));
+  return shuffle(picked).map((a) => ({ id: a.id, label: a.name, labelEn: a.nameEn || '' }));
 }
 
 // Choix d'images pour la question "nom -> image" : la bonne image + 3 au hasard.
@@ -854,9 +854,14 @@ function handleAugmentAnswer(choiceId, btnEl) {
   state.answered = true;
 
   const question = state.currentAugmentQuestion;
+  const augment = state.currentAugment;
   const isCorrect = choiceId === question.correctId;
   const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
-  feedbackEl.innerHTML = `<div class="feedback-title">${titleText}</div>`;
+  const showDetails = state.gameMode !== 'competitive' || !isCorrect;
+  feedbackEl.innerHTML = `
+    <div class="feedback-title">${titleText}</div>
+    ${showDetails ? `<div class="feedback-effect">${augment.effect || 'Effet non renseigne.'}</div>` : ''}
+  `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
   [...answersEl.children].forEach((btn) => {
@@ -894,7 +899,7 @@ function renderAugmentNameFromImageQuestion() {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.dataset.choiceId = choice.id;
-    btn.textContent = choice.label;
+    btn.innerHTML = formatNameWithEn(choice.label, choice.labelEn);
     btn.addEventListener('click', () => handleAugmentAnswer(choice.id, btn));
     answersEl.appendChild(btn);
   });
@@ -906,7 +911,7 @@ function renderAugmentImageFromNameQuestion() {
   state.currentAugment = augment;
 
   promptEl.textContent = 'Quelle image correspond a cet augment :';
-  componentsEl.innerHTML = `<span class="chip augment-name-chip">${augment.name}</span>`;
+  componentsEl.innerHTML = `<span class="chip augment-name-chip">${formatNameWithEn(augment.name, augment.nameEn)}</span>`;
 
   const choices = buildAugmentImageChoices(augment);
   state.currentAugmentQuestion = { correctId: augment.id, choices };

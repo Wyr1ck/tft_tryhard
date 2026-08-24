@@ -1,1604 +1,2128 @@
 {
   "augments": [
     {
+      "id": "armybuildinghr",
+      "name": "Esprit d'équipe",
+      "nameEn": "Team Building",
+      "effect": "Vous gagnez un Duplicateur de champion mineur. Vous en gagnez un autre après 3 combats contre un joueur."
+    },
+    {
+      "id": "pumpingup3hr",
+      "name": "Toujours plus vite III",
+      "nameEn": "Pumping Up III",
+      "effect": "Votre équipe gagne 12% de vitesse d'attaque. Après chaque manche, elles en gagnent 4% de plus. (Vitesse d'attaque actuelle:)"
+    },
+    {
+      "id": "pumpinguphr",
+      "name": "Toujours plus vite I",
+      "nameEn": "Pumping Up I",
+      "effect": "Votre équipe gagne 5% de vitesse d'attaque. Après chaque manche, elles en gagnent 1% de plus. (Vitesse d'attaque actuelle:)"
+    },
+    {
+      "id": "pumpingup2hr",
+      "name": "Toujours plus vite II",
+      "nameEn": "Pumping Up II",
+      "effect": "Votre équipe gagne 5% de vitesse d'attaque. Après chaque manche, elles en gagnent 2% de plus. (Vitesse d'attaque actuelle:)"
+    },
+    {
+      "id": "longtimecraftinghr",
+      "name": "Forge à retardement",
+      "nameEn": "Latent Forge",
+      "effect": "Après 4 combats contre un joueur, vous gagnez une Enclume à artefacts."
+    },
+    {
       "id": "urf",
       "name": "U.R.F.",
-      "nameEn": "U.R.F"
+      "nameEn": "U.R.F",
+      "effect": "Vous gagnez une Spatule. Les champions équipés d'une Spatule ou d'une Poêle à frire gagnent 20% de vitesse d'attaque et 3 de régénération de mana."
+    },
+    {
+      "id": "tonsofstatsi",
+      "name": "Stats à foison!",
+      "nameEn": "Tons of Stats!",
+      "effect": "Votre équipe gagne 44 PV, 4% de dégâts d'attaque, 4% de puissance, 4 d'armure, 4 de résistance magique, 4% de vitesse d'attaque et 4 de mana."
     },
     {
       "id": "calltochaos",
       "name": "Appel du chaos",
-      "nameEn": "Call To Chaos"
+      "nameEn": "Call To Chaos",
+      "effect": "Vous gagnez une récompense puissante et aléatoire."
     },
     {
       "id": "atwhatcost",
       "name": "Pas le choix",
-      "nameEn": "At What Cost"
+      "nameEn": "At What Cost",
+      "effect": "Vous passez immédiatement au niveau 6 et vous gagnez 8 XP. Vous ne pourrez pas choisir vos prochaines optimisations."
+    },
+    {
+      "id": "preparation1hr",
+      "name": "Préparation I",
+      "nameEn": "Preparation I",
+      "effect": "Les champions sur votre banc gagnent définitivement 35 PV, 4% de dégâts d'attaque et 4% de puissance par manche. Cet effet peut se cumuler jusqu'à 3 fois et les champions commencent avec 1 effet."
+    },
+    {
+      "id": "preparation2hr",
+      "name": "Préparation II",
+      "nameEn": "Preparation II",
+      "effect": "Les champions sur votre banc gagnent définitivement 50 PV, 6% de dégâts d'attaque et 6% de puissance par manche. Cet effet peut se cumuler jusqu'à 3 fois et les champions commencent avec 1 effet."
     },
     {
       "id": "allthatshimmersplus",
       "name": "Tout ce qui brille+",
-      "nameEn": "All That Shimmers+"
+      "nameEn": "All That Shimmers+",
+      "effect": "Choisissez un artefact générateur de PO. Vous gagnez un Suppresseur magnétique et 4 PO."
     },
     {
       "id": "itemcollector2",
-      "name": "Collectionneur d'objets II",
-      "nameEn": "Item Collector II"
+      "name": "Collectionneur d'objets II",
+      "nameEn": "Item Collector II",
+      "effect": "Votre équipe gagne 20 PV. Pour chaque objet unique qu'elles portent, vos unités gagnent 5 PV, 1% de dégâts d'attaque et 1% de puissance bonus."
     },
     {
       "id": "itemcollector1",
-      "name": "Collectionneur d'objets I",
-      "nameEn": "Item Collector I"
+      "name": "Collectionneur d'objets I",
+      "nameEn": "Item Collector I",
+      "effect": "Pour chaque objet unique qu'elles portent, vos unités gagnent 1% dégâts d'attaque et 1% de puissance."
+    },
+    {
+      "id": "allthatshimmers",
+      "name": "Tout ce qui brille",
+      "nameEn": "All That Shimmers",
+      "effect": "Choisissez un artefact générateur de PO et gagnez un Suppresseur magnétique."
     },
     {
       "id": "goldenegg",
       "name": "Œuf d'or",
-      "nameEn": "The Golden Egg"
+      "nameEn": "The Golden Egg",
+      "effect": "Vous gagnez un œuf d'or qui éclot dans 11 tours et octroie une énorme quantité de butins. Gagner un combat contre un joueur réduit le délai d'éclosion d'un tour supplémentaire."
+    },
+    {
+      "id": "livingforgehr",
+      "name": "Forgeron ambulant",
+      "nameEn": "Living Forge",
+      "effect": "Vous gagnez immédiatement une Enclume à artefacts, puis une autre tous les 4 combats contre un joueur."
+    },
+    {
+      "id": "salvagebinplushr",
+      "name": "Bac de recyclage+",
+      "nameEn": "Salvage Bin+",
+      "effect": "Vous gagnez 1 objet complet aléatoire tout de suite, puis 1 composant après 2 combats contre un joueur. Lorsque vous vendez un champion, ses objets complets sont désassemblés (hors objets du Tacticien et emblèmes)."
     },
     {
       "id": "salvagebin",
       "name": "Bac de recyclage",
-      "nameEn": "Salvage Bin"
+      "nameEn": "Salvage Bin",
+      "effect": "Vous gagnez 1 objet complet aléatoire tout de suite, puis 1 composant après 8 combats contre un joueur. Lorsque vous vendez un champion, ses objets complets sont désassemblés (hors objets du Tacticien et emblèmes)."
     },
     {
       "id": "retribution",
       "name": "Justice critique",
-      "nameEn": "Retribution"
+      "nameEn": "Retribution",
+      "effect": "Vous gagnez 2 Mains de la justice. Les alliés équipés d'une Main de la justice gagnent et 25% de chances de coup critique. {{TFT_Keyword_Precision}}"
     },
     {
       "id": "min_max",
       "name": "Suppresseur doré",
-      "nameEn": "Min-Max"
+      "nameEn": "Min-Max",
+      "effect": "Vous gagnez un Suppresseur d'objet doré et 4 composants aléatoires."
     },
     {
       "id": "arcaneviktory",
       "name": "Arcaniquement Viktor-ieux",
-      "nameEn": "Arcane Viktor-y"
+      "nameEn": "Arcane Viktor-y",
+      "effect": "Après 8 sec de combat, l'équipe ennemie est étourdie pendant 1.5 secondes. L'effet se répète après 18 sec de combat."
     },
     {
       "id": "waterlotus1",
       "name": "Fleur de lotus I",
-      "nameEn": "Water Lotus I"
+      "nameEn": "Water Lotus I",
+      "effect": "Vos unités gagnent 5% de chances de coup critique et leur compétence peut infliger des coups critiques. Si une compétence inflige un coup critique, le champion récupère 9% de son mana en 3 sec."
     },
     {
       "id": "epicrolldown",
       "name": "Relances épiques",
-      "nameEn": "Epic Rolldown"
+      "nameEn": "Epic Rolldown",
+      "effect": "Lorsque vous atteignez le niveau 8, vous gagnez 20 relances de boutique."
     },
     {
       "id": "maxbuild",
       "name": "Duplication",
-      "nameEn": "Max Build"
+      "nameEn": "Max Build",
+      "effect": "Vous obtenez un Duplicateur de champion, 4 PO, et votre prochaine boutique contient 5 champions uniques à 4 PO."
     },
     {
       "id": "firesaleplus",
       "name": "Cleptomanie",
-      "nameEn": "Firesale"
+      "nameEn": "Firesale",
+      "effect": "À chaque manche, vous volez un champion aléatoire valant 3 PO ou moins dans la boutique. Vous gagnez 1 PO."
     },
     {
-      "id": "spreadingrootsplus",
-      "name": "Enracinement+",
-      "nameEn": "Spreading Roots+"
+      "id": "spreadingroots",
+      "name": "Enracinement",
+      "nameEn": "Spreading Roots",
+      "effect": "Vous gagnez 2 emblèmes aléatoires et 1 PO."
     },
     {
       "id": "tinytitans",
       "name": "P'tits titans",
-      "nameEn": "Tiny Titans"
+      "nameEn": "Tiny Titans",
+      "effect": "Vos PV de Tacticien actuels et max augmentent de 20."
     },
     {
       "id": "survivor",
       "name": "Survivant",
-      "nameEn": "Survivor"
+      "nameEn": "Survivor",
+      "effect": "Vous gagnez 4 PO. Après l'élimination de 3 joueurs, vous gagnez 100 PO de plus."
     },
     {
       "id": "smallgrabbag",
       "name": "Petit sac de butin",
-      "nameEn": "Small Grab Bag"
+      "nameEn": "Small Grab Bag",
+      "effect": "Vous gagnez 2 composants d'objet aléatoires."
     },
     {
       "id": "unforgotten",
       "name": "Honneur du Maître de guerre",
-      "nameEn": "Warlord's Honor"
+      "nameEn": "Warlord's Honor",
+      "effect": "À chaque manche, votre équipe gagne 5% de dégâts d'attaque et de puissance. Cet effet peut se cumuler jusqu'à 4 fois et les champions commencent avec 1 effet."
     },
     {
-      "id": "teambuilding",
-      "name": "Esprit d'équipe",
-      "nameEn": "Team Building"
+      "id": "tiniesttitan",
+      "name": "Mini-Tacticien",
+      "nameEn": "Tiniest Titan",
+      "effect": "Vous récupérez 2 PV de Tacticien et gagnez 1 PO après chaque combat contre un joueur. Votre Tacticien se déplace aussi plus vite."
     },
     {
       "id": "youngandwildandfree",
-      "name": "Liberté !",
-      "nameEn": "Young and Wild and Free"
+      "name": "Liberté!",
+      "nameEn": "Young and Wild and Free",
+      "effect": "Vous pouvez toujours vous déplacer librement lors des phases de carrousel. Vous gagnez 5 PO."
     },
     {
       "id": "tacticianskitchen",
       "name": "Cuisine du Tacticien",
-      "nameEn": "Tactician's Kitchen"
+      "nameEn": "Tactician's Kitchen",
+      "effect": "Vous gagnez un emblème aléatoire. Après 3 manches, vous gagnez une Cape du Tacticien."
     },
     {
-      "id": "hustler",
+      "id": "hyperroll",
       "name": "Gredin",
-      "nameEn": "Hustler"
+      "nameEn": "Hustler",
+      "effect": "Vous ne gagnez plus de PO d'intérêts, mais vous gagnez 3 PO au début de chaque manche de combat contre un joueur. Vous gagnez immédiatement 3 PO."
     },
     {
-      "id": "bandofthievesii",
-      "name": "Bande de voleurs II",
-      "nameEn": "Band of Thieves II"
+      "id": "bandofthieves2plus",
+      "name": "Bande de voleurs II+",
+      "nameEn": "Band of Thieves II+",
+      "effect": "Vous gagnez 2 Gants de voleur. Après 5 combats contre un joueur, vous en gagnez un autre."
     },
     {
       "id": "giantandmighty",
       "name": "Grandeur et démesure",
-      "nameEn": "Giant and Mighty"
+      "nameEn": "Giant and Mighty",
+      "effect": "Votre équipe devient grande, les unités gagnent 200 PV et 10% de PV max."
     },
     {
-      "id": "cyberneticimplants_gold",
+      "id": "cyberneticimplants2",
       "name": "Implants cybernétiques",
-      "nameEn": "Cybernetic Implants"
+      "nameEn": "Cybernetic Implants",
+      "effect": "Vos alliés équipés d'un objet gagnent 100 PV et 15% de dégâts d'attaque. Vous gagnez un BF Glaive."
     },
     {
       "id": "replication",
       "name": "Fabrication en série",
-      "nameEn": "Replication"
+      "nameEn": "Replication",
+      "effect": "Choisissez 1 composant parmi 3. Pendant 2 manches, vous gagnez une copie de ce composant."
     },
     {
       "id": "crashtestdummies",
       "name": "Mannequins de choc",
-      "nameEn": "Crash Test Dummies"
+      "nameEn": "Crash Test Dummies",
+      "effect": "Vous gagnez 2 Mannequins d'entraînement. Début du combat: vos Mannequins se lancent vers un groupe d'ennemis et les étourdissent pendant 1 sec."
     },
     {
-      "id": "luckygloves",
-      "name": "Gants porte-bonheur",
-      "nameEn": "Lucky Gloves"
+      "id": "luckyglovesplus",
+      "name": "Gants porte-bonheur+",
+      "nameEn": "Lucky Gloves+",
+      "effect": "Gants de voleur donnera toujours des objets recommandés à vos champions. Vous gagnez 2 Gants d'entraînement, puis vous en gagnez un autre après 4 combats contre un joueur."
+    },
+    {
+      "id": "trifecta1_set7",
+      "name": "Tiercé I",
+      "nameEn": "Trifecta I",
+      "effect": "Vous gagnez 2 champions de palier 3. Début du combat: 3 champions de palier 3 aléatoires gagnent 220 PV et 20% de vitesse d'attaque."
     },
     {
       "id": "dummify",
       "name": "Mannequinification",
-      "nameEn": "Dummify"
+      "nameEn": "Dummify",
+      "effect": "Vous perdez tous les champions sur votre plateau et sur votre banc. Vous gagnez un Mannequin d'entraînement doté de 60% de leurs PV combinés. Le mannequin gagne 1000 PV par phase. Vous gagnez un champion non tank 2 étoiles à 2 PO."
     },
     {
       "id": "patienceisavirtue",
       "name": "Jeu de patience",
-      "nameEn": "Patience Is A Virtue"
+      "nameEn": "Patience is a Virtue",
+      "effect": "Vous gagnez 4 relances immédiatement. À chaque manche, vous gagnez 1 relance(s) gratuite(s) si vous n'avez pas acheté de champion lors de la manche précédente."
     },
     {
       "id": "deadliercaps",
       "name": "Coiffes mortelles",
-      "nameEn": "Deadlier Caps"
+      "nameEn": "Deadlier Caps",
+      "effect": "Vous gagnez une Coiffe de Rabadon. Les Coiffes de Rabadon octroient 1 de régénération de mana et de puissance de manière permanente à chaque fois que leur porteur participe à une élimination."
     },
     {
       "id": "tinybutdeadly",
       "name": "Petits mais costauds",
-      "nameEn": "Tiny, but Deadly"
+      "nameEn": "Tiny, but Deadly",
+      "effect": "Votre équipe devient petite et gagne 33% de vitesse d'attaque et de vitesse de déplacement."
     },
     {
       "id": "augmentedpower",
       "name": "Optimisation optimisée",
-      "nameEn": "Augmented Power"
+      "nameEn": "Augmented Power",
+      "effect": "Votre prochaine optimisation sera d'un palier supérieur."
     },
     {
-      "id": "urfsgrabbag",
+      "id": "urfsgrabbag2",
       "name": "Besace d'Urf",
-      "nameEn": "Urf's Grab Bag"
+      "nameEn": "Urf's Grab Bag",
+      "effect": "Vous gagnez 1 Spatule, 3 composants aléatoires et 5 PO."
+    },
+    {
+      "id": "littlebuddies_set7",
+      "name": "Choristes",
+      "nameEn": "Little Buddies",
+      "effect": "Vos champions de paliers 4 et 5 gagnent 55 PV et 6% de vitesse d'attaque par champion de paliers 1 et 2 sur votre plateau."
     },
     {
       "id": "scapegoat",
       "name": "Bouc émissaire",
-      "nameEn": "Scapegoat"
+      "nameEn": "Scapegoat",
+      "effect": "Vous gagnez un Mannequin d'entraînement et 4 PO. À chaque combat contre un joueur, si ce Mannequin d'entraînement est le premier à mourir, vous gagnez 1 PO."
     },
     {
       "id": "foodfighttactics",
       "name": "Bataille de nourriture",
-      "nameEn": "Mess Hall"
+      "nameEn": "Mess Hall",
+      "effect": "Après 10 sec de combat, vos champions gagnent 8% de vitesse d'attaque. Leurs attaques lancent également 2 délicieux projectiles qui infligent 25 pts de dégâts magiques ()."
     },
     {
       "id": "baronslair",
       "name": "Repaire du baron",
-      "nameEn": "Baron's Lair"
+      "nameEn": "Baron's Lair",
+      "effect": "Vous gagnez un objet de tank aléatoire. Après 8 sec de combat, votre équipe gagne 5% de dégâts d'attaque et de puissance bonus par seconde jusqu'à la fin du combat."
     },
     {
       "id": "missedconnections",
-      "name": "Palier 1",
-      "nameEn": "Missed Connections"
+      "name": "Palier 1",
+      "nameEn": "Missed Connections",
+      "effect": "Vous gagnez un exemplaire de chaque champion à 1 PO."
     },
     {
       "id": "winout",
       "name": "Sauter une classe",
-      "nameEn": "Win Out"
+      "nameEn": "Win Out",
+      "effect": "Lorsque vous atteignez le niveau 9, vous passez immédiatement au niveau 10 et vous gagnez 8 relances de boutique. Vous gagnez immédiatement 10 XP."
     },
     {
       "id": "scoreboardscrapper",
       "name": "Lutte pour le sommet",
-      "nameEn": "Scoreboard Scrapper"
+      "nameEn": "Scoreboard Scrapper",
+      "effect": "À chaque manche, si vous êtes dans les 4 derniers, vos unités gagnent définitivement 1.5% de dégâts d'attaque et de puissance. Si vous êtes dans le top 4, elles ont 10% de PV en plus."
     },
     {
       "id": "rerolltransfer",
       "name": "Recyclage de relances",
-      "nameEn": "Reroll Transfer"
+      "nameEn": "Reroll Transfer",
+      "effect": "Toutes les 1 relance(s) d'optimisation(s) non utilisée(s), vous gagnez 3 relances de la boutique gratuites. Vous gagnez 1 PO."
     },
     {
       "id": "bronzeforlifeii",
-      "name": "Bronze pour la vie II",
-      "nameEn": "Bronze For Life II"
+      "name": "Bronze pour la vie II",
+      "nameEn": "Bronze For Life II",
+      "effect": "Votre équipe gagne 2% d'amplification des dégâts et 4 d'armure et de résistance magique pour chaque type au palier Bronze."
     },
     {
       "id": "frontlinefoundation",
       "name": "Fondation de première ligne",
-      "nameEn": "Frontline Foundation"
-    },
-    {
-      "id": "crownguardspirit",
-      "name": "Volonté de la couronne",
-      "nameEn": "Crown's Will"
-    },
-    {
-      "id": "trifecta1",
-      "name": "Tiercé I",
-      "nameEn": "Trifecta I"
-    },
-    {
-      "id": "earlylearnings",
-      "name": "Leçons de combat",
-      "nameEn": "Early Learnings"
-    },
-    {
-      "id": "tombraider2",
-      "name": "Pilleur de tombes II",
-      "nameEn": "Tomb Raider II"
-    },
-    {
-      "id": "thriftshop",
-      "name": "Dépense réfléchie",
-      "nameEn": "Wise Spending"
-    },
-    {
-      "id": "backlineblueprint",
-      "name": "Stratégie de ligne arrière",
-      "nameEn": "Backline Blueprint"
-    },
-    {
-      "id": "fullyadapted",
-      "name": "Adaptation totale",
-      "nameEn": "Fully Adapted"
-    },
-    {
-      "id": "forceofnatureplus",
-      "name": "Nouvelle recrue+",
-      "nameEn": "New Recruit+"
-    },
-    {
-      "id": "trifecta2",
-      "name": "Tiercé II",
-      "nameEn": "Trifecta II"
-    },
-    {
-      "id": "chaosevolution",
-      "name": "Évolution chaotique",
-      "nameEn": "Chaotic Evolution"
-    },
-    {
-      "id": "cognitivetaxplus",
-      "name": "Charge cognitive+",
-      "nameEn": "Cognitive Tax+"
-    },
-    {
-      "id": "youhavemybow",
-      "name": "Mon arc est vôtre",
-      "nameEn": "You Have My Bow"
-    },
-    {
-      "id": "tombraider1",
-      "name": "Pilleur de tombes I",
-      "nameEn": "Tomb Raider I"
-    },
-    {
-      "id": "onebufftwobuff",
-      "name": "Buffs à gogo",
-      "nameEn": "One Buff Two Buff"
-    },
-    {
-      "id": "glasscannon_silver",
-      "name": "Canon de verre I",
-      "nameEn": "Glass Cannon I"
-    },
-    {
-      "id": "pandorasbench",
-      "name": "Banc de Pandore",
-      "nameEn": "Pandora's Bench"
-    },
-    {
-      "id": "crossfire2",
-      "name": "Brut de décoffrage",
-      "nameEn": "Piercing Sight"
-    },
-    {
-      "id": "makeshiftarmori",
-      "name": "Armure improvisée I",
-      "nameEn": "Makeshift Armor I"
-    },
-    {
-      "id": "makeshiftarmorii",
-      "name": "Armure improvisée II",
-      "nameEn": "Makeshift Armor II"
-    },
-    {
-      "id": "upwardmobility",
-      "name": "Ascension sociale",
-      "nameEn": "Upward Mobility"
-    },
-    {
-      "id": "anotherone",
-      "name": "Un autre !",
-      "nameEn": "Another One!"
-    },
-    {
-      "id": "bigfriend",
-      "name": "Ami trapu I",
-      "nameEn": "Big Friend I"
-    },
-    {
-      "id": "explosivegrowthplus",
-      "name": "Croissance explosive+",
-      "nameEn": "Explosive Growth+"
-    },
-    {
-      "id": "aimforthetop",
-      "name": "Visez le sommet !",
-      "nameEn": "Aim For The Top!"
-    },
-    {
-      "id": "riggedshopplus",
-      "name": "Boutique truquée+",
-      "nameEn": "Rigged Shop+"
-    },
-    {
-      "id": "silverdestinyplus",
-      "name": "Destin argenté+",
-      "nameEn": "Silver Destiny+"
-    },
-    {
-      "id": "pumpingup",
-      "name": "Toujours plus vite I",
-      "nameEn": "Pumping Up I"
-    },
-    {
-      "id": "psychicforge",
-      "name": "Forge psychique",
-      "nameEn": "Psychic Forge"
-    },
-    {
-      "id": "bestfriends2",
-      "name": "Meilleurs amis II",
-      "nameEn": "Best Friends II"
-    },
-    {
-      "id": "clutteredmind",
-      "name": "Esprit encombré",
-      "nameEn": "Cluttered Mind"
-    },
-    {
-      "id": "bestfriends1",
-      "name": "Meilleurs amis I",
-      "nameEn": "Best Friends I"
-    },
-    {
-      "id": "heavyisthecrown",
-      "name": "Lourde est la couronne",
-      "nameEn": "Heavy Is the Crown"
-    },
-    {
-      "id": "hardcommit",
-      "name": "Typologie",
-      "nameEn": "Hard Commit"
-    },
-    {
-      "id": "seraphimsstaff",
-      "name": "Bâton angélique",
-      "nameEn": "Seraphim's Staff"
-    },
-    {
-      "id": "grouphugii",
-      "name": "Câlin collectif II",
-      "nameEn": "Group Hug II"
-    },
-    {
-      "id": "buriedtreasuresiii",
-      "name": "Trésors enfouis III",
-      "nameEn": "Buried Treasures III"
-    },
-    {
-      "id": "lastsecondsave",
-      "name": "Sauvetage in extremis",
-      "nameEn": "Last Second Save"
-    },
-    {
-      "id": "storyofseven",
-      "name": "Boules de cristal",
-      "nameEn": "A Story of Seven"
-    },
-    {
-      "id": "howlinggale",
-      "name": "Vent hurlant",
-      "nameEn": "Howling Gale"
-    },
-    {
-      "id": "grouphugi",
-      "name": "Câlin collectif I",
-      "nameEn": "Group Hug I"
-    },
-    {
-      "id": "wovenmagic",
-      "name": "Mana magique",
-      "nameEn": "Woven Magic"
-    },
-    {
-      "id": "expedition",
-      "name": "Expédition",
-      "nameEn": "Expedition"
-    },
-    {
-      "id": "healingorbsi",
-      "name": "Orbes de soins I",
-      "nameEn": "Healing Orbs I"
-    },
-    {
-      "id": "thetraittreeplus",
-      "name": "Emblématiquement+",
-      "nameEn": "The Trait Tree+"
-    },
-    {
-      "id": "tablescraps",
-      "name": "Rebuts",
-      "nameEn": "Table Scraps"
-    },
-    {
-      "id": "climbtheladder2",
-      "name": "Connivence II",
-      "nameEn": "Climb The Ladder II"
-    },
-    {
-      "id": "goldenquest",
-      "name": "Quête dorée",
-      "nameEn": "A Golden Quest"
-    },
-    {
-      "id": "climbtheladder1",
-      "name": "Connivence I",
-      "nameEn": "Climb The Ladder I"
-    },
-    {
-      "id": "golddestinyplus",
-      "name": "Destin doré +",
-      "nameEn": "Gold Destiny Plus"
-    },
-    {
-      "id": "coronation",
-      "name": "Couronnement",
-      "nameEn": "Coronation"
-    },
-    {
-      "id": "commander_teamingup1",
-      "name": "Cours de soutien",
-      "nameEn": "Teaming Up"
-    },
-    {
-      "id": "gildedsteel",
-      "name": "Acier doré",
-      "nameEn": "Gilded Steel"
-    },
-    {
-      "id": "electrochargeii",
-      "name": "Électrocharge II",
-      "nameEn": "Electrocharge II"
-    },
-    {
-      "id": "bloodbank",
-      "name": "Le prix du sang",
-      "nameEn": "Lunch Money"
-    },
-    {
-      "id": "electrochargei",
-      "name": "Électrocharge I",
-      "nameEn": "Electrocharge I"
-    },
-    {
-      "id": "ninelives",
-      "name": "9 vies",
-      "nameEn": "Nine Lives"
-    },
-    {
-      "id": "dravenspoilsofwar",
-      "name": "Butin de guerre I",
-      "nameEn": "Spoils of War I"
-    },
-    {
-      "id": "worththewait",
-      "name": "Attente récompensée",
-      "nameEn": "Worth the Wait"
-    },
-    {
-      "id": "18_branchingoutplus",
-      "name": "Aléatoire jacta est+",
-      "nameEn": "Branching Out+"
-    },
-    {
-      "id": "itemgrabbag",
-      "name": "Sac de butin I",
-      "nameEn": "Item Grab Bag I"
-    },
-    {
-      "id": "goinglong",
-      "name": "Expérience à tout prix",
-      "nameEn": "Going Long"
-    },
-    {
-      "id": "staffsmith",
-      "name": "Fabricant de baguettes",
-      "nameEn": "Staffsmith"
-    },
-    {
-      "id": "expectedunexpectedness",
-      "name": "Lancer de dés",
-      "nameEn": "Expected Unexpectedness"
-    },
-    {
-      "id": "placeboplus",
-      "name": "Placébo+",
-      "nameEn": "Placebo+"
-    },
-    {
-      "id": "quietquitting",
-      "name": "Boutique fermée",
-      "nameEn": "Quiet Quitting"
-    },
-    {
-      "id": "holdtheline",
-      "name": "Tenir le front",
-      "nameEn": "Hold the Line"
-    },
-    {
-      "id": "spiritlink1",
-      "name": "Régénération fluctuante",
-      "nameEn": "Spirit Link"
-    },
-    {
-      "id": "sunfireboard",
-      "name": "Plateau solaire",
-      "nameEn": "Sunfire Board"
-    },
-    {
-      "id": "ironassets",
-      "name": "Entre les PO et l'enclume",
-      "nameEn": "Iron Assets"
-    },
-    {
-      "id": "heftyrolls",
-      "name": "Relances imposantes",
-      "nameEn": "Hefty Rolls"
-    },
-    {
-      "id": "feedtheflames",
-      "name": "Allumer le feu",
-      "nameEn": "Feed the Flames"
-    },
-    {
-      "id": "blazingsoul2",
-      "name": "Âme ardente II",
-      "nameEn": "Blazing Soul II"
-    },
-    {
-      "id": "hedgefund",
-      "name": "Spéculation",
-      "nameEn": "Hedge Fund"
-    },
-    {
-      "id": "cloningfacility",
-      "name": "Clonage",
-      "nameEn": "Cloning Facility"
-    },
-    {
-      "id": "hardbargain",
-      "name": "Carrousels trafiqués",
-      "nameEn": "Hard Bargain"
-    },
-    {
-      "id": "goldengambleplus",
-      "name": "Pile ou face+",
-      "nameEn": "Golden Gamble+"
-    },
-    {
-      "id": "afk",
-      "name": "AFK",
-      "nameEn": "AFK"
-    },
-    {
-      "id": "backupdancers",
-      "name": "Soutien du banc",
-      "nameEn": "Backup Dancers"
-    },
-    {
-      "id": "twomuchvalue",
-      "name": "Avènement des deux",
-      "nameEn": "Two Much Value"
-    },
-    {
-      "id": "heroicgrabbagplus",
-      "name": "Besace héroïque+",
-      "nameEn": "Heroic Grab Bag+"
-    },
-    {
-      "id": "backupbows",
-      "name": "Arcs à gogo",
-      "nameEn": "Backup Bows"
-    },
-    {
-      "id": "plotarmor",
-      "name": "Résistance acharnée",
-      "nameEn": "Plot Armor"
-    },
-    {
-      "id": "pocketrecombobulator",
-      "name": "Recombobulateur de poche",
-      "nameEn": "Pocket Recombobulator"
-    },
-    {
-      "id": "heartofsteel",
-      "name": "Cœur d'acier",
-      "nameEn": "Heart of Steel"
-    },
-    {
-      "id": "chargetransfer1",
-      "name": "Transfert I",
-      "nameEn": "Charge Transfer I"
-    },
-    {
-      "id": "waterlotus2",
-      "name": "Fleur de lotus II",
-      "nameEn": "Water Lotus II"
-    },
-    {
-      "id": "chargetransfer2",
-      "name": "Transfert II",
-      "nameEn": "Charge Transfer II"
-    },
-    {
-      "id": "radiantrefactor",
-      "name": "Réfracteur de lumière",
-      "nameEn": "Radiant Refactor"
-    },
-    {
-      "id": "patientstudy",
-      "name": "Gagnant-gagnant",
-      "nameEn": "Patient Study"
-    },
-    {
-      "id": "urfsgambit",
-      "name": "Gambit d'Urf",
-      "nameEn": "Urf's Gambit"
-    },
-    {
-      "id": "slammin",
-      "name": "Tout doit disparaître",
-      "nameEn": "Slammin'"
-    },
-    {
-      "id": "investmentstrategy",
-      "name": "Stratégie d'investissement II",
-      "nameEn": "Investment Strategy II"
-    },
-    {
-      "id": "bronzeforlifei",
-      "name": "Bronze pour la vie I",
-      "nameEn": "Bronze For Life I"
-    },
-    {
-      "id": "investmentstrategyi",
-      "name": "Stratégie d'investissement I",
-      "nameEn": "Investment Strategy I"
-    },
-    {
-      "id": "cosmicrestart",
-      "name": "Réinitialisation cosmique",
-      "nameEn": "Cosmic Restart"
-    },
-    {
-      "id": "highvoltage",
-      "name": "Haute tension",
-      "nameEn": "High Voltage"
-    },
-    {
-      "id": "sololeveling",
-      "name": "Solo Leveling",
-      "nameEn": "Solo Leveling"
-    },
-    {
-      "id": "distancing",
-      "name": "Exilés I",
-      "nameEn": "Exiles I"
-    },
-    {
-      "id": "treasurehunt",
-      "name": "Chasse au trésor",
-      "nameEn": "Treasure Hunt"
-    },
-    {
-      "id": "slightlymagicroll",
-      "name": "Dés légèrement magiques",
-      "nameEn": "Slightly Magic Roll"
-    },
-    {
-      "id": "twotrick",
-      "name": "Pluie de deux",
-      "nameEn": "Two Trick"
-    },
-    {
-      "id": "blazingsoul",
-      "name": "Âme ardente I",
-      "nameEn": "Blazing Soul I"
-    },
-    {
-      "id": "findyourcenter",
-      "name": "Centre d'excellence",
-      "nameEn": "Find Your Center"
-    },
-    {
-      "id": "18_goodforsomethingi",
-      "name": "Butin funéraire I",
-      "nameEn": "Good For Something I"
-    },
-    {
-      "id": "keepers1",
-      "name": "Sentinelles I",
-      "nameEn": "Keepers I"
-    },
-    {
-      "id": "spiritofredemption",
-      "name": "Esprit de la Rédemption",
-      "nameEn": "Spirit Of Redemption"
-    },
-    {
-      "id": "speedydoublekill",
-      "name": "Deux de moins",
-      "nameEn": "Speedy Double Kill"
-    },
-    {
-      "id": "forwardthinking",
-      "name": "Investissement sur le futur",
-      "nameEn": "Forward Thinking"
-    },
-    {
-      "id": "dhampyr1",
-      "name": "Vitalité vampirique I",
-      "nameEn": "Vampiric Vitality I"
-    },
-    {
-      "id": "keepers2",
-      "name": "Sentinelles II",
-      "nameEn": "Keepers II"
-    },
-    {
-      "id": "flexible",
-      "name": "Emblématique",
-      "nameEn": "Flexible"
-    },
-    {
-      "id": "restartmission",
-      "name": "Nouveau départ",
-      "nameEn": "Restart Mission"
-    },
-    {
-      "id": "18_duoqueue",
-      "name": "Aléatoirement vôtre",
-      "nameEn": "Duo Queue"
-    },
-    {
-      "id": "preparation2",
-      "name": "Préparation II",
-      "nameEn": "Preparation II"
-    },
-    {
-      "id": "bloodrage",
-      "name": "Rage sanglante",
-      "nameEn": "Blood Rage"
-    },
-    {
-      "id": "levelup",
-      "name": "Niveau supérieur !",
-      "nameEn": "Level Up!"
-    },
-    {
-      "id": "secondwind2",
-      "name": "Second souffle II",
-      "nameEn": "Second Wind II"
-    },
-    {
-      "id": "twinguardians",
-      "name": "Gardiens jumeaux",
-      "nameEn": "Twin Guardians"
-    },
-    {
-      "id": "secondwind1",
-      "name": "Second souffle",
-      "nameEn": "Second Wind"
-    },
-    {
-      "id": "anexaltedadventure",
-      "name": "Une aventure exaltante",
-      "nameEn": "An Exalted Adventure"
-    },
-    {
-      "id": "standunited",
-      "name": "Soutien indéfectible",
-      "nameEn": "Stand United"
-    },
-    {
-      "id": "starsareborn",
-      "name": "Des étoiles sont nées",
-      "nameEn": "Stars Are Born"
-    },
-    {
-      "id": "feelinglucky",
-      "name": "Vous vous sentez en veine ?",
-      "nameEn": "Feeling Lucky"
-    },
-    {
-      "id": "advancedloanplus",
-      "name": "Prêt anticipé+",
-      "nameEn": "Advanced Loan+"
-    },
-    {
-      "id": "thegoldendragon",
-      "name": "Mailles en or",
-      "nameEn": "The Golden Dragon"
-    },
-    {
-      "id": "componentquestrod",
-      "name": "Baguettes à gogo",
-      "nameEn": "Continuous Conjuration"
-    },
-    {
-      "id": "18_onetwofive",
-      "name": "Butin aléatoire",
-      "nameEn": "One, Two, Five!"
-    },
-    {
-      "id": "silverspoon",
-      "name": "Par ici l'XP",
-      "nameEn": "Silver Spoon"
-    },
-    {
-      "id": "infinityprotection",
-      "name": "Protection infinie",
-      "nameEn": "Infinity Protection"
-    },
-    {
-      "id": "constructacompanion",
-      "name": "Achat 3 étoiles",
-      "nameEn": "Construct a Companion"
-    },
-    {
-      "id": "homecooking",
-      "name": "Ravitaillement",
-      "nameEn": "Care Package"
-    },
-    {
-      "id": "swordsmith",
-      "name": "Armurier",
-      "nameEn": "Swordsmith"
-    },
-    {
-      "id": "epoch",
-      "name": "Cycle épique",
-      "nameEn": "Epoch"
-    },
-    {
-      "id": "furiousblows",
-      "name": "Kahuna",
-      "nameEn": "Kahunahuna"
-    },
-    {
-      "id": "museumheist",
-      "name": "Composants de guerre",
-      "nameEn": "Component Heist"
-    },
-    {
-      "id": "aurafarming",
-      "name": "Patience",
-      "nameEn": "Aura Farming"
-    },
-    {
-      "id": "beltoverflow",
-      "name": "Abondance de ceintures",
-      "nameEn": "Belt Overflow"
-    },
-    {
-      "id": "forgedinstrength",
-      "name": "Artefacts à la rescousse",
-      "nameEn": "Forged In Strength"
-    },
-    {
-      "id": "onetwosthree",
-      "name": "Un, deux, trois",
-      "nameEn": "One Two Three"
-    },
-    {
-      "id": "eyeforaneye",
-      "name": "Composants funéraires",
-      "nameEn": "Eye For An Eye"
-    },
-    {
-      "id": "teslacoil",
-      "name": "Électrologie",
-      "nameEn": "Tesla Coil"
-    },
-    {
-      "id": "shoppingspree",
-      "name": "Shopping intensif",
-      "nameEn": "Shopping Spree"
-    },
-    {
-      "id": "savingsaccount",
-      "name": "Compte épargne",
-      "nameEn": "Savings Account"
-    },
-    {
-      "id": "craftedcrafting",
-      "name": "Maîtrise de l'artisanat",
-      "nameEn": "Crafted Crafting"
-    },
-    {
-      "id": "jeweledlotus_i",
-      "name": "Lotus précieux I",
-      "nameEn": "Jeweled Lotus I"
-    },
-    {
-      "id": "incoming",
-      "name": "Partage à retardement",
-      "nameEn": "Lit Fuse"
-    },
-    {
-      "id": "birthdayreunion",
-      "name": "Réunion d'anniversaire",
-      "nameEn": "Birthday Reunion"
-    },
-    {
-      "id": "cursedcrown",
-      "name": "Couronne maudite",
-      "nameEn": "Cursed Crown"
-    },
-    {
-      "id": "raininggoldplus",
-      "name": "Pluie d'or+",
-      "nameEn": "Raining Gold+"
-    },
-    {
-      "id": "exclusivecustomization",
-      "name": "Coup de chance",
-      "nameEn": "Exclusive Customization"
-    },
-    {
-      "id": "componentbuffet",
-      "name": "Buffet de composants",
-      "nameEn": "Component Buffet"
-    },
-    {
-      "id": "prizefighter",
-      "name": "Triomphe",
-      "nameEn": "Prizefighter"
-    },
-    {
-      "id": "preparation",
-      "name": "Préparation I",
-      "nameEn": "Preparation I"
-    },
-    {
-      "id": "investedplus",
-      "name": "Investissement+",
-      "nameEn": "Invested+"
-    },
-    {
-      "id": "wandoverflow",
-      "name": "Abondance de baguettes",
-      "nameEn": "Wand Overflow"
-    },
-    {
-      "id": "radiantrascal",
-      "name": "Vaurien de la lumière",
-      "nameEn": "Radiant Rascal"
+      "nameEn": "Frontline Foundation",
+      "effect": "Vous gagnez un champion tank 2 étoiles à 1 PO ainsi qu'un emblème correspondant à sa classe."
     },
     {
       "id": "ascension",
       "name": "Ascension",
-      "nameEn": "Ascension"
+      "nameEn": "Ascension",
+      "effect": "Après 12 sec de combat, vos unités gagnent 35% d'amplification des dégâts."
     },
     {
-      "id": "lineup",
-      "name": "Première ligne",
-      "nameEn": "Lineup"
+      "id": "crownguardspirit",
+      "name": "Volonté de la couronne",
+      "nameEn": "Crown's Will",
+      "effect": "Vous gagnez une Baguette trop grosse et une Cotte de mailles. Votre équipe gagne 8 puissance et 6 d'armure."
     },
     {
-      "id": "pandorasitemsii",
-      "name": "Objets de Pandore II",
-      "nameEn": "Pandora's Items II"
+      "id": "earlylearning",
+      "name": "Leçons de combat",
+      "nameEn": "Early Learnings",
+      "effect": "Votre équipe gagne 5% de dégâts d'attaque et de puissance. Augmente de 1% après chaque combat contre un joueur. Les champions à 1 PO gagnent le double."
     },
     {
-      "id": "luxurysubscription",
-      "name": "Abonnement premium",
-      "nameEn": "Luxury Subscription"
+      "id": "tombraider2",
+      "name": "Pilleur de tombes II",
+      "nameEn": "Tomb Raider II",
+      "effect": "Vous gagnez 1 Enclume à objets complets. Chaque fois qu'un joueur est éliminé, prenez l'un de ses objets complets."
     },
     {
-      "id": "boosterpack",
-      "name": "Booster",
-      "nameEn": "Booster Pack"
+      "id": "thriftshop",
+      "name": "Dépense réfléchie",
+      "nameEn": "Wise Spending",
+      "effect": "Vous ne pouvez plus acheter d'XP. Chaque fois que vous dépensez des PO pour relancer votre boutique, vous gagnez 2 XP. Vous gagnez immédiatement 1 PO."
     },
     {
-      "id": "glasscannon_gold",
-      "name": "Canon de verre II",
-      "nameEn": "Glass Cannon II"
+      "id": "backlineblueprint",
+      "name": "Stratégie de ligne arrière",
+      "nameEn": "Backline Blueprint",
+      "effect": "Vous gagnez un champion non tank à 3 PO ainsi qu'un emblème correspondant à sa classe."
     },
     {
-      "id": "recombobulator",
-      "name": "Recombobulateur",
-      "nameEn": "Recombobulator"
+      "id": "fullyadapted",
+      "name": "Adaptation totale",
+      "nameEn": "Fully Adapted",
+      "effect": "Vous gagnez un Casque adaptatif. Les champions équipés de cet objet gagnent les deux effets."
     },
     {
-      "id": "overencumbered",
-      "name": "Encombrement",
-      "nameEn": "Over Encumbered"
+      "id": "forceofnatureplus",
+      "name": "Nouvelle recrue+",
+      "nameEn": "New Recruit+",
+      "effect": "La taille de l'équipe augmente de 1 et vous gagnez 2 champions à 4 PO."
     },
     {
-      "id": "littlebuddies",
-      "name": "Choristes",
-      "nameEn": "Little Buddies"
+      "id": "prismaticdestinyplus",
+      "name": "Destin prismatique+",
+      "nameEn": "Prismatic Destiny+",
+      "effect": "Vous gagnez une optimisation de palier Prismatique aléatoire et 10 PO."
     },
     {
-      "id": "efficientshopper",
-      "name": "Carrousels améliorés",
-      "nameEn": "Efficient Shopper"
+      "id": "trifecta2",
+      "name": "Tiercé II",
+      "nameEn": "Trifecta II",
+      "effect": "Vous gagnez 3 champions à 3 PO. Les alliés gagnent 5% de vitesse d'attaque. Début du combat: 3 champions à 3 PO aléatoires gagnent 300 PV et 25% de vitesse d'attaque."
     },
     {
-      "id": "overheal",
-      "name": "Surcharge de PV",
-      "nameEn": "Overheal"
+      "id": "chaosevolution",
+      "name": "Évolution chaotique",
+      "nameEn": "Chaotic Evolution",
+      "effect": "Augmenter le niveau d'étoiles d'un champion lui octroie l'un des éléments suivants: 100 PV, 6% de durabilité, 10 de puissance, 10% de dégâts d'attaque, 10% de vitesse d'attaque. Bonus cumulables."
     },
     {
-      "id": "thornplatedarmor",
-      "name": "Armure couverte d'épines",
-      "nameEn": "Thorn-Plated Armor"
+      "id": "cognitivetax",
+      "name": "Charge cognitive",
+      "nameEn": "Cognitive Tax",
+      "effect": "Vous gagnez 8 PO et 1 XP."
     },
     {
-      "id": "timeskip",
-      "name": "Bye bye boutique",
-      "nameEn": "Time Skip"
+      "id": "youhavemybow",
+      "name": "Mon arc est vôtre",
+      "nameEn": "You Have My Bow",
+      "effect": "Vous gagnez un Arc courbe. Votre équipe gagne 12% de vitesse d'attaque."
     },
     {
-      "id": "pumpingup3",
-      "name": "Toujours plus vite III",
-      "nameEn": "Pumping Up III"
+      "id": "tombraider1",
+      "name": "Pilleur de tombes I",
+      "nameEn": "Tomb Raider I",
+      "effect": "Pour chacun des 3 prochains joueurs éliminés, prenez l'un de ses objets complets."
     },
     {
-      "id": "pumpingup2",
-      "name": "Toujours plus vite II",
-      "nameEn": "Pumping Up II"
+      "id": "onebufftwobuff",
+      "name": "Buffs à gogo",
+      "nameEn": "One Buff Two Buff",
+      "effect": "Vous gagnez un Buff rouge, un Buff bleu et un Duplicateur de champion."
     },
     {
-      "id": "calledshot",
-      "name": "Victoire annoncée",
-      "nameEn": "Called Shot"
+      "id": "glasscannoni",
+      "name": "Canon de verre I",
+      "nameEn": "Glass Cannon I",
+      "effect": "Les alliés commençant le combat sur la dernière rangée commencent le combat avec 80% de leurs PV, mais ils gagnent 16% d'amplification des dégâts."
     },
     {
-      "id": "commercecore",
-      "name": "Relances régulières",
-      "nameEn": "Commerce Core"
+      "id": "pandorasbench",
+      "name": "Banc de Pandore",
+      "nameEn": "Pandora's Bench",
+      "effect": "Au début de chaque manche, les champions des 3 emplacements les plus à droite de votre banc se transforment en champions aléatoires du même coût. Vous gagnez 4 PO."
     },
     {
-      "id": "focusedfire",
-      "name": "Feu concentré",
-      "nameEn": "Focused Fire"
+      "id": "crossfire2",
+      "name": "Brut de décoffrage",
+      "nameEn": "Piercing Sight",
+      "effect": "Les ennemis subissent des dégâts bruts bonus équivalents à 1% des dégâts qu'ils subissent. Ce bonus augmente de 1% (jusqu'à 20%) à chaque fois qu'ils subissent des dégâts."
     },
     {
-      "id": "sideeffects",
-      "name": "Effets secondaires",
-      "nameEn": "Side Effects"
+      "id": "makeshiftarmor1",
+      "name": "Armure improvisée I",
+      "nameEn": "Makeshift Armor I",
+      "effect": "Vos alliés sans objet gagnent 30 d'armure et de résistance magique."
     },
     {
-      "id": "bodyguardtraining",
-      "name": "Formation de Garde du corps",
-      "nameEn": "Bodyguard Training"
+      "id": "cognitivetaxplus",
+      "name": "Charge cognitive+",
+      "nameEn": "Cognitive Tax+",
+      "effect": "Vous gagnez 12 PO et 3 XP."
     },
     {
-      "id": "crymeariver",
-      "name": "Océan de larmes",
-      "nameEn": "Cry Me A River"
+      "id": "makeshiftarmor2",
+      "name": "Armure improvisée II",
+      "nameEn": "Makeshift Armor II",
+      "effect": "Vos alliés sans objet gagnent 50 d'armure et de résistance magique."
     },
     {
-      "id": "magicroll",
-      "name": "Dés magiques",
-      "nameEn": "Magic Roll"
+      "id": "upwardmobility",
+      "name": "Ascension sociale",
+      "nameEn": "Upward Mobility",
+      "effect": "L'XP coûte 1 PO de moins. Vous gagnez 2 PV et 1 relances gratuites chaque fois que votre niveau augmente."
     },
     {
-      "id": "swordoverflow",
-      "name": "Abondance de glaives",
-      "nameEn": "Sword Overflow"
+      "id": "anotherone",
+      "name": "Un autre!",
+      "nameEn": "Another One!",
+      "effect": "Le prochain objet complet que vous créez vous octroie une copie supplémentaire de celui-ci. Vous gagnez immédiatement 5 PO."
     },
     {
-      "id": "thetower",
-      "name": "La Tour",
-      "nameEn": "The Tower"
+      "id": "bigfriend",
+      "name": "Ami trapu I",
+      "nameEn": "Big Friend I",
+      "effect": "Vos alliés qui commencent le combat à côté d'un allié qui a plus de 1750 PV gagnent 10% de durabilité. Vous gagnez une Ceinture du géant."
     },
     {
-      "id": "westicktogether",
-      "name": "Partage emblématique",
-      "nameEn": "We Stick Together"
+      "id": "explosivegrowthplus",
+      "name": "Croissance explosive+",
+      "nameEn": "Explosive Growth+",
+      "effect": "Vous gagnez 10 XP immédiatement et au début des 3 prochaines manches."
     },
     {
-      "id": "clearmind",
-      "name": "Lucidité",
-      "nameEn": "Clear Mind"
+      "id": "aimforthetop",
+      "name": "Visez le sommet!",
+      "nameEn": "Aim For The Top!",
+      "effect": "Vous combattez plus souvent des joueurs plus forts, et vous savez qui est votre prochain adversaire. À chaque défaite, vous gagnez 2 XP. À votre première victoire et toutes les 3 victoires suivantes, vous gagnez un composant."
     },
     {
-      "id": "worththewaitii",
-      "name": "Attente récompensée II",
-      "nameEn": "Worth the Wait II"
+      "id": "riggedshopplus",
+      "name": "Boutique truquée+",
+      "nameEn": "Rigged Shop+",
+      "effect": "Pour votre prochaine boutique et toutes les 4 boutiques ensuite, seuls des champions à 3 PO seront proposés. Vous gagnez 5 relances."
     },
     {
-      "id": "titanictitan",
-      "name": "Liberté conditionnelle",
-      "nameEn": "Titanic Titan"
+      "id": "silverdestiny",
+      "name": "Destin argenté",
+      "nameEn": "Silver Destiny",
+      "effect": "Vous gagnez une optimisation de palier Argent aléatoire et 2 PO."
     },
     {
-      "id": "misfits",
-      "name": "Touche-à-tout",
-      "nameEn": "Misfits"
+      "id": "explosivegrowth",
+      "name": "Croissance explosive",
+      "nameEn": "Explosive Growth",
+      "effect": "Vous gagnez 7 XP immédiatement et au début des 3 prochaines manches."
     },
     {
-      "id": "headstart",
-      "name": "Départ différé",
-      "nameEn": "Delayed Start"
+      "id": "psychicforge",
+      "name": "Forge psychique",
+      "nameEn": "Psychic Forge",
+      "effect": "Au début de la manche, les objets complets des champions sur le banc se transforment en l'un des objets conseillés. Vous gagnez un objet complet aléatoire."
     },
     {
-      "id": "rollingfordays",
-      "name": "Jour de relance",
-      "nameEn": "Rolling For Days"
+      "id": "bestfriends2",
+      "name": "Meilleurs amis II",
+      "nameEn": "Best Friends II",
+      "effect": "Au début du combat, vos alliés adjacents à une seule autre unité gagnent 15% de vitesse d'attaque et 14 armure et résistance magique."
     },
     {
-      "id": "clockworkaccelerator",
-      "name": "Accélérateur mécanique",
-      "nameEn": "Clockwork Accelerator"
+      "id": "clutteredmind",
+      "name": "Esprit encombré",
+      "nameEn": "Cluttered Mind",
+      "effect": "Vous gagnez immédiatement 4 champions à 1 PO aléatoires. Si votre banc est plein à la fin d'un combat contre un joueur, vous gagnez 3 XP."
     },
     {
-      "id": "protagonist",
-      "name": "Star du show",
-      "nameEn": "Protagonist"
+      "id": "bestfriends1",
+      "name": "Meilleurs amis I",
+      "nameEn": "Best Friends I",
+      "effect": "Au début du combat, vos alliés adjacents à une seule autre unité gagnent 10% de vitesse d'attaque et 9 armure et résistance magique."
     },
     {
-      "id": "twotanky",
-      "name": "Tanks jumeaux",
-      "nameEn": "Two Tanky"
+      "id": "silverdestinyplus",
+      "name": "Destin argenté+",
+      "nameEn": "Silver Destiny+",
+      "effect": "Vous gagnez une optimisation de palier Argent aléatoire et 4 PO."
     },
     {
-      "id": "commander_finalascension",
-      "name": "Ascension finale",
-      "nameEn": "Final Ascension"
+      "id": "heavyisthecrown",
+      "name": "Lourde est la couronne",
+      "nameEn": "Heavy Is the Crown",
+      "effect": "Vous gagnez une Couronne de Demacia, qui octroie d'importants bonus à son porteur. Si le porteur est éliminé, vous perdez le combat."
     },
     {
-      "id": "noblesacrifice",
-      "name": "Noble sacrifice",
-      "nameEn": "Noble Sacrifice"
+      "id": "hardcommit",
+      "name": "Typologie",
+      "nameEn": "Hard Commit",
+      "effect": "Vous gagnez un emblème aléatoire. Maintenant et au début de chaque phase, vous gagnez un champion 1 étoile de ce type, d'un coût équivalent à la phase (max 5) et 3 PO."
     },
     {
-      "id": "corrosion",
-      "name": "Corrosion",
-      "nameEn": "Corrosion"
+      "id": "seraphimsstaff",
+      "name": "Bâton angélique",
+      "nameEn": "Seraphim's Staff",
+      "effect": "Vous gagnez un Bâton de l'archange. Les Bâtons de l'archange confèrent 2 régénération de mana supplémentaire si le porteur possède 90% de puissance ou plus."
     },
     {
-      "id": "boxinglessons",
-      "name": "Ligne de front",
-      "nameEn": "Boxing Lessons"
+      "id": "grouphug2",
+      "name": "Câlin collectif II",
+      "nameEn": "Group Hug II",
+      "effect": "Début du combat: les alliés octroient aux alliés adjacents 9 d'armure et de résistance magique. Cet effet est cumulable."
     },
     {
-      "id": "starterkit",
-      "name": "Kit de départ",
-      "nameEn": "Starter Kit"
+      "id": "buildingacollectionplusplus",
+      "name": "Trésors enfouis",
+      "nameEn": "Buried Treasures",
+      "effect": "Vous gagnez un composant aléatoire immédiatement et au début des 5 prochaines manches."
     },
     {
-      "id": "lategamespecialist",
-      "name": "Spécialiste des fins de partie",
-      "nameEn": "Late Game Specialist"
+      "id": "lastsecondsave",
+      "name": "Sauvetage in extremis",
+      "nameEn": "Last Second Save",
+      "effect": "Quand un allié tombe pour la première fois sous 35% de ses PV, il récupère 20% de ses PV max."
     },
     {
-      "id": "golemify",
-      "name": "Golemification",
-      "nameEn": "Golemify"
+      "id": "storyofseven",
+      "name": "Boules de cristal",
+      "nameEn": "A Story of Seven",
+      "effect": "Récupérez des boules de cristal en gagnant des combats contre un joueur. Récupérer 7 boules vous donne une récompense. Vous pouvez ensuite recommencer cette mission pour plus de récompenses. Vous commencez avec un champion 2 étoiles à 1 PO."
     },
     {
-      "id": "birthdaypresent",
-      "name": "Cadeau d'anniversaire",
-      "nameEn": "Birthday Present"
+      "id": "howlinggale",
+      "name": "Vent hurlant",
+      "nameEn": "Howling Gale",
+      "effect": "Tous les 550 pts de mana que votre équipe dépense, une tornade est invoquée. Cette tornade projette les ennemis en l'air."
     },
     {
-      "id": "pyromaniac",
-      "name": "Pyromanie",
-      "nameEn": "Pyromaniac"
+      "id": "grouphug1",
+      "name": "Câlin collectif I",
+      "nameEn": "Group Hug I",
+      "effect": "Début du combat: les alliés octroient aux alliés adjacents 6 d'armure et de résistance magique. Cet effet est cumulable."
     },
     {
-      "id": "justslayer",
-      "name": "Tueur impitoyable",
-      "nameEn": "Indiscriminate Killer"
+      "id": "thevidalion",
+      "name": "Mana magique",
+      "nameEn": "Woven Magic",
+      "effect": "Vous gagnez un composant aléatoire. Tous les 2200 pts de manas dépensés par votre équipe vous octroient un composant supplémentaire (maximum: /3)."
     },
     {
-      "id": "shimmerscaleessence",
-      "name": "Essence des Luminécailles",
-      "nameEn": "Shimmerscale Essence"
+      "id": "expedition",
+      "name": "Expédition",
+      "nameEn": "Expedition",
+      "effect": "Au début de chaque manche, vous perdez le champion se trouvant le plus à droite sur votre banc. Après avoir perdu 33 PO de champion de cette manière, vous gagnez une récompense puissante. Vous gagnez immédiatement un champion à 3 PO."
     },
     {
-      "id": "flowingtears",
-      "name": "Larmes à gogo",
-      "nameEn": "Flowing Tears"
+      "id": "healingorbsi",
+      "name": "Orbes de soins I",
+      "nameEn": "Healing Orbs I",
+      "effect": "Quand un ennemi meurt, l'allié le plus proche récupère 250 PV."
     },
     {
-      "id": "soloplate",
-      "name": "Lithoplastron solo",
-      "nameEn": "Solo Plate"
+      "id": "traittreeplus",
+      "name": "Emblématiquement+",
+      "nameEn": "The Trait Tree+",
+      "effect": "Vous gagnez 3 emblèmes aléatoires, un Reforgeur et 4 PO."
     },
     {
-      "id": "sweettreats",
-      "name": "Objets blindés",
-      "nameEn": "Sweet Treats"
+      "id": "tablescraps",
+      "name": "Rebuts",
+      "nameEn": "Table Scraps",
+      "effect": "Après les 2 prochains carrousels, vous gagnez un champion qui n'a pas été sélectionné et son objet. Vous gagnez 1 PO."
     },
     {
-      "id": "dravenspoilsofwar3",
-      "name": "Butin de guerre III",
-      "nameEn": "Spoils of War III"
+      "id": "climbtheladder2",
+      "name": "Connivence II",
+      "nameEn": "Climb The Ladder II",
+      "effect": "Chaque fois qu'un allié meurt, les alliés qui partagent au moins un type avec lui gagnent 7% de puissance, 7% de dégâts d'attaque, 6 d'armure et 6 de résistance magique."
     },
     {
-      "id": "dravenspoilsofwar2",
-      "name": "Butin de guerre II",
-      "nameEn": "Spoils of War II"
+      "id": "goldenquest",
+      "name": "Quête dorée",
+      "nameEn": "A Golden Quest",
+      "effect": "La première fois que vous avez au moins 165 PO, vous gagnez un champion 2 étoiles à 5 PO et 2 objets adaptés."
     },
     {
-      "id": "subscriptionservice",
-      "name": "Abonnement",
-      "nameEn": "Subscription Service"
+      "id": "climbtheladder1",
+      "name": "Connivence I",
+      "nameEn": "Climb The Ladder I",
+      "effect": "Chaque fois qu'un allié meurt, les alliés qui partagent au moins un type avec lui gagnent 3.5% de puissance, 3.5% de dégâts d'attaque, 3.5 d'armure et 3.5 de résistance magique."
     },
     {
-      "id": "prismaticdestiny",
-      "name": "Destin prismatique",
-      "nameEn": "Prismatic Destiny"
+      "id": "luckygloves",
+      "name": "Gants porte-bonheur",
+      "nameEn": "Lucky Gloves",
+      "effect": "Gants de voleur donnera toujours des objets idéaux à vos champions. Vous gagnez 2 Gants d'entraînement et 4 PO."
     },
     {
-      "id": "distancing2",
-      "name": "Exilés II",
-      "nameEn": "Exiles II"
+      "id": "golddestiny",
+      "name": "Destin doré+",
+      "nameEn": "Gold Destiny",
+      "effect": "Vous gagnez une optimisation de palier Or aléatoire et 3 PO."
     },
     {
-      "id": "shojinspirit",
-      "name": "Volonté de la lance",
-      "nameEn": "Spear's Will"
+      "id": "coronation",
+      "name": "Couronnement",
+      "nameEn": "Coronation",
+      "effect": "Vous gagnez 1 Couronne du Tacticien. La Couronne du Tacticien, la Cape du Tacticien et le Bouclier du Tacticien octroient à leur porteur 20% de vitesse d'attaque, 25% de dégâts d'attaque et 30% de puissance."
     },
     {
-      "id": "reinfourcement",
-      "name": "Puissance 4",
-      "nameEn": "ReinFOURcement"
+      "id": "commander_teamingup1",
+      "name": "Cours de soutien",
+      "nameEn": "Teaming Up",
+      "effect": "Vous gagnez 1 composant aléatoire, et 2 champions à 3 PO aléatoires."
     },
     {
-      "id": "noscoutnopivot",
-      "name": "Obstination",
-      "nameEn": "NO SCOUT NO PIVOT"
+      "id": "gildedsteel",
+      "name": "Acier doré",
+      "nameEn": "Gilded Steel",
+      "effect": "Vous gagnez 2 champions à 5 PO. Si vous placez au moins un champion à 5 PO sur le plateau, vos champions de 1 à 4 PO gagnent 8% de durabilité."
     },
     {
-      "id": "goldfordummies",
-      "name": "Mannequins rentables",
-      "nameEn": "Gold For Dummies"
+      "id": "electrocharge2",
+      "name": "Électrocharge II",
+      "nameEn": "Electrocharge II",
+      "effect": "À chaque fois qu'un allié subit 4 attaques, il inflige 50-140 pts points de dégâts magiques (selon la phase) aux ennemis proches (délai de récupération de 1 sec)."
     },
     {
-      "id": "lategamescaling",
-      "name": "Fin de partie",
-      "nameEn": "Late Game Scaling"
+      "id": "bloodbank",
+      "name": "Le prix du sang",
+      "nameEn": "Lunch Money",
+      "effect": "Vous gagnez 2 PO tous les 8 pts de dégâts que vous infligez à des Tacticiens ennemis. Gains totaux: PO"
     },
     {
-      "id": "qualityoverquantity",
-      "name": "Qualité avant quantité",
-      "nameEn": "Quality Over Quantity"
+      "id": "electrocharge1",
+      "name": "Électrocharge I",
+      "nameEn": "Electrocharge I",
+      "effect": "À chaque fois qu'un allié subit 4 attaques, il inflige 30-90 pts points de dégâts magiques (selon la phase) aux ennemis proches (délai de récupération de 1 sec)."
     },
     {
-      "id": "moneyhungry_notbroken",
-      "name": "Avidité",
-      "nameEn": "Money Hungry"
+      "id": "ninelives",
+      "name": "9 vies",
+      "nameEn": "Nine Lives",
+      "effect": "Vos PV de Tacticien actuels et max sont désormais de 9. Lorsque vous perdez un combat, vous ne perdez que 1 PV et vous gagnez du butin. Vous ne pouvez pas gagner de PV."
     },
     {
-      "id": "waverider",
-      "name": "Relances étoilées",
-      "nameEn": "On a Roll"
+      "id": "dravenspoilsofwar",
+      "name": "Butin de guerre I",
+      "nameEn": "Spoils of War I",
+      "effect": "Les ennemis ont 25% de chances de lâcher du butin à leur mort."
     },
     {
-      "id": "maliciousmonetization",
-      "name": "Monétisation malveillante",
-      "nameEn": "Malicious Monetization"
+      "id": "worththewait",
+      "name": "Attente récompensée",
+      "nameEn": "Worth the Wait",
+      "effect": "Vous gagnez un champion à 1 PO aléatoire. Vous gagnez une copie de ce champion au début de chaque manche jusqu'à la fin de la partie."
     },
     {
-      "id": "unlimitedpower",
-      "name": "Puissance infinie",
-      "nameEn": "Unlimited Power"
+      "id": "18_branchingoutplus",
+      "name": "Aléatoire jacta est+",
+      "nameEn": "Branching Out+",
+      "effect": "Vous gagnez un emblème aléatoire et un Reforgeur."
     },
     {
-      "id": "cookingpot",
-      "name": "Chefs cuisiniers",
-      "nameEn": "Cooking Pot"
+      "id": "itemgrabbag1",
+      "name": "Sac de butin",
+      "nameEn": "Item Grab Bag",
+      "effect": "Vous gagnez 1 objet complet aléatoire."
     },
     {
-      "id": "pandorasitemsiii",
-      "name": "Objets de Pandore III",
-      "nameEn": "Pandora's Items III"
+      "id": "goinglong",
+      "name": "Expérience à tout prix",
+      "nameEn": "Going Long",
+      "effect": "Vous ne pouvez plus gagner de PO d'intérêts. Vous gagnez immédiatement 16 PO. Début de la manche: vous gagnez 4 XP."
     },
     {
-      "id": "tradesector",
-      "name": "Secteur commercial",
-      "nameEn": "Trade Sector"
+      "id": "forgerod",
+      "name": "Fabricant de baguettes",
+      "nameEn": "Staffsmith",
+      "effect": "Vous gagnez 2 objets complets aléatoires construits à partir d'une Baguette trop grosse."
     },
     {
-      "id": "pilfer",
-      "name": "Chapardage",
-      "nameEn": "Pilfer"
+      "id": "expectedunexpectedness",
+      "name": "Lancer de dés",
+      "nameEn": "Expected Unexpectedness",
+      "effect": "Maintenant et au début des 2 prochaines phases, vous lancez 3 dés. Vous gagnez diverses récompenses en fonction du résultat total."
     },
     {
-      "id": "18_biggrabbag",
-      "name": "Super sac de butin",
-      "nameEn": "Big Grab Bag"
+      "id": "placeboplus",
+      "name": "Placébo+",
+      "nameEn": "Placebo+",
+      "effect": "Vos unités gagnent +1% de vitesse d'attaque. Vous gagnez 14 PO."
     },
     {
-      "id": "caretakersfavor",
-      "name": "Faveur du gardien",
-      "nameEn": "Caretaker's Favor"
+      "id": "quietquitting",
+      "name": "Boutique fermée",
+      "nameEn": "Quiet Quitting",
+      "effect": "Pour les 3 prochains combats contre un joueur, vous ne pouvez pas utiliser votre boutique. Ensuite, vous gagnez 24 PO et une Enclume à objets complets."
     },
     {
-      "id": "bardplaybook3",
-      "name": "Bénédiction du gardien",
-      "nameEn": "Caretaker's Chosen"
+      "id": "holdtheline",
+      "name": "Tenir le front",
+      "nameEn": "Hold the Line",
+      "effect": "Les alliés sur les 2 dernières rangées gagnent 9% de puissance et 8% de dégâts d'attaque pour chaque allié placé sur la première rangée au début de combat."
     },
     {
-      "id": "prismaticticket",
-      "name": "Ticket prismatique",
-      "nameEn": "Prismatic Ticket"
+      "id": "spiritlink1",
+      "name": "Régénération fluctuante",
+      "nameEn": "Spirit Link",
+      "effect": "Les champions récupèrent 5% de leurs PV max toutes les 4 sec. Ce soin est augmenté de 0.5% tous les 10 PV de Tacticien manquants."
     },
     {
-      "id": "carveapath",
-      "name": "Glaives à gogo",
-      "nameEn": "Carve a Path"
+      "id": "sunfireboard",
+      "name": "Plateau solaire",
+      "nameEn": "Sunfire Board",
+      "effect": "Début du combat: tous les ennemis sont brûlés et perdent 18% de leurs PV max en 18 sec. De plus, les soins qu'ils reçoivent sont réduits de 33%."
     },
     {
-      "id": "18_caretakersally",
-      "name": "Don du gardien",
-      "nameEn": "Caretaker's Ally"
+      "id": "ironassets",
+      "name": "Entre les PO et l'enclume",
+      "nameEn": "Iron Assets",
+      "effect": "Vous gagnez une Enclume à composants et 3 PO."
     },
     {
-      "id": "calculatedloss",
-      "name": "Défaite planifiée",
-      "nameEn": "Calculated Loss"
+      "id": "heftyrolls",
+      "name": "Relances imposantes",
+      "nameEn": "Hefty Rolls",
+      "effect": "Votre équipe gagne PV et grandit à chaque fois que relancez pendant la partie. Vous gagnez 5 PO."
     },
     {
-      "id": "riskymoves",
-      "name": "L'amour du risque",
-      "nameEn": "Risky Moves"
+      "id": "feedtheflames",
+      "name": "Allumer le feu",
+      "nameEn": "Feed the Flames",
+      "effect": "Vous gagnez une Cape solaire. Votre équipe gagne 12% d'omnivampirisme lorsqu'elle attaque des ennemis brûlés."
     },
     {
-      "id": "moonlight",
-      "name": "Étoiles supérieures",
-      "nameEn": "Moonlight"
+      "id": "blazingsoul2",
+      "name": "Âme ardente II",
+      "nameEn": "Blazing Soul II",
+      "effect": "Début du combat: votre champion qui a la vitesse d'attaque la plus élevée gagne 35% de puissance et 35% de vitesse d'attaque. L'effet se répète sur un autre allié toutes les 3 sec."
     },
     {
-      "id": "evilbeyondmeasure",
-      "name": "Étoiles filantes",
-      "nameEn": "Evil Beyond Measure"
-    },
-    {
-      "id": "soulawakening",
-      "name": "Éveil de l'âme",
-      "nameEn": "Soul Awakening"
-    },
-    {
-      "id": "bandofthieves",
-      "name": "Bande de voleurs",
-      "nameEn": "Band of Thieves"
-    },
-    {
-      "id": "sliceoflife",
-      "name": "Crescendo aléatoire",
-      "nameEn": "Slice of Life"
-    },
-    {
-      "id": "jeweledlotus_ii",
-      "name": "Lotus précieux II",
-      "nameEn": "Jeweled Lotus II"
-    },
-    {
-      "id": "moneymonsoon",
-      "name": "Pluie d'argent",
-      "nameEn": "Money Monsoon"
-    },
-    {
-      "id": "livingforge",
-      "name": "Forgeron ambulant",
-      "nameEn": "Living Forge"
-    },
-    {
-      "id": "warpath",
-      "name": "Récompenses de guerre",
-      "nameEn": "Warpath"
-    },
-    {
-      "id": "thedarkinblade",
-      "name": "Offrande sanguinaire",
-      "nameEn": "Blood Offering"
-    },
-    {
-      "id": "radiantrelic",
-      "name": "Reliques de la lumière",
-      "nameEn": "Radiant Relics"
-    },
-    {
-      "id": "bigfriend2",
-      "name": "Ami trapu II",
-      "nameEn": "Big Friend II"
-    },
-    {
-      "id": "guardbreakerspirit",
-      "name": "Volonté de la massue",
-      "nameEn": "Mace's Will"
-    },
-    {
-      "id": "knowyourenemy",
-      "name": "Copieur !",
-      "nameEn": "Know Your Enemy"
-    },
-    {
-      "id": "legionofthrees",
-      "name": "Légion des trois",
-      "nameEn": "Legion Of Threes"
-    },
-    {
-      "id": "gaingold",
-      "name": "Gain de 21 PO",
-      "nameEn": "Gain 21 Gold"
-    },
-    {
-      "id": "doubletrouble",
-      "name": "Doublure",
-      "nameEn": "Double Trouble"
-    },
-    {
-      "id": "sizematters",
-      "name": "Question de taille",
-      "nameEn": "Size Matters"
-    },
-    {
-      "id": "tonsofstatsi",
-      "name": "Stats à foison !",
-      "nameEn": "Tons of Stats!"
-    },
-    {
-      "id": "boosterpackplusplus",
-      "name": "Booster++",
-      "nameEn": "Booster Pack++"
-    },
-    {
-      "id": "tiniesttitanplus",
-      "name": "Mini-Tacticien",
-      "nameEn": "Tiniest Titan"
-    },
-    {
-      "id": "partialascension",
-      "name": "Ascension partielle",
-      "nameEn": "Partial Ascension"
-    },
-    {
-      "id": "healingorbsii",
-      "name": "Orbes de soins II",
-      "nameEn": "Healing Orbs II"
-    },
-    {
-      "id": "pandorasitemsi",
-      "name": "Objets de Pandore I",
-      "nameEn": "Pandora's Items I"
-    },
-    {
-      "id": "portableforge",
-      "name": "Forge portative",
-      "nameEn": "Portable Forge"
-    },
-    {
-      "id": "cognitiveoverload",
-      "name": "Surcharge cognitive",
-      "nameEn": "Cognitive Overload"
-    },
-    {
-      "id": "kickstart",
-      "name": "Coup d'envoi",
-      "nameEn": "Kick Start"
-    },
-    {
-      "id": "latentforge",
-      "name": "Forge à retardement",
-      "nameEn": "Latent Forge"
-    },
-    {
-      "id": "comebackstory",
-      "name": "Tentative de comeback",
-      "nameEn": "Comeback Story"
-    },
-    {
-      "id": "cyberneticuplink_gold",
-      "name": "Liaison cybernétique",
-      "nameEn": "Cybernetic Uplink"
-    },
-    {
-      "id": "cyberneticuplink3",
-      "name": "Liaison cybernétique III",
-      "nameEn": "Cybernetic Uplink III"
-    },
-    {
-      "id": "deadlierblades",
-      "name": "Lames tueuses",
-      "nameEn": "Deadlier Blades"
-    },
-    {
-      "id": "kingslayer",
-      "name": "Régicide",
-      "nameEn": "Kingslayer"
-    },
-    {
-      "id": "nestingdollsplus",
-      "name": "Poupées russes",
-      "nameEn": "Nesting Dolls"
-    },
-    {
-      "id": "18_riftbeasttraitaugment",
-      "name": "Monstre de la Jungle omega",
-      "nameEn": "Omega Riftbeast"
-    },
-    {
-      "id": "champdeliveryplusplus",
-      "name": "Livraison de champion ++",
-      "nameEn": "Champ Delivery++"
-    },
-    {
-      "id": "extrabuckles",
-      "name": "Boucles supplémentaires",
-      "nameEn": "Extra Buckles"
-    },
-    {
-      "id": "challengersgrace",
-      "name": "Grâce du Challenger",
-      "nameEn": "Challenger's Grace"
+      "id": "hedgefundplus",
+      "name": "Spéculation+",
+      "nameEn": "Hedge Fund+",
+      "effect": "Vous gagnez 30 PO. Votre maximum d'intérêts est augmenté à 10 PO."
     },
     {
       "id": "moneyhungryplus",
       "name": "Avidité+",
-      "nameEn": "Money Hungry+"
+      "nameEn": "Money Hungry+",
+      "effect": "Vous gagnez immédiatement 16 PO, puis 7 PO au début de chaque phase. Récupérer des PO fait grossir votre Tacticien."
+    },
+    {
+      "id": "cloningfacility",
+      "name": "Clonage",
+      "nameEn": "Cloning Facility",
+      "effect": "Renforce l'hexagone au centre de la troisième rangée. Vous invoquez un clone du champion qui s'y trouve. Ce clone a 80% de ses PV de base et un coût en mana augmenté de 10%."
+    },
+    {
+      "id": "hardbargain",
+      "name": "Carrousels trafiqués",
+      "nameEn": "Hard Bargain",
+      "effect": "Vous ne pouvez pas choisir vos récompenses lors des carrousels. Vous gagnez 6 PV de Tacticien bonus et 8 PO à chaque carrousel."
+    },
+    {
+      "id": "goldengamble",
+      "name": "Pile ou face",
+      "nameEn": "Golden Gamble",
+      "effect": "Vous gagnez 2 PO et jouez à pile ou face. Si vous tombez sur face, vous gagnez un Coffre chanceux de la lumière. Si vous tombez sur pile, vous gagnez 2 Enclumes à objets complets."
+    },
+    {
+      "id": "afk",
+      "name": "AFK",
+      "nameEn": "AFK",
+      "effect": "Vous ne pouvez faire aucune action pendant 3 manches. Ensuite, vous gagnez 17 PO."
+    },
+    {
+      "id": "hedgefund",
+      "name": "Spéculation",
+      "nameEn": "Hedge Fund",
+      "effect": "Vous gagnez 22 PO. Vos intérêts max sont augmentés à 10 PO."
+    },
+    {
+      "id": "backupdancers",
+      "name": "Soutien du banc",
+      "nameEn": "Backup Dancers",
+      "effect": "Début du combat: toutes les 3 sec, les champions sur vos 3 emplacements les plus à droite de votre banc octroient à votre équipe 3% de vitesse d'attaque par emplacement."
+    },
+    {
+      "id": "twomuchvalue",
+      "name": "Avènement des deux",
+      "nameEn": "Two Much Value",
+      "effect": "Vous gagnez 1 relance tous les 2 champions à 2 PO uniques que vous avez mis sur le plateau lors du dernier combat contre un joueur. Vous gagnez 1 champions à 2 PO."
+    },
+    {
+      "id": "heroicgrabbagplus",
+      "name": "Besace héroïque+",
+      "nameEn": "Heroic Grab Bag+",
+      "effect": "Vous gagnez 2 Duplicateurs de champion mineurs. Vous gagnez 8 PO."
+    },
+    {
+      "id": "componentquestbow",
+      "name": "Arcs à gogo",
+      "nameEn": "Backup Bows",
+      "effect": "Vous gagnez un Arc courbe. Lorsque votre équipe a attaqué 1000 fois, vous en gagnez 2 de plus."
+    },
+    {
+      "id": "plotarmor",
+      "name": "Résistance acharnée",
+      "nameEn": "Plot Armor",
+      "effect": "Votre équipe gagne 8 d'armure et de résistance magique. Quand vos unités tombent sous 50% de leurs PV, le bonus augmente à 40 jusqu'à la fin du combat."
+    },
+    {
+      "id": "pocketrecombobulator",
+      "name": "Recombobulateur de poche",
+      "nameEn": "Pocket Recombobulator",
+      "effect": "Vous gagnez 2 Recombobulateurs de poche, un consommable qui vous permet de transformer un champion à 1 PO ou 2 PO pour en faire un champion qui coûte 1 PO de plus. Le champion garde son niveau d'étoile. Vous gagnez également 2 Reforgeurs."
+    },
+    {
+      "id": "heartofsteel",
+      "name": "Cœur d'acier",
+      "nameEn": "Heart of Steel",
+      "effect": "Vous gagnez un Cœur intrépide. Toutes les sec de combat auxquelles son porteur survit, le Cœur intrépide gagne 16 PV max permanents supplémentaires."
+    },
+    {
+      "id": "chargetransfer1",
+      "name": "Transfert I",
+      "nameEn": "Charge Transfer I",
+      "effect": "Votre équipe gagne 7% d'amplification des dégâts. 50% des dégâts excédentaires sont infligés à l'ennemi le plus proche sous forme de dégâts magiques."
+    },
+    {
+      "id": "heroicgrabbagplusplus",
+      "name": "Besace héroïque++",
+      "nameEn": "Heroic Grab Bag++",
+      "effect": "Vous gagnez 2 Duplicateurs de champion mineurs. Vous gagnez 14 PO."
+    },
+    {
+      "id": "waterlotus2",
+      "name": "Fleur de lotus II",
+      "nameEn": "Water Lotus II",
+      "effect": "Vos unités gagnent 20% de chances de coup critique et leur compétence peut infliger des coups critiques. Si une compétence inflige un coup critique, le champion récupère 15% de son mana en 3 sec."
+    },
+    {
+      "id": "chargetransfer2",
+      "name": "Transfert II",
+      "nameEn": "Charge Transfer II",
+      "effect": "Votre équipe gagne 10% d'amplification des dégâts. 80% des dégâts excédentaires sont infligés à l'ennemi le plus proche sous forme de dégâts magiques."
+    },
+    {
+      "id": "radiantrefactor",
+      "name": "Réfracteur de lumière",
+      "nameEn": "Radiant Refactor",
+      "effect": "Vous gagnez une Amélioration en chef-d'œuvre et 1 Enclume à composants."
+    },
+    {
+      "id": "learningfromexperience2",
+      "name": "Gagnant-gagnant",
+      "nameEn": "Patient Study",
+      "effect": "Après un combat contre un joueur, vous gagnez 2 XP si vous avez gagné ou 3 XP si vous avez perdu."
+    },
+    {
+      "id": "urfsgambit",
+      "name": "Gambit d'Urf",
+      "nameEn": "Urf's Gambit",
+      "effect": "Si vous gagnez votre prochain combat contre un joueur, vous gagnez une Spatule. Si vous perdez votre prochain combat contre un joueur, vous gagnez une Poêle à frire. Vous gagnez immédiatement une Enclume à composants et 3 PO."
+    },
+    {
+      "id": "slammin",
+      "name": "Tout doit disparaître",
+      "nameEn": "Slammin'",
+      "effect": "Vous gagnez 3 PO. Après chaque combat contre un joueur, s'il n'y a aucun objet sur votre banc (hors consommables), vous gagnez 2 XP."
+    },
+    {
+      "id": "investmentstrategy2",
+      "name": "Stratégie d'investissement II",
+      "nameEn": "Investment Strategy II",
+      "effect": "Vos champions gagnent 8 PV max permanents par PO d'intérêts que vous gagnez. Vos intérêts max sont augmentés à 7 PO. Vous gagnez 3 PO."
+    },
+    {
+      "id": "bronzeforlifei",
+      "name": "Bronze pour la vie I",
+      "nameEn": "Bronze For Life I",
+      "effect": "Votre équipe gagne 2% d'amplification des dégâts pour chaque type au palier Bronze."
+    },
+    {
+      "id": "investmentstrategy1",
+      "name": "Stratégie d'investissement I",
+      "nameEn": "Investment Strategy I",
+      "effect": "Vos champions gagnent 8 PV max permanents par PO d'intérêts que vous gagnez."
+    },
+    {
+      "id": "cosmicrestart",
+      "name": "Réinitialisation cosmique",
+      "nameEn": "Cosmic Restart",
+      "effect": "Invoquez les dieux pour vendre toutes les unités sur votre plateau et votre banc. Vous gagnez 2 emblèmes aléatoires et 15 relances gratuites de la boutique."
+    },
+    {
+      "id": "highvoltage",
+      "name": "Haute tension",
+      "nameEn": "High Voltage",
+      "effect": "Vous gagnez une Étincelle ionique. Vos Étincelles ioniques ont un rayon augmenté de 3 hexagones et infligent 25% de dégâts bonus."
+    },
+    {
+      "id": "sololeveling",
+      "name": "Solo Leveling",
+      "nameEn": "Solo Leveling",
+      "effect": "Pendant les 5 prochains combats, votre équipe n'est composée que d'un seul champion, mais le champion que vous placez sur le plateau dispose de stats considérablement améliorées. Vous gagnez 1 XP pour chaque élimination que ce champion effectue. Ensuite, vous gagnez 2 composants."
+    },
+    {
+      "id": "distancing",
+      "name": "Exilés I",
+      "nameEn": "Exiles I",
+      "effect": "Vos champions qui commencent le combat sans champion adjacent gagnent un bouclier de 20% de leurs PV max pendant 10 sec."
+    },
+    {
+      "id": "tradesectorplus",
+      "name": "Secteur commercial+",
+      "nameEn": "Trade Sector+",
+      "effect": "À chaque manche, vous gagnez une relance gratuite de la boutique. Vous gagnez immédiatement 8 PO."
+    },
+    {
+      "id": "treasurehunt",
+      "name": "Chasse au trésor",
+      "nameEn": "Treasure Hunt",
+      "effect": "Vous gagnez un coffre verrouillé lors de chaque phase, à partir de maintenant et jusqu'à la phase. Vous déverrouillez ce coffre une fois que vous avez dépensé PO dans des relances de boutique. Ces coffres restent jusqu'à leur ouverture."
+    },
+    {
+      "id": "slightlymagicroll",
+      "name": "Dés légèrement magiques",
+      "nameEn": "Slightly Magic Roll",
+      "effect": "Vous lancez un dé. Vous gagnez des récompenses en fonction du numéro."
+    },
+    {
+      "id": "twotrick",
+      "name": "Pluie de deux",
+      "nameEn": "Two Trick",
+      "effect": "Vous gagnez un champion 2 étoiles à 2 PO aléatoire et 2 champions 2 étoiles à 1 PO aléatoires."
+    },
+    {
+      "id": "blazingsoul",
+      "name": "Âme ardente I",
+      "nameEn": "Blazing Soul I",
+      "effect": "Début du combat: votre champion qui a la vitesse d'attaque la plus élevée gagne 20% de puissance et 20% de vitesse d'attaque. L'effet se répète sur un autre allié toutes les 3 sec."
+    },
+    {
+      "id": "findyourcenter",
+      "name": "Centre d'excellence",
+      "nameEn": "Find Your Center",
+      "effect": "Votre champion qui commence le combat au centre de la première rangée gagne +15% d'amplification des dégâts et 25% de PV max."
+    },
+    {
+      "id": "goodforsomethingsilver",
+      "name": "Butin funéraire I",
+      "nameEn": "Good For Something I",
+      "effect": "Les champions sans objets ont 40% de chances de générer 1 PO en mourant."
+    },
+    {
+      "id": "keepers1",
+      "name": "Sentinelles I",
+      "nameEn": "Keepers I",
+      "effect": "Début du combat: vos unités avec des alliés adjacents gagnent un bouclier de 130 PV pendant 8 sec. Ce bouclier est cumulable."
+    },
+    {
+      "id": "itemspiritvisage",
+      "name": "Esprit de la Rédemption",
+      "nameEn": "Spirit of Redemption",
+      "effect": "Vous gagnez un Visage spirituel. Toutes les 5 sec, vos Visages spirituels régénèrent 7.5% des PV manquants des alliés dans un rayon de 1 hexagone."
+    },
+    {
+      "id": "speedydoublekill",
+      "name": "Deux de moins",
+      "nameEn": "Speedy Double Kill",
+      "effect": "Vous gagnez une Lame enragée de Guinsoo. Après l'élimination de 2 joueurs, vous gagnez 40 PO."
+    },
+    {
+      "id": "forwardthinking",
+      "name": "Investissement sur le futur",
+      "nameEn": "Forward Thinking",
+      "effect": "Vous perdez toutes vos PO. Après 5 combats contre un joueur, vous regagnez le montant perdu, plus 62 PO."
+    },
+    {
+      "id": "dhampyr1",
+      "name": "Vitalité vampirique I",
+      "nameEn": "Vampiric Vitality I",
+      "effect": "Vous récupérez des PV de Tacticien équivalents à 12% des dégâts que vous infligez aux Tacticiens ennemis. Votre équipe gagne 10% d'omnivampirisme."
+    },
+    {
+      "id": "keepers2",
+      "name": "Sentinelles II",
+      "nameEn": "Keepers II",
+      "effect": "Début du combat: vos unités avec des alliés adjacents gagnent un bouclier de 210 PV pendant 8 sec. Ce bouclier est cumulable."
+    },
+    {
+      "id": "flexible",
+      "name": "Emblématique",
+      "nameEn": "Flexible",
+      "effect": "Vous gagnez 1 emblème aléatoire. Au début de chaque phase, vous gagnez un emblème aléatoire. Votre équipe gagne 30 PV par emblème qu'elles portent."
+    },
+    {
+      "id": "restartmission",
+      "name": "Nouveau départ",
+      "nameEn": "Restart Mission",
+      "effect": "Vous supprimez tous les champions sur votre plateau et sur votre banc. Vous gagnez champions 2 étoiles à 3 PO, champions 2 étoiles à 2 PO et champion 2 étoiles à 1 PO aléatoires."
+    },
+    {
+      "id": "18_duoqueue",
+      "name": "Aléatoirement vôtre",
+      "nameEn": "Duo Queue",
+      "effect": "Vous gagnez 2 champions à 5 PO aléatoires et 2 copies d'un composant aléatoire."
+    },
+    {
+      "id": "bloodrage",
+      "name": "Rage sanglante",
+      "nameEn": "Blood Rage",
+      "effect": "Vos alliés gagnent 12-25% d'amplification des dégâts en fonction de leurs PV manquants. Amplification des dégâts max atteinte à 30% de PV."
+    },
+    {
+      "id": "componentquesttear_pairs",
+      "name": "Larmes à gogo",
+      "nameEn": "Flowing Tears",
+      "effect": "Vous gagnez une Larme de la déesse. Lorsque votre équipe a dépensé 7800 pts de mana, vous en gagnez 2 de plus."
+    },
+    {
+      "id": "slammin_plus",
+      "name": "Tout doit disparaître+",
+      "nameEn": "Slammin'+",
+      "effect": "Vous gagnez immédiatement 4 PO et 10 XP. Après chaque combat contre un joueur, s'il n'y a aucun objet sur votre banc (hors consommables), vous gagnez 2 XP."
+    },
+    {
+      "id": "maxlevel10",
+      "name": "Niveau supérieur!",
+      "nameEn": "Level Up!",
+      "effect": "Lorsque vous achetez de l'XP, vous en gagnez 2 de plus. Vous gagnez 6 XP immédiatement."
+    },
+    {
+      "id": "secondwind2",
+      "name": "Second souffle II",
+      "nameEn": "Second Wind II",
+      "effect": "Après 10 sec de combat, votre équipe récupère 60% de ses PV manquants."
+    },
+    {
+      "id": "twinguardians",
+      "name": "Gardiens jumeaux",
+      "nameEn": "Twin Guardians",
+      "effect": "Si vous avez exactement 2 alliés sur votre première rangée, ils gagnent 100 PV bonus, 35 d'armure et 35 de résistance magique."
+    },
+    {
+      "id": "secondwind1",
+      "name": "Second souffle",
+      "nameEn": "Second Wind",
+      "effect": "Après 10 sec de combat, votre équipe récupère 40% de ses PV manquants."
+    },
+    {
+      "id": "goldengambleplus",
+      "name": "Pile ou face+",
+      "nameEn": "Golden Gamble+",
+      "effect": "Vous gagnez 3 PO et jouez à pile ou face. Si vous tombez sur face, vous gagnez un Coffre chanceux de la lumière. Si vous tombez sur pile, vous gagnez 2 Enclumes à objets complets."
+    },
+    {
+      "id": "anexaltedadventure",
+      "name": "Une aventure exaltante",
+      "nameEn": "An Exalted Adventure",
+      "effect": "Vous gagnez trois champions à 2 PO. Si vous faites passer deux d'entre eux à 3 étoiles, vous gagnez un orbe rempli de butin. Vous gagnez un Duplicateur de champion mineur au début des 2 prochaines phases."
+    },
+    {
+      "id": "diversify1",
+      "name": "Soutien indéfectible",
+      "nameEn": "Stand United",
+      "effect": "Votre équipe gagne 1.5% de dégâts d'attaque et 1.5% de puissance par type non unique actif dans votre équipe."
+    },
+    {
+      "id": "starsareborn",
+      "name": "Des étoiles sont nées",
+      "nameEn": "Stars Are Born",
+      "effect": "Les premiers champions à 1 et 2 PO que vous achetez passent instantanément à 2 étoiles. Vous gagnez 7 PO."
+    },
+    {
+      "id": "feelinglucky",
+      "name": "Vous vous sentez en veine?",
+      "nameEn": "Feeling Lucky",
+      "effect": "Vous gagnez 12 PO, puis tirez à pile ou face. Si vous tombez sur face, vous gagnez 4 PO en plus."
+    },
+    {
+      "id": "advancedloan",
+      "name": "Prêt anticipé",
+      "nameEn": "Advanced Loan",
+      "effect": "Vous gagnez 20 PO. Votre prochaine optimisation sera d'un palier inférieur."
+    },
+    {
+      "id": "thegoldendragon",
+      "name": "Mailles en or",
+      "nameEn": "The Golden Dragon",
+      "effect": "Vous gagnez des Mailles du magnat. Les champions portant des Mailles du magnat occupent 2 places dans l'équipe, mais gagnent 700 PV et 20% de durabilité."
+    },
+    {
+      "id": "componentquestrod",
+      "name": "Baguettes à gogo",
+      "nameEn": "Continuous Conjuration",
+      "effect": "Vous gagnez une Baguette trop grosse. Lorsque votre équipe a infligé 42000 pts de dégâts magiques, vous en gagnez 2 de plus."
+    },
+    {
+      "id": "18_onetwofive",
+      "name": "Butin aléatoire",
+      "nameEn": "One, Two, Five!",
+      "effect": "Vous obtenez 1 composant aléatoire, 2 PO et 1 champion à 5 PO aléatoire."
+    },
+    {
+      "id": "silverspoon",
+      "name": "Par ici l'XP",
+      "nameEn": "Silver Spoon",
+      "effect": "Vous gagnez 10 XP."
+    },
+    {
+      "id": "infinityprotection",
+      "name": "Protection infinie",
+      "nameEn": "Infinity Protection",
+      "effect": "Vous gagnez immédiatement 3 PO. À la phase 3-7, vous gagnez une Force de l'infini. La Force de l'infini donne aux alliés sur la même rangée un bouclier de 12% des PV."
+    },
+    {
+      "id": "forgeafriend",
+      "name": "Ami sur mesure",
+      "nameEn": "Forge a Friend",
+      "effect": "Le prochain champion à 1 PO que vous achetez sera 3 étoiles. Vous gagnez 5 PO."
+    },
+    {
+      "id": "homecooking",
+      "name": "Ravitaillement",
+      "nameEn": "Care Package",
+      "effect": "Maintenant et au début des prochaines 2 phases, vous recevez un colis de ravitaillement contenant du butin et 1 PO."
+    },
+    {
+      "id": "forgesword",
+      "name": "Armurier",
+      "nameEn": "Swordsmith",
+      "effect": "Vous gagnez 2 objets complets aléatoires construits à partir d'un BF Glaive."
+    },
+    {
+      "id": "epochplus",
+      "name": "Cycle épique+",
+      "nameEn": "Epoch+",
+      "effect": "Maintenant et au début de chaque phase, vous gagnez 8 XP et 2 relances gratuites."
+    },
+    {
+      "id": "furiousblows",
+      "name": "Kahuna",
+      "nameEn": "Kahunahuna",
+      "effect": "Chaque 5e attaque de vos unités inflige des dégâts bruts bonus équivalents à 100% des dégâts d'attaque de base."
+    },
+    {
+      "id": "museumheist",
+      "name": "Composants de guerre",
+      "nameEn": "Component Heist",
+      "effect": "Après 6 combats contre un joueur, vous gagnez 1 exemplaire de chaque composant. Vous gagnez immédiatement un composant aléatoire."
+    },
+    {
+      "id": "aurafarming",
+      "name": "Patience",
+      "nameEn": "Aura Farming",
+      "effect": "Vous gagnez un champion 2 étoiles à 5 PO, équipé d'un objet recommandé. Vous ne pouvez pas le placer sur le plateau avant la phase 4-3."
+    },
+    {
+      "id": "beltoverflow",
+      "name": "Abondance de ceintures",
+      "nameEn": "Belt Overflow",
+      "effect": "Vous gagnez 4 Ceintures du géant. Vos Ceintures du géant octroient +85 PV bonus."
+    },
+    {
+      "id": "forgedinstrength",
+      "name": "Artefacts à la rescousse",
+      "nameEn": "Forged in Strength",
+      "effect": "Vous gagnez 1 artefact aléatoire. Lorsque vous tombez sous 30 PV, vous gagnez 3 autres artefacts aléatoires."
+    },
+    {
+      "id": "onetwosthree",
+      "name": "Un, deux, trois",
+      "nameEn": "One Two Three",
+      "effect": "Vous gagnez 2 champion(s) à 1 PO, 1 champion à 2 PO et 1 champion à 3 PO."
+    },
+    {
+      "id": "eyeforaneye",
+      "name": "Composants funéraires",
+      "nameEn": "Eye For An Eye",
+      "effect": "Tous les 15 champions alliés qui meurent, vous gagnez un composant aléatoire (max 3)."
+    },
+    {
+      "id": "teslacoil",
+      "name": "Électrologie",
+      "nameEn": "Tesla Coil",
+      "effect": "Chacun de vos alliés ayant 3 objets équipés émet 2 arcs électriques toutes les 5 sec, infligeant 240-270 pts de dégâts magiques en fonction de la phase."
+    },
+    {
+      "id": "traittree",
+      "name": "Emblématiquement",
+      "nameEn": "The Trait Tree",
+      "effect": "Vous gagnez 3 emblèmes aléatoires, un Reforgeur et 2 PO."
+    },
+    {
+      "id": "shoppingspree",
+      "name": "Shopping intensif",
+      "nameEn": "Shopping Spree",
+      "effect": "Quand vous gagnez un niveau, vous gagnez un nombre de relances gratuites de la boutique équivalent à votre niveau + 1. Vous gagnez 2 PO."
+    },
+    {
+      "id": "savingsaccount",
+      "name": "Compte épargne",
+      "nameEn": "Savings Account",
+      "effect": "Après avoir gagné 50 PO d'intérêts, vous gagnez 25 PO. Vos intérêts max sont augmentés à 7 PO. Vous gagnez immédiatement 2 PO."
+    },
+    {
+      "id": "craftedcrafting",
+      "name": "Maîtrise de l'artisanat",
+      "nameEn": "Crafted Crafting",
+      "effect": "Chaque fois que vous fabriquez un objet complet, vous gagnez 2 relances."
+    },
+    {
+      "id": "jeweledlotus",
+      "name": "Lotus précieux I",
+      "nameEn": "Jeweled Lotus I",
+      "effect": "Votre équipe gagne 10% de chances de coup critique et. {{TFT_Keyword_Precision}}"
+    },
+    {
+      "id": "incoming",
+      "name": "Partage à retardement",
+      "nameEn": "Lit Fuse",
+      "effect": "Les alliés qui commencent sur les deux dernières rangées se partagent un total de 60 mana après 6 sec de combat."
+    },
+    {
+      "id": "birthdayreunion",
+      "name": "Réunion d'anniversaire",
+      "nameEn": "Birthday Reunion",
+      "effect": "Vous gagnez 1 PO. Au niveau 5, vous gagnez un champion 2 étoiles à 2 PO aléatoire. Au niveau 7, vous gagnez 1 Gants de voleur. Au niveau 9, vous gagnez un champion 2 étoiles à 5 PO aléatoire."
+    },
+    {
+      "id": "cursedcrown",
+      "name": "Couronne maudite",
+      "nameEn": "Cursed Crown",
+      "effect": "La taille max de votre équipe augmente de 2 et votre équipe gagne 4% de durabilité, mais vous perdez le double de PV de Tacticien quand vous perdez un combat contre un joueur."
+    },
+    {
+      "id": "raininggoldplus",
+      "name": "Pluie d'or+",
+      "nameEn": "Raining Gold+",
+      "effect": "Vous gagnez immédiatement 18 PO, puis 1 PO à chaque manche."
+    },
+    {
+      "id": "exclusivecustomization2",
+      "name": "Coup de chance II",
+      "nameEn": "Exclusive Customization II",
+      "effect": "Vous gagnez 2 Coffres chanceux, un Suppresseur magnétique et 7 PO."
+    },
+    {
+      "id": "componentbuffet",
+      "name": "Buffet de composants",
+      "nameEn": "Component Buffet",
+      "effect": "Chaque fois que vous devriez gagner un composant, vous gagnez une Enclume à composants à la place. Vous gagnez un composant aléatoire. L'enclume offre 4 choix."
+    },
+    {
+      "id": "prizefighter",
+      "name": "Triomphe",
+      "nameEn": "Prizefighter",
+      "effect": "Vous gagnez 2 composants. Toutes les 5 victoires, vous gagnez un composant."
+    },
+    {
+      "id": "heroicgrabbag",
+      "name": "Besace héroïque",
+      "nameEn": "Heroic Grab Bag",
+      "effect": "Vous gagnez 2 Duplicateurs de champion mineurs. Vous gagnez 4 PO."
+    },
+    {
+      "id": "exclusivecustomization",
+      "name": "Coup de chance",
+      "nameEn": "Exclusive Customization",
+      "effect": "Vous gagnez un Coffre chanceux, un Suppresseur magnétique et 7 PO."
+    },
+    {
+      "id": "investedplusplus",
+      "name": "Investissement++",
+      "nameEn": "Invested++",
+      "effect": "Vous gagnez 45 PO. Au début de chaque manche, vous gagnez 1 relance de boutique toutes les 10 PO au-dessus de 50 (max 80 PO)."
+    },
+    {
+      "id": "wandoverflow",
+      "name": "Abondance de baguettes",
+      "nameEn": "Wand Overflow",
+      "effect": "Vous gagnez 4 Baguettes trop grosses. Vos Baguettes trop grosses octroient 5% de vitesse d'attaque."
+    },
+    {
+      "id": "radiantrascal",
+      "name": "Vaurien de la lumière",
+      "nameEn": "Radiant Rascal",
+      "effect": "Vous gagnez des Gants de voleur de la lumière. Cet objet vous équipe de 2 objets de la lumière aléatoires à chaque manche."
+    },
+    {
+      "id": "componentquestbelt_pairs",
+      "name": "Boucles supplémentaires",
+      "nameEn": "Extra Buckles",
+      "effect": "Vous gagnez une Ceinture du géant. Lorsque votre équipe a subi 90000 pts de dégâts, vous en gagnez 2 de plus."
+    },
+    {
+      "id": "spreadingrootsplus",
+      "name": "Enracinement+",
+      "nameEn": "Spreading Roots+",
+      "effect": "Vous gagnez 2 emblèmes aléatoires, un Reforgeur et 2 PO."
+    },
+    {
+      "id": "lineup",
+      "name": "Première ligne",
+      "nameEn": "Lineup",
+      "effect": "Votre équipe gagne 2 d'armure et de résistance magique par allié qui commence le combat sur les 2 premières rangées."
+    },
+    {
+      "id": "pandorasitems2",
+      "name": "Objets de Pandore II",
+      "nameEn": "Pandora's Items II",
+      "effect": "Début de la manche: les objets sur votre banc changent aléatoirement. Vous gagnez 2 composants aléatoires."
+    },
+    {
+      "id": "luxurysubscription",
+      "name": "Abonnement premium",
+      "nameEn": "Luxury Subscription",
+      "effect": "Vous gagnez un pack contenant un champion à 5 PO, un champion 2 étoiles à 1 PO et 7 PO. Vous gagnez ce pack au début des 2 prochaines phases."
+    },
+    {
+      "id": "boosterpack",
+      "name": "Booster",
+      "nameEn": "Booster Pack",
+      "effect": "Gagnez l'équivalent de 12 PO en champions aléatoires. (Vous gagnez au moins un champion à 3 PO.)"
+    },
+    {
+      "id": "goldengambleplusplus",
+      "name": "Pile ou face++",
+      "nameEn": "Golden Gamble++",
+      "effect": "Vous gagnez 6 PO et jouez à pile ou face. Si vous tombez sur face, vous gagnez un Coffre chanceux de la lumière. Si vous tombez sur pile, vous gagnez 2 Enclumes à objets complets."
+    },
+    {
+      "id": "glasscannonii",
+      "name": "Canon de verre II",
+      "nameEn": "Glass Cannon II",
+      "effect": "Les alliés commençant le combat sur la dernière rangée commencent le combat avec 80% de leurs PV, mais ils gagnent 25% d'amplification des dégâts."
+    },
+    {
+      "id": "recombobulator",
+      "name": "Recombobulateur",
+      "nameEn": "Recombobulator",
+      "effect": "Les champions sur votre plateau se transforment définitivement en champions aléatoires du palier de coût supérieur (max 5 PO). Vous gagnez 2 Suppresseurs magnétiques et 3 relances."
+    },
+    {
+      "id": "overencumbered",
+      "name": "Encombrement",
+      "nameEn": "Over Encumbered",
+      "effect": "Pendant la phase active, il n'y a que 2 emplacements sur votre banc. Ensuite, vous gagnez 2 composants."
+    },
+    {
+      "id": "efficientshopper",
+      "name": "Carrousels améliorés",
+      "nameEn": "Efficient Shopper",
+      "effect": "Pendant les 4 prochains carrousels, vous gagnez une deuxième copie du champion que vous avez pris pendant le carrousel. Vous gagnez immédiatement 4 PO."
+    },
+    {
+      "id": "overheal",
+      "name": "Surcharge de PV",
+      "nameEn": "Overheal",
+      "effect": "Toutes les trois attaques, vos unités infligent 110% de dégâts et récupèrent des PV équivalents à 60% de ces dégâts. L'excédent de soins est converti en un bouclier de jusqu'à 400 PV."
+    },
+    {
+      "id": "thornplatedarmor",
+      "name": "Armure couverte d'épines",
+      "nameEn": "Thorn-Plated Armor",
+      "effect": "Vous gagnez une Armure roncière. Vos Armures roncières infligent 20-170% de dégâts bonus (selon la phase)."
+    },
+    {
+      "id": "timeskip",
+      "name": "Bye bye boutique",
+      "nameEn": "Time Skip",
+      "effect": "Votre boutique est inaccessible pendant les 3 prochaines manches. Puis vous gagnez 32 XP."
+    },
+    {
+      "id": "advancedloanplus",
+      "name": "Prêt anticipé+",
+      "nameEn": "Advanced Loan+",
+      "effect": "Vous gagnez 33 PO. Votre prochaine optimisation sera d'un palier inférieur."
+    },
+    {
+      "id": "calledshot",
+      "name": "Victoire annoncée",
+      "nameEn": "Called Shot",
+      "effect": "Votre série de victoires passe à 4. Vous gagnez 4 PO."
+    },
+    {
+      "id": "tradesector2",
+      "name": "Relances régulières",
+      "nameEn": "Commerce Core",
+      "effect": "Vous gagnez 16 relances gratuites immédiatement et 3 à chaque manche pendant le reste de la partie."
+    },
+    {
+      "id": "eyeforaneyeplus",
+      "name": "Composants funéraires+",
+      "nameEn": "Eye For An Eye+",
+      "effect": "Vous gagnez un composant aléatoire. Tous les 18 champions alliés qui meurent, vous gagnez un autre composant (max 2)."
+    },
+    {
+      "id": "marksman",
+      "name": "Feu concentré",
+      "nameEn": "Focused Fire",
+      "effect": "Votre équipe gagne 10% de dégâts d'attaque. Toutes les 5 sec, elles en gagnent 5% de plus."
+    },
+    {
+      "id": "sideeffects",
+      "name": "Effets secondaires",
+      "nameEn": "Side Effects",
+      "effect": "Lorsqu'un allié récupère des PV, il inflige 50% des PV récupérés à sa cible sous forme de dégâts magiques. Toutes les 5 sec, les alliés récupèrent 4% de leurs PV max."
+    },
+    {
+      "id": "investedplus",
+      "name": "Investissement+",
+      "nameEn": "Invested+",
+      "effect": "Vous gagnez 26 PO. Au début de chaque manche, vous gagnez 1 relance de boutique toutes les 10 PO au-dessus de 50 (max 80 PO)."
+    },
+    {
+      "id": "bodyguardtraining",
+      "name": "Formation de Garde du corps",
+      "nameEn": "Bodyguard Training",
+      "effect": "Les alliés gagnent 15 d'armure et de résistance magique, augmenté de 2 par niveau de Tacticien."
+    },
+    {
+      "id": "raininggold",
+      "name": "Pluie d'or",
+      "nameEn": "Raining Gold",
+      "effect": "Vous gagnez immédiatement 7 PO, puis 1 PO à chaque manche."
+    },
+    {
+      "id": "crymeariver",
+      "name": "Océan de larmes",
+      "nameEn": "Cry Me A River",
+      "effect": "Vous gagnez une Larme de la déesse. Votre équipe gagne 1 de régénération du mana. Après 12 sec de combat, ce bonus augmente à 4."
+    },
+    {
+      "id": "magicroll",
+      "name": "Dés magiques",
+      "nameEn": "A Magic Roll",
+      "effect": "Lancez 3 dés. Vous gagnez des récompenses en fonction de leur résultat total."
+    },
+    {
+      "id": "swordoverflow",
+      "name": "Abondance de glaives",
+      "nameEn": "Sword Overflow",
+      "effect": "Vous gagnez 4 BF Glaives. Vos BF Glaives octroient 4% de vitesse d'attaque."
+    },
+    {
+      "id": "thetower",
+      "name": "La Tour",
+      "nameEn": "The Tower",
+      "effect": "Vous gagnez un Mannequin d'entraînement géant avec des PV bonus (qui augmentent en fonction de la phase). Toutes les 4 sec, le mannequin frappe les 3 ennemis les plus proches, infligeant 5% de ses PV max en dégâts bruts."
+    },
+    {
+      "id": "westicktogether",
+      "name": "Partage emblématique",
+      "nameEn": "We Stick Together",
+      "effect": "Vous gagnez un emblème aléatoire et une Enclume à objets complets. Les alliés qui partagent un type avec cet emblème gagnent 30% de vitesse d'attaque. 0 0"
+    },
+    {
+      "id": "silverdestinyplusplus",
+      "name": "Destin argenté++",
+      "nameEn": "Silver Destiny++",
+      "effect": "Vous gagnez une optimisation de palier Argent aléatoire et 7 PO."
+    },
+    {
+      "id": "componentquestsword_pairs",
+      "name": "Glaives à gogo",
+      "nameEn": "Carve a Path",
+      "effect": "Vous gagnez un BF Glaive. Lorsque votre équipe a infligé 82000 pts de dégâts physiques, vous en gagnez 2 de plus."
+    },
+    {
+      "id": "clearmind",
+      "name": "Lucidité",
+      "nameEn": "Clear Mind",
+      "effect": "S'il n'y a aucun champion sur votre banc à la fin d'un combat contre un joueur, vous gagnez 3 XP."
+    },
+    {
+      "id": "worththewaitii",
+      "name": "Attente récompensée II",
+      "nameEn": "Worth the Wait II",
+      "effect": "Vous gagnez 2 copies d'un champion à 2 PO aléatoire. Vous gagnez une copie de ce champion au début de chaque manche jusqu'à la fin de la partie."
+    },
+    {
+      "id": "titanictitan",
+      "name": "Liberté conditionnelle",
+      "nameEn": "Titanic Titan",
+      "effect": "Vos PV de Tacticien actuels et max augmentent de 25. Pendant les carrousels, vous êtes libéré·e plus tôt, mais vous êtes beaucoup plus lent·e."
+    },
+    {
+      "id": "misfits",
+      "name": "Touche-à-tout",
+      "nameEn": "Misfits",
+      "effect": "Votre équipe gagne 55 PV pour chaque type unique actif. Vous gagnez une Miss Fortune et un Rhaast."
+    },
+    {
+      "id": "headstart",
+      "name": "Départ différé",
+      "nameEn": "Delayed Start",
+      "effect": "Vous vendez tous les champions sur votre plateau et sur votre banc. Vous gagnez 4 champions 2 étoiles à 1 PO aléatoires. Votre boutique est inaccessible pendant les 3 prochaines manches."
+    },
+    {
+      "id": "commander_rollingfordays",
+      "name": "Jour de relance I",
+      "nameEn": "Rolling For Days I",
+      "effect": "Vous gagnez 10 relances gratuites de la boutique."
+    },
+    {
+      "id": "clockworkaccelerator",
+      "name": "Accélérateur mécanique",
+      "nameEn": "Clockwork Accelerator",
+      "effect": "Vos unités gagnent +10% de vitesse d'attaque toutes les 3 sec de combat."
+    },
+    {
+      "id": "protagonist",
+      "name": "Star du show",
+      "nameEn": "Protagonist",
+      "effect": "Vous gagnez une optimisation de champion à 1 PO aléatoire. Après 3 manches, vous gagnez une copie du champion au début de chaque manche."
+    },
+    {
+      "id": "bandofthieves2",
+      "name": "Bande de voleurs II",
+      "nameEn": "Band of Thieves II",
+      "effect": "Vous gagnez 2 Gants de voleur. Après 6 combats contre un joueur, vous en gagnez un autre."
+    },
+    {
+      "id": "buildabud",
+      "name": "Champion en kit",
+      "nameEn": "Build a Bud",
+      "effect": "Vous gagnez un champion 3 étoiles à 1 PO aléatoire. Vous gagnez 10 PO."
+    },
+    {
+      "id": "twotanky",
+      "name": "Tanks jumeaux",
+      "nameEn": "Two Tanky",
+      "effect": "Si vous avez exactement 2 copies d'un champion sur le plateau, ils gagnent 375 PV. Quand l'un d'eux meurt, l'autre gagne un bouclier équivalent à 35% de ses PV max pendant 12 sec. Quand vous faites passer une unité à 3 étoiles, vous en gagnez une copie 2 étoiles."
+    },
+    {
+      "id": "kingslayer",
+      "name": "Régicide",
+      "nameEn": "Kingslayer",
+      "effect": "Vous gagnez 1 PO immédiatement et après chaque combat contre un joueur. Si vous gagnez contre un joueur qui a plus de PV que vous, vous gagnez 6 PO à la place."
+    },
+    {
+      "id": "commander_finalascension",
+      "name": "Ascension finale",
+      "nameEn": "Final Ascension",
+      "effect": "Vos unités gagnent +20% d'amplification des dégâts. Après 15 sec, ce bonus augmente à +60% d'amplification des dégâts."
+    },
+    {
+      "id": "noblesacrifice",
+      "name": "Noble sacrifice",
+      "nameEn": "Noble Sacrifice",
+      "effect": "À chaque combat, votre premier allié qui meurt octroie 25 + 10% de son armure et de sa résistance magique à vos unités."
+    },
+    {
+      "id": "corrosion",
+      "name": "Corrosion",
+      "nameEn": "Corrosion",
+      "effect": "Les ennemis sur les deux premières rangées perdent 4 d'armure et de résistance magique toutes les 2 sec."
+    },
+    {
+      "id": "boxinglessons",
+      "name": "Ligne de front",
+      "nameEn": "Boxing Lessons",
+      "effect": "Votre équipe gagne 30 PV pour chaque allié qui commence le combat sur la première rangée."
+    },
+    {
+      "id": "starterkit",
+      "name": "Kit de départ",
+      "nameEn": "Starter Kit",
+      "effect": "Vous gagnez un champion à 4 PO, un champion 2 étoiles à 1 PO qui partage un type avec lui et 8 PO. Au début des 2 prochaines phases, vous gagnez de nouveau ce champion à 4 PO."
+    },
+    {
+      "id": "lategamespecialist",
+      "name": "Spécialiste des fins de partie",
+      "nameEn": "Late Game Specialist",
+      "effect": "Quand vous atteignez le niveau 9, vous gagnez 27 PO."
+    },
+    {
+      "id": "golemify",
+      "name": "Golemification",
+      "nameEn": "Golemify",
+      "effect": "Vous perdez tous les champions sur votre plateau et sur votre banc. Vous gagnez un golem doté de 60% de leurs PV combinés et de 33% de leurs dégâts d'attaque combinés. Le golem gagne 1200 PV par phase. Vous gagnez un champion non tank 2 étoiles à 2 PO."
+    },
+    {
+      "id": "birthdaypresents",
+      "name": "Cadeau d'anniversaire",
+      "nameEn": "Birthday Present",
+      "effect": "Vous gagnez un champion 2 étoiles et 1 PO chaque fois que vous montez de niveau. Le palier du champion correspond à votre niveau moins 4 (palier max: 5 PO)."
+    },
+    {
+      "id": "pyromaniac",
+      "name": "Pyromanie",
+      "nameEn": "Pyromaniac",
+      "effect": "Vous gagnez un Buff rouge. Vos brûlures infligent 50% de dégâts bonus."
+    },
+    {
+      "id": "justslayer",
+      "name": "Tueur impitoyable",
+      "nameEn": "Indiscriminate Killer",
+      "effect": "Vous gagnez un Tueur de géants. Les Tueurs de géants gagnent leur amplification des dégâts contre tous les ennemis et non plus seulement contre les tanks."
+    },
+    {
+      "id": "shimmerscaleessence",
+      "name": "Essence des Luminécailles",
+      "nameEn": "Shimmerscale Essence",
+      "effect": "Vous gagnez des Mailles du magnat. Dans 7 manches, vous gagnez une Lame du parieur."
+    },
+    {
+      "id": "cookingpot",
+      "name": "Chefs cuisiniers",
+      "nameEn": "Cooking Pot",
+      "effect": "Au début de chaque manche, tous vos alliés équipés d'un objet de Poêle à frire ou d'un objet de Spatule octroient définitivement 60 PV au champion le plus proche. Vous gagnez une Poêle à frire."
+    },
+    {
+      "id": "18_branchingout",
+      "name": "Aléatoire jacta est",
+      "nameEn": "Branching Out",
+      "effect": "Vous gagnez un emblème aléatoire."
+    },
+    {
+      "id": "soloplate",
+      "name": "Lithoplastron solo",
+      "nameEn": "Solo Plate",
+      "effect": "Vous gagnez un Lithoplastron de gargouille. Début du combat: les alliés portant un Lithoplastron de gargouille gagnent 17% de PV max s'ils sont les seuls sur leur rangée."
+    },
+    {
+      "id": "sweettreats",
+      "name": "Objets blindés",
+      "nameEn": "Sweet Treats",
+      "effect": "Vous gagnez une Enclume à artefacts. Votre équipe gagne 16 PV par objet équipé sur les champions."
+    },
+    {
+      "id": "dravenspoilsofwar3",
+      "name": "Butin de guerre III",
+      "nameEn": "Spoils of War III",
+      "effect": "Les ennemis ont 40% de chances de lâcher du butin à leur mort."
+    },
+    {
+      "id": "dravenspoilsofwar2",
+      "name": "Butin de guerre II",
+      "nameEn": "Spoils of War II",
+      "effect": "Les ennemis ont 30% de chances de lâcher du butin à leur mort."
+    },
+    {
+      "id": "subscriptionservice",
+      "name": "Abonnement",
+      "nameEn": "Subscription Service",
+      "effect": "Maintenant et au début de chaque phase, vous ouvrez une boutique de 4 champions uniques à 4 PO et vous gagnez 6 PO."
+    },
+    {
+      "id": "prismaticdestiny",
+      "name": "Destin prismatique",
+      "nameEn": "Prismatic Destiny",
+      "effect": "Vous gagnez une optimisation de palier Prismatique aléatoire et 4 PO."
+    },
+    {
+      "id": "distancing2",
+      "name": "Exilés II",
+      "nameEn": "Exiles II",
+      "effect": "Vos champions qui commencent le combat sans champion adjacent gagnent un bouclier de 30% de leurs PV max pendant 10 sec."
+    },
+    {
+      "id": "bandofthieves2plusplus",
+      "name": "Bande de voleurs II++",
+      "nameEn": "Band of Thieves II++",
+      "effect": "Vous gagnez 2 Gants de voleur. Après 3 combats contre un joueur, vous en gagnez un autre."
+    },
+    {
+      "id": "shojinspirit",
+      "name": "Volonté de la lance",
+      "nameEn": "Spear's Will",
+      "effect": "Votre équipe gagne 8% de dégâts d'attaque et 5 pts de mana. Vous gagnez un BF Glaive et une Larme de la déesse."
+    },
+    {
+      "id": "reinfourcement",
+      "name": "Puissance 4",
+      "nameEn": "ReinFOURcement",
+      "effect": "Le prochain champion à 4 PO que vous achetez avec des PO passe instantanément à 2 étoiles. Vous gagnez 7 PO."
+    },
+    {
+      "id": "noscoutnopivot",
+      "name": "Obstination",
+      "nameEn": "NO SCOUT NO PIVOT",
+      "effect": "Les champions qui se battent dans un combat contre un joueur ne peuvent pas être placés sur le banc ni être vendus. Votre équipe gagne 1% de PV et 1% de dégâts d'attaque et de puissance après un combat contre un joueur."
+    },
+    {
+      "id": "goldfordummies",
+      "name": "Mannequins rentables",
+      "nameEn": "Gold For Dummies",
+      "effect": "Vous gagnez un mannequin d'entraînement. Toutes les 10 sec, tous vos mannequins d'entraînement vous octroient 1 PO."
+    },
+    {
+      "id": "lategamescaling",
+      "name": "Fin de partie",
+      "nameEn": "Late Game Scaling",
+      "effect": "Vous gagnez 2 XP au début des manches de combat contre un joueur. Vos champions à 5 PO gagnent 12% de PV et 12% de vitesse d'attaque."
+    },
+    {
+      "id": "qualityoverquantity",
+      "name": "Qualité avant quantité",
+      "nameEn": "Quality Over Quantity",
+      "effect": "Les champions portant 1 seul objet l'améliorent en sa version de la lumière. Les champions portant des objets de la lumière gagnent 7% de PV. Vous gagnez 2 Suppresseurs magnétiques."
+    },
+    {
+      "id": "moneyhungry_notbroken",
+      "name": "Avidité",
+      "nameEn": "Money Hungry",
+      "effect": "Vous gagnez immédiatement 7 PO, puis 7 PO au début de chaque phase. Récupérer des PO fait grossir votre Tacticien."
+    },
+    {
+      "id": "waverider",
+      "name": "Relances étoilées",
+      "nameEn": "On a Roll",
+      "effect": "Quand vous augmentez le niveau d'étoiles d'un champion que vous avez placé sur votre plateau lors du dernier combat, vous gagnez 1 relances gratuites de la boutique. Vous gagnez 6 PO."
+    },
+    {
+      "id": "placebo",
+      "name": "Placébo",
+      "nameEn": "Placebo",
+      "effect": "Vos unités gagnent +1% de vitesse d'attaque. Vous gagnez 8 PO."
+    },
+    {
+      "id": "mirroredmonetization",
+      "name": "Monétisation malveillante",
+      "nameEn": "Malicious Monetization",
+      "effect": "Vous gagnez 4 PO. Pendant les 2 prochaines manches, les champions ennemis vous octroient 2 PO quand ils meurent."
+    },
+    {
+      "id": "unlimitedpower",
+      "name": "Puissance infinie",
+      "nameEn": "Unlimited Power",
+      "effect": "Vous gagnez une Dent de Nashor, un Gantelet précieux, une Baguette trop grosse et un Suppresseur magnétique."
+    },
+    {
+      "id": "pandorasradiantbox",
+      "name": "Objets de Pandore III",
+      "nameEn": "Pandora's Items III",
+      "effect": "Début de la manche: les objets sur votre banc changent aléatoirement. Vous gagnez 1 objet de la lumière aléatoire."
+    },
+    {
+      "id": "tradesector",
+      "name": "Secteur commercial",
+      "nameEn": "Trade Sector",
+      "effect": "À chaque manche, vous gagnez une relance gratuite de la boutique. Vous gagnez 2 PO."
+    },
+    {
+      "id": "pilfer",
+      "name": "Chapardage",
+      "nameEn": "Pilfer",
+      "effect": "À chaque manche, vous gagnez une copie 1 étoile du premier champion que vous avez tué lors du dernier combat. La première fois que vous récupérez des champions d'une valeur de 19 PO au total, vous gagnez des Gants de voleur."
+    },
+    {
+      "id": "18_biggrabbag",
+      "name": "Super sac de butin",
+      "nameEn": "Big Grab Bag",
+      "effect": "Vous gagnez 3 composants aléatoires, 2 PO et 1 Reforgeur."
+    },
+    {
+      "id": "caretakersfavor",
+      "name": "Faveur du gardien",
+      "nameEn": "Caretaker's Favor",
+      "effect": "Vous gagnez une Enclume à composants quand vous atteignez les niveaux 5, 6, 7 et 8."
+    },
+    {
+      "id": "celestialblessing1",
+      "name": "Bénédiction céleste I",
+      "nameEn": "Celestial Blessing I",
+      "effect": "Votre équipe gagne 12% d'omnivampirisme. L'excédent de soins est converti en un bouclier de jusqu'à 200 PV."
+    },
+    {
+      "id": "bardplaybook3",
+      "name": "Bénédiction du gardien",
+      "nameEn": "Caretaker's Chosen",
+      "effect": "Vous gagnez des objets plus puissants au fil des niveaux. Niveau 4: Enclume à composants Niveau 6: Enclume à objets complets Niveau 8: choisissez 1 objet de la lumière parmi les 5 proposés."
+    },
+    {
+      "id": "celestialblessing2",
+      "name": "Bénédiction céleste II",
+      "nameEn": "Celestial Blessing II",
+      "effect": "Votre équipe gagne 18% d'omnivampirisme. L'excédent de soins est converti en un bouclier de jusqu'à 400 PV."
+    },
+    {
+      "id": "gachaaddict",
+      "name": "Ticket prismatique",
+      "nameEn": "Prismatic Ticket",
+      "effect": "Chaque fois que votre boutique est relancée, vous avez 45% de chances de gagner une relance gratuite."
+    },
+    {
+      "id": "celestialblessing3",
+      "name": "Bénédiction céleste III",
+      "nameEn": "Celestial Blessing III",
+      "effect": "Votre équipe gagne 25% d'omnivampirisme. L'excédent de soins est converti en un bouclier de jusqu'à 1000 PV."
+    },
+    {
+      "id": "18_caretakersally",
+      "name": "Don du gardien",
+      "nameEn": "Caretaker's Ally",
+      "effect": "Vous gagnez immédiatement un champion à 2 PO aléatoire. Vous regagnez le même chaque fois que vous gagnez un niveau."
+    },
+    {
+      "id": "constructacompanion",
+      "name": "Achat 3 étoiles",
+      "nameEn": "Construct a Companion",
+      "effect": "Le prochain champion à 1 PO que vous achetez sera 3 étoiles. Vous gagnez 2 PO."
+    },
+    {
+      "id": "calculatedloss",
+      "name": "Défaite planifiée",
+      "nameEn": "Calculated Loss",
+      "effect": "Après avoir perdu un combat, vous obtenez 2 PO et une relance gratuite de la boutique."
+    },
+    {
+      "id": "riskymoves",
+      "name": "L'amour du risque",
+      "nameEn": "Risky Moves",
+      "effect": "Votre Tacticien perd 20 PV, mais après 7 combats contre un joueur, vous gagnez 26 PO."
+    },
+    {
+      "id": "forceofnature",
+      "name": "Nouvelle recrue",
+      "nameEn": "New Recruit",
+      "effect": "La taille de l'équipe augmente de 1 et vous gagnez 1 champion à 4 PO."
+    },
+    {
+      "id": "moonlight",
+      "name": "Étoiles supérieures",
+      "nameEn": "Moonlight",
+      "effect": "Début du combat: 1 champion à 1 PO aléatoire passe à 3 étoiles pour cette manche et gagne 40% de dégâts d'attaque et 40% de puissance."
+    },
+    {
+      "id": "evilbeyondmeasure",
+      "name": "Étoiles filantes",
+      "nameEn": "Evil Beyond Measure",
+      "effect": "Vos champions infligent des dégâts bruts équivalents à 4.5% de leurs dégâts pour chaque niveau d'étoile."
+    },
+    {
+      "id": "awakenedsoul",
+      "name": "Éveil de l'âme",
+      "nameEn": "Soul Awakening",
+      "effect": "Début du combat: votre équipe gagne 1.5% de dégâts d'attaque et de puissance par seconde pendant 10 sec. Au max d'effets cumulés, elle inflige 12% de dégâts bruts bonus."
+    },
+    {
+      "id": "bandofthieves1",
+      "name": "Bande de voleurs",
+      "nameEn": "Band of Thieves",
+      "effect": "Vous gagnez 1 Gant(s) de voleur."
+    },
+    {
+      "id": "sliceoflife",
+      "name": "Crescendo aléatoire",
+      "nameEn": "Slice of Life",
+      "effect": "Deux fois par phase, vous gagnez un champion aléatoire. Son coût augmente à chaque phase. Cet effet prend fin une fois que vous avez reçu 1 champion à 5 PO."
+    },
+    {
+      "id": "greaterjeweledlotus",
+      "name": "Lotus précieux II",
+      "nameEn": "Jeweled Lotus II",
+      "effect": "Votre équipe gagne 25% de chances de coup critique, 10% de dégâts de coup critique, et. {{TFT_Keyword_Precision}}"
+    },
+    {
+      "id": "moneymonsoon",
+      "name": "Pluie d'argent",
+      "nameEn": "Money Monsoon",
+      "effect": "Vous gagnez 7 PO immédiatement et à chaque manche pendant le reste de la partie."
+    },
+    {
+      "id": "warpath",
+      "name": "Récompenses de guerre",
+      "nameEn": "Warpath",
+      "effect": "Vous gagnez un champion à 2 PO 2 étoiles. Après avoir infligé 80 pts de dégâts à des joueurs, vous gagnez un coffre rempli de champions de coût élevé et des objets."
+    },
+    {
+      "id": "thedarkinblade",
+      "name": "Offrande sanguinaire",
+      "nameEn": "Blood Offering",
+      "effect": "Vous gagnez une Soif-de-sang. Début du combat: les alliés portant une Soif-de-sang perdent 15% de leurs PV, mais gagnent un bouclier de 20% de leurs PV et 12% de dégâts d'attaque et de puissance."
+    },
+    {
+      "id": "radiantrelic",
+      "name": "Reliques de la lumière",
+      "nameEn": "Radiant Relics",
+      "effect": "Choisissez 1 objet de la lumière parmi les 5 proposés. Vous gagnez un Suppresseur magnétique."
+    },
+    {
+      "id": "anotheroneplus",
+      "name": "Un autre!+",
+      "nameEn": "Another One!+",
+      "effect": "Le prochain objet complet que vous créez vous octroie une copie supplémentaire de celui-ci. Vous gagnez 1 Enclume à composants."
+    },
+    {
+      "id": "bigfriend2",
+      "name": "Ami trapu II",
+      "nameEn": "Big Friend II",
+      "effect": "Vos alliés qui commencent le combat à côté d'un allié qui a plus de 1750 PV gagnent 13% de durabilité. Vous gagnez une Ceinture du géant."
+    },
+    {
+      "id": "guardbreakerspirit",
+      "name": "Volonté de la massue",
+      "nameEn": "Mace's Will",
+      "effect": "Vous gagnez des Gants d'entraînement. Votre équipe gagne 25% de chances de coup critique."
+    },
+    {
+      "id": "knowyourenemy",
+      "name": "Copieur!",
+      "nameEn": "Know Your Enemy",
+      "effect": "Vous pouvez voir votre prochain adversaire. Votre équipe gagne 8% d'amplification des dégâts. Ce pourcentage augmente à 15% si vous et votre adversaire avez activé au moins un type en commun."
+    },
+    {
+      "id": "legionofthrees",
+      "name": "Légion des trois",
+      "nameEn": "Legion of Threes",
+      "effect": "Vous gagnez un emblème aléatoire. Vos champions à 3 PO et tous les alliés équipés d'un emblème gagnent 150 PV et 12% de vitesse d'attaque."
+    },
+    {
+      "id": "gaingold",
+      "name": "Gain de 21 PO",
+      "nameEn": "Gain 21 Gold",
+      "effect": "Vous gagnez 21 PO."
+    },
+    {
+      "id": "twins2",
+      "name": "Doublure",
+      "nameEn": "Double Trouble",
+      "effect": "Si vous avez exactement 2 exemplaires d'un champion sur le plateau, ils gagnent 30% de dégâts d'attaque et 30% de puissance, d'armure et de résistance magique. Quand vous faites passer une unité à 3 étoiles, vous en gagnez une copie 2 étoiles."
+    },
+    {
+      "id": "sizematters",
+      "name": "Question de taille",
+      "nameEn": "Size Matters",
+      "effect": "Vous gagnez une Ceinture du géant. La première fois qu'un champion commence un combat avec plus de PV max, vous gagnez une Armure de Warmog."
+    },
+    {
+      "id": "boosterpackplusplus",
+      "name": "Booster++",
+      "nameEn": "Booster Pack++",
+      "effect": "Gagnez l'équivalent de 26 PO en champions aléatoires. (Vous gagnez au moins un champion à 5 PO.)"
+    },
+    {
+      "id": "boosterpackplus",
+      "name": "Booster+",
+      "nameEn": "Booster Pack+",
+      "effect": "Gagnez l'équivalent de 18 PO en champions aléatoires. (Vous gagnez au moins un champion à 4 PO.)"
+    },
+    {
+      "id": "partialascension",
+      "name": "Ascension partielle",
+      "nameEn": "Partial Ascension",
+      "effect": "Après 12 sec de combat, vos unités gagnent 20% d'amplification des dégâts."
+    },
+    {
+      "id": "epoch",
+      "name": "Cycle épique",
+      "nameEn": "Epoch",
+      "effect": "Maintenant et au début de chaque phase, vous gagnez 4 XP et 2 relances gratuites."
+    },
+    {
+      "id": "healingorbsii",
+      "name": "Orbes de soins II",
+      "nameEn": "Healing Orbs II",
+      "effect": "Quand un ennemi meurt, l'allié le plus proche récupère 575 PV."
+    },
+    {
+      "id": "pandorasitems",
+      "name": "Objets de Pandore",
+      "nameEn": "Pandora's Items",
+      "effect": "Début de la manche: les objets sur votre banc changent aléatoirement. Vous gagnez 1 composant aléatoire."
+    },
+    {
+      "id": "portableforge",
+      "name": "Forge portative",
+      "nameEn": "Portable Forge",
+      "effect": "Choisissez 1 artefact parmi 4. Les artefacts sont des objets plus puissants dotés d'un effet unique."
+    },
+    {
+      "id": "cognitiveoverload",
+      "name": "Surcharge cognitive",
+      "nameEn": "Cognitive Overload",
+      "effect": "Vous gagnez 7 PO, 1 champion à 1 PO et 2 étoiles, 1 champion à 2 PO, 2 champion à 3 PO, 1 XP et 1 relances de boutique."
+    },
+    {
+      "id": "kickstart",
+      "name": "Coup d'envoi",
+      "nameEn": "Kick Start",
+      "effect": "Vous gagnez un champion aléatoire à 2 PO 2 étoile et 1 PO."
+    },
+    {
+      "id": "comebackstory",
+      "name": "Tentative de comeback",
+      "nameEn": "Comeback Story",
+      "effect": "Votre équipe gagne 4 PV et 0.4% de vitesse d'attaque par PV de Tacticien manquant."
+    },
+    {
+      "id": "cyberneticuplink2",
+      "name": "Liaison cybernétique",
+      "nameEn": "Cybernetic Uplink",
+      "effect": "Vos alliés équipés d'un objet gagnent 100 PV et 2 de régénération du mana. Vous gagnez une Larme de la déesse."
+    },
+    {
+      "id": "cyberneticuplink3",
+      "name": "Liaison cybernétique III",
+      "nameEn": "Cybernetic Uplink III",
+      "effect": "Vos alliés équipés d'un objet gagnent 275 PV et 3 de régénération du mana. Vous gagnez une Larme de la déesse."
     },
     {
       "id": "promisedprotection",
       "name": "Mana du protecteur",
-      "nameEn": "Promised Protection"
+      "nameEn": "Promised Protection",
+      "effect": "Vous gagnez un Vœu du protecteur. Le Vœu du protecteur octroie au porteur 20% de mana supplémentaire de toutes les sources."
     },
     {
-      "id": "celestialblessingii",
-      "name": "Bénédiction céleste II",
-      "nameEn": "Celestial Blessing II"
+      "id": "deadlierblades",
+      "name": "Lames tueuses",
+      "nameEn": "Deadlier Blades",
+      "effect": "Vous gagnez une Lame funeste. Les Lames funestes gagnent 1% de dégâts d'attaque de manière permanente à chaque fois que leur porteur participe à une élimination."
     },
     {
-      "id": "celestialblessingiii",
-      "name": "Bénédiction céleste III",
-      "nameEn": "Celestial Blessing III"
+      "id": "golddestinyplus",
+      "name": "Destin doré +",
+      "nameEn": "Gold Destiny Plus",
+      "effect": "Vous gagnez une optimisation de palier Or aléatoire et 6 PO."
     },
     {
-      "id": "celestialblessingi",
-      "name": "Bénédiction céleste I",
-      "nameEn": "Celestial Blessing I"
+      "id": "buriedtreasuresiii",
+      "name": "Trésors enfouis III",
+      "nameEn": "Buried Treasures III",
+      "effect": "Vous gagnez un composant aléatoire immédiatement et au début des prochaines manches."
+    },
+    {
+      "id": "rollingfordays",
+      "name": "Jour de relance",
+      "nameEn": "Rolling For Days",
+      "effect": "Vous gagnez relances gratuites de la boutique."
+    },
+    {
+      "id": "challengersgrace",
+      "name": "Grâce du Challenger",
+      "nameEn": "Challenger's Grace",
+      "effect": "Au début du combat, vos alliés gagnent de vitesse d'attaque pendant 3 sec. Lorsqu'ils participent à une élimination, vos alliés se ruent vers leur prochaine cible et gagnent à nouveau ce bonus."
+    },
+    {
+      "id": "pandorasitemsi",
+      "name": "Objets de Pandore I",
+      "nameEn": "Pandora's Items I",
+      "effect": "Début de la manche: les objets sur votre banc changent aléatoirement. Vous gagnez composant aléatoire."
+    },
+    {
+      "id": "itemgrabbag",
+      "name": "Sac de butin I",
+      "nameEn": "Item Grab Bag I",
+      "effect": "Vous gagnez un objet complet aléatoire."
     },
     {
       "id": "underdogs",
       "name": "Outsiders",
-      "nameEn": "Underdogs"
+      "nameEn": "Underdogs",
+      "effect": "Quand votre équipe compte moins d'alliés vivants que celle de votre adversaire, elle récupère 4% de ses PV manquants par seconde (max: 150)."
     }
   ]
 }
