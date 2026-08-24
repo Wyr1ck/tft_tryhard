@@ -186,12 +186,6 @@ function getChampionImagePath(id) {
   return `assets/images/champions/${id}.png`;
 }
 
-// Tres peu de personnages ont deja un visuel (contrairement aux objets, ou la
-// plupart en ont). On garde une liste courte de ceux qui existent vraiment
-// pour la carte d'accueil, plutot que de tenter tous les personnages et
-// enchainer des dizaines de 404 avant d'en trouver un valide.
-const CHAMPION_IDS_WITH_IMAGE = ['alune', 'dragon_ancestral', 'kobuko', 'krug'];
-
 // Si le fichier image n'existe pas encore, on cache juste la balise <img>
 // au lieu d'afficher l'icone "image cassee" du navigateur.
 function hideImageOnError(imgEl) {
@@ -232,8 +226,7 @@ function setRandomCardImage(imgEl, pool, getPathFn) {
 function randomizeHomeCardImages() {
   if (!state.data || !state.champData) return;
   setRandomCardImage(homeItemsImgEl, state.data.items, getItemImagePath);
-  const championsWithImage = CHAMPION_IDS_WITH_IMAGE.map((id) => ({ id }));
-  setRandomCardImage(homeChampionsImgEl, championsWithImage, getChampionImagePath);
+  setRandomCardImage(homeChampionsImgEl, state.champData.champions, getChampionImagePath);
 }
 
 function randomizeItemsSubmenuImages() {
