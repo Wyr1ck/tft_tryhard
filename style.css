@@ -541,6 +541,26 @@ header h1 {
   object-fit: cover;
 }
 
+/* Quiz "noms de personnages", question "nom -> image" : 4 grandes vignettes
+   au lieu du petit icone habituel, l'image est le seul indice. */
+.answer-btn.image-choice {
+  padding: 0.4rem;
+}
+
+.answer-icon-large {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Question "image -> nom" : le nom du personnage seul, sans image (l'image
+   est deja affichee au-dessus dans .champion-card). */
+.champion-name-chip {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 .feedback-icon {
   width: 36px;
   height: 36px;

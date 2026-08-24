@@ -10,7 +10,9 @@ const state = {
   itemQuestionType: null,   // 'forward' (composants -> objet) ou 'reverse' (objet -> composants)
   currentQuestion: null,    // question du mode "items" (forward) affichee en ce moment
   currentReverseItem: null, // objet du mode "items" (reverse) affiche en ce moment
-  currentChampion: null,    // personnage du mode "champions" affiche en ce moment
+  currentChampion: null,    // personnage du mode "champions"/"names" affiche en ce moment
+  nameQuestionType: null,   // 'image_to_name' (image -> nom) ou 'name_to_image' (nom -> image)
+  currentNameQuestion: null, // bonne reponse + choix du mode "names" affiche en ce moment
   lastItemId: null,         // id du dernier objet pose en question (mode "objets"), pour ne pas le repeter
   lastChampionId: null,     // id du dernier personnage pose en question, pour ne pas le repeter
   // "Sac a pioche" : on tire dans une liste melangee sans remise, on ne remelange
@@ -23,6 +25,7 @@ const state = {
     // Score du mode entrainement : reinitialise a chaque lancement de partie.
     items: { score: 0, questionCount: 0 },
     champions: { score: 0, questionCount: 0 },
+    names: { score: 0, questionCount: 0 },
   },
   competitive: {
     streak: 0,
@@ -38,8 +41,10 @@ const quizScreen = document.getElementById('quiz-screen');
 
 const homeItemsBtn = document.getElementById('home-items');
 const homeChampionsBtn = document.getElementById('home-champions');
+const homeNamesBtn = document.getElementById('home-names');
 const homeItemsHighscoreEl = document.getElementById('home-items-highscore');
 const homeChampionsHighscoreEl = document.getElementById('home-champions-highscore');
+const homeNamesHighscoreEl = document.getElementById('home-names-highscore');
 
 const itemsSubmenuBackBtn = document.getElementById('items-submenu-back-btn');
 const itemsWithEmblemsBtn = document.getElementById('items-with-emblems');
@@ -70,6 +75,7 @@ const podiumChampionsEl = document.getElementById('podium-champions');
 
 const homeItemsImgEl = document.getElementById('home-items-img');
 const homeChampionsImgEl = document.getElementById('home-champions-img');
+const homeNamesImgEl = document.getElementById('home-names-img');
 const itemsWithEmblemsImgEl = document.getElementById('items-with-emblems-img');
 const itemsWithoutEmblemsImgEl = document.getElementById('items-without-emblems-img');
 
@@ -231,6 +237,7 @@ function randomizeHomeCardImages() {
   if (!state.data || !state.champData) return;
   setRandomCardImage(homeItemsImgEl, state.data.items, getItemImagePath);
   setRandomCardImage(homeChampionsImgEl, state.champData.champions, getChampionImagePath);
+  setRandomCardImage(homeNamesImgEl, state.champData.champions, getChampionImagePath);
 }
 
 function randomizeItemsSubmenuImages() {
@@ -664,6 +671,120 @@ function handleChampionSubmit() {
 }
 
 // ---------------------------------------------------------------------------
+// Mode "Noms de personnages" (QCM a 4 choix : image -> nom, ou nom -> image)
+// ---------------------------------------------------------------------------
+
+// Choix de noms pour la question "image -> nom" : le bon nom + 3 noms au
+// hasard du meme genre (un personnage feminin n'a que des noms feminins
+// comme fausses reponses, et inversement), pour ne pas trahir la reponse.
+function buildNameChoices(correctChampion) {
+  const pool = state.champData.champions.filter(
+    (c) => c.id !== correctChampion.id && c.gender === correctChampion.gender
+  );
+  shuffle(pool);
+  const picked = [correctChampion, ...pool.slice(0, 3)];
+  return shuffle(picked).map((c) => ({ id: c.id, label: c.name }));
+}
+
+// Choix d'images pour la question "nom -> image" : la bonne image + 3 images
+// au hasard (le genre n'a pas besoin d'etre respecte ici, une image ne
+// "trahit" pas sa reponse de la meme facon qu'un nom).
+function buildImageChoices(correctChampion) {
+  const pool = state.champData.champions.filter((c) => c.id !== correctChampion.id);
+  shuffle(pool);
+  const picked = [correctChampion, ...pool.slice(0, 3)];
+  return shuffle(picked).map((c) => ({ id: c.id, imagePath: getChampionImagePath(c.id) }));
+}
+
+// Appele quand le joueur clique sur une reponse en mode "names" (les 2 sens
+// de question partagent la meme logique de correction).
+function handleNameAnswer(choiceId, btnEl) {
+  if (state.answered) return;
+  state.answered = true;
+
+  const question = state.currentNameQuestion;
+  const isCorrect = choiceId === question.correctId;
+  const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
+  feedbackEl.innerHTML = `<div class="feedback-title">${titleText}</div>`;
+  feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+
+  [...answersEl.children].forEach((btn) => {
+    btn.disabled = true;
+    if (btn.dataset.choiceId === question.correctId) {
+      btn.classList.add('correct');
+    } else if (btn === btnEl) {
+      btn.classList.add('incorrect');
+    }
+  });
+
+  finishQuestion(isCorrect);
+}
+
+// Question "image -> nom" : on montre juste l'image (sans le nom en
+// superposition, ca donnerait la reponse), le QCM propose 4 noms.
+function renderNameFromImageQuestion() {
+  const champion = pickRandomChampion();
+  state.currentChampion = champion;
+
+  promptEl.textContent = 'Quel est le nom de ce personnage :';
+  componentsEl.innerHTML = `
+    <div class="champion-card">
+      <img class="champion-card-img" src="${getChampionImagePath(champion.id)}" alt="">
+    </div>
+  `;
+  componentsEl.querySelectorAll('.champion-card-img').forEach(hideImageOnError);
+
+  const choices = buildNameChoices(champion);
+  state.currentNameQuestion = { correctId: champion.id, choices };
+
+  answersEl.className = 'answers';
+  answersEl.innerHTML = '';
+  choices.forEach((choice) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.dataset.choiceId = choice.id;
+    btn.textContent = choice.label;
+    btn.addEventListener('click', () => handleNameAnswer(choice.id, btn));
+    answersEl.appendChild(btn);
+  });
+}
+
+// Question "nom -> image" : on montre juste le nom, le QCM propose 4 images.
+function renderImageFromNameQuestion() {
+  const champion = pickRandomChampion();
+  state.currentChampion = champion;
+
+  promptEl.textContent = 'Quelle image correspond a ce personnage :';
+  componentsEl.innerHTML = `<span class="chip champion-name-chip">${champion.name}</span>`;
+
+  const choices = buildImageChoices(champion);
+  state.currentNameQuestion = { correctId: champion.id, choices };
+
+  answersEl.className = 'answers';
+  answersEl.innerHTML = '';
+  choices.forEach((choice) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn image-choice';
+    btn.dataset.choiceId = choice.id;
+    btn.innerHTML = `<img class="answer-icon-large" src="${choice.imagePath}" alt="">`;
+    hideImageOnError(btn.querySelector('.answer-icon-large'));
+    btn.addEventListener('click', () => handleNameAnswer(choice.id, btn));
+    answersEl.appendChild(btn);
+  });
+}
+
+// Choisit au hasard le sens de la question "names" (environ 50/50, comme
+// pour le mode "objets", voir renderItemQuestion()).
+function renderNameQuestion() {
+  state.nameQuestionType = Math.random() < 0.5 ? 'image_to_name' : 'name_to_image';
+  if (state.nameQuestionType === 'image_to_name') {
+    renderNameFromImageQuestion();
+  } else {
+    renderImageFromNameQuestion();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Mode de jeu : entrainement (score classique) ou competitif (serie + chrono)
 // ---------------------------------------------------------------------------
 
@@ -722,8 +843,10 @@ function updateHomeHighscores() {
     .filter((ms) => ms !== null)
     .sort((a, b) => a - b)[0];
   const champMs = getHighscoreMs('champions');
+  const namesMs = getHighscoreMs('names');
   homeItemsHighscoreEl.textContent = itemsMs !== undefined ? formatTime(itemsMs) : '--';
   homeChampionsHighscoreEl.textContent = champMs !== null ? formatTime(champMs) : '--';
+  homeNamesHighscoreEl.textContent = namesMs !== null ? formatTime(namesMs) : '--';
 }
 
 // Appelee a chaque reponse en mode competitif : fait avancer la serie, ou
@@ -966,6 +1089,11 @@ function chooseChampionsMode() {
   showModeSubmenu();
 }
 
+function chooseNamesMode() {
+  state.pendingMode = 'names';
+  showModeSubmenu();
+}
+
 // Lance vraiment le quiz une fois le mode de jeu choisi.
 function startQuiz(gameMode) {
   state.mode = state.pendingMode;
@@ -1005,6 +1133,8 @@ function renderQuestion() {
 
   if (state.mode === 'items') {
     renderItemQuestion();
+  } else if (state.mode === 'names') {
+    renderNameQuestion();
   } else {
     renderChampionQuestion();
   }
@@ -1014,6 +1144,7 @@ siteTitleEl.addEventListener('click', showHome);
 
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
+homeNamesBtn.addEventListener('click', chooseNamesMode);
 showLeaderboardBtn.addEventListener('click', showLeaderboard);
 leaderboardBackBtn.addEventListener('click', showHome);
 showPodiumsBtn.addEventListener('click', showPodiums);
