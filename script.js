@@ -64,6 +64,7 @@ const leaderboardBackBtn = document.getElementById('leaderboard-back-btn');
 const leaderboardItemsWithEl = document.getElementById('leaderboard-items-with');
 const leaderboardItemsWithoutEl = document.getElementById('leaderboard-items-without');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
+const leaderboardNamesEl = document.getElementById('leaderboard-names');
 
 const showPodiumsBtn = document.getElementById('show-podiums-btn');
 const podiumsScreen = document.getElementById('podiums-screen');
@@ -72,6 +73,7 @@ const podiumsBackBtn = document.getElementById('podiums-back-btn');
 const podiumItemsWithEl = document.getElementById('podium-items-with');
 const podiumItemsWithoutEl = document.getElementById('podium-items-without');
 const podiumChampionsEl = document.getElementById('podium-champions');
+const podiumNamesEl = document.getElementById('podium-names');
 
 const homeItemsImgEl = document.getElementById('home-items-img');
 const homeChampionsImgEl = document.getElementById('home-champions-img');
@@ -998,11 +1000,13 @@ async function updateHomePodiums() {
   podiumItemsWithEl.innerHTML = loadingHtml;
   podiumItemsWithoutEl.innerHTML = loadingHtml;
   podiumChampionsEl.innerHTML = loadingHtml;
+  podiumNamesEl.innerHTML = loadingHtml;
 
   await Promise.all([
     loadScoreCategory(podiumItemsWithEl, 'items_with', 3, renderPodium),
     loadScoreCategory(podiumItemsWithoutEl, 'items_without', 3, renderPodium),
     loadScoreCategory(podiumChampionsEl, 'champions', 3, renderPodium),
+    loadScoreCategory(podiumNamesEl, 'names', 3, renderPodium),
   ]);
 }
 
@@ -1029,11 +1033,13 @@ async function showLeaderboard() {
   leaderboardItemsWithEl.innerHTML = loadingHtml;
   leaderboardItemsWithoutEl.innerHTML = loadingHtml;
   leaderboardChampionsEl.innerHTML = loadingHtml;
+  leaderboardNamesEl.innerHTML = loadingHtml;
 
   await Promise.all([
     loadScoreCategory(leaderboardItemsWithEl, 'items_with', 10, renderLeaderboardList),
     loadScoreCategory(leaderboardItemsWithoutEl, 'items_without', 10, renderLeaderboardList),
     loadScoreCategory(leaderboardChampionsEl, 'champions', 10, renderLeaderboardList),
+    loadScoreCategory(leaderboardNamesEl, 'names', 10, renderLeaderboardList),
   ]);
 }
 
