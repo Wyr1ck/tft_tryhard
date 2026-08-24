@@ -27,7 +27,6 @@ const state = {
   competitive: {
     streak: 0,
     startTime: null,
-    intervalId: null,
   },
 };
 
@@ -695,24 +694,16 @@ function formatTime(ms) {
   return `${String(minutes).padStart(2, '0')}:${seconds.padStart(4, '0')}`;
 }
 
-// (Re)demarre la serie competitive : serie a 0, chrono a 0 et lance le
-// rafraichissement de l'affichage du temps toutes les 100ms.
+// (Re)demarre la serie competitive : serie a 0, chrono relance en interne.
+// Le temps ne s'affiche plus en direct (ca redessinait le chiffre 10 fois
+// par seconde, ce qui faisait ramer certains telephones) : on garde juste
+// l'heure de depart en memoire, le temps reel n'apparait qu'a la fin de la
+// partie (victoire ou defaite), voir finishCompetitiveRun().
 function startCompetitiveTimer() {
-  stopCompetitiveTimer();
   state.competitive.streak = 0;
   state.competitive.startTime = Date.now();
   streakEl.textContent = '0';
-  timerEl.textContent = '00:00.0';
-  state.competitive.intervalId = setInterval(() => {
-    timerEl.textContent = formatTime(Date.now() - state.competitive.startTime);
-  }, 100);
-}
-
-function stopCompetitiveTimer() {
-  if (state.competitive.intervalId !== null) {
-    clearInterval(state.competitive.intervalId);
-    state.competitive.intervalId = null;
-  }
+  timerEl.textContent = '--:--';
 }
 
 function getHighscoreMs(category) {
@@ -754,12 +745,15 @@ function handleCompetitiveResult(isCorrect) {
   }
 }
 
-// Arrete le chrono et affiche soit un message de victoire (avec record
-// eventuel), soit un message de game over.
+// Affiche soit un message de victoire (avec record eventuel), soit un
+// message de game over. C'est ici que le temps final est calcule et
+// affiche pour la premiere fois (voir startCompetitiveTimer()).
 function finishCompetitiveRun(won) {
-  stopCompetitiveTimer();
   const elapsedMs = Date.now() - state.competitive.startTime;
   const category = getScoreCategory();
+  // Premiere (et seule) mise a jour du temps affiche dans la barre : il
+  // restait sur "--:--" pendant toute la partie.
+  timerEl.textContent = formatTime(elapsedMs);
 
   if (won) {
     const key = `tft_${category}_highscore_ms`;
@@ -783,7 +777,7 @@ function finishCompetitiveRun(won) {
   } else {
     const noteEl = document.createElement('div');
     noteEl.className = 'feedback-effect';
-    noteEl.textContent = `Partie terminee : ${state.competitive.streak} bonne(s) reponse(s) d'affilee avant l'erreur.`;
+    noteEl.textContent = `Partie terminee : ${state.competitive.streak} bonne(s) reponse(s) d'affilee avant l'erreur, en ${formatTime(elapsedMs)}.`;
     feedbackEl.appendChild(noteEl);
   }
 
@@ -1005,10 +999,7 @@ function renderQuestion() {
   }
 }
 
-siteTitleEl.addEventListener('click', () => {
-  stopCompetitiveTimer();
-  showHome();
-});
+siteTitleEl.addEventListener('click', showHome);
 
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
@@ -1029,10 +1020,7 @@ modeSubmenuBackBtn.addEventListener('click', () => {
 modeTrainingBtn.addEventListener('click', () => startQuiz('training'));
 modeCompetitiveBtn.addEventListener('click', () => startQuiz('competitive'));
 
-backHomeBtn.addEventListener('click', () => {
-  stopCompetitiveTimer();
-  showModeSubmenu();
-});
+backHomeBtn.addEventListener('click', showModeSubmenu);
 
 nextBtn.addEventListener('click', renderQuestion);
 retryBtn.addEventListener('click', () => {
