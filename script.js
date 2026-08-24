@@ -566,13 +566,15 @@ function renderChampionQuestion() {
 
   promptEl.textContent = 'Quels sont les traits de ce personnage :';
   componentsEl.innerHTML = `
-    <span class="chip">
-      <img class="chip-icon" src="${getChampionImagePath(champion.id)}" alt="">
-      ${champion.name}
-      <span class="champion-cost">${champion.cost} <span class="champion-cost-star">★</span></span>
-    </span>
+    <div class="champion-reveal">
+      <img class="champion-reveal-img" src="${getChampionImagePath(champion.id)}" alt="">
+      <span class="champion-reveal-name">
+        ${champion.name}
+        <span class="champion-cost">${champion.cost} <span class="champion-cost-star">★</span></span>
+      </span>
+    </div>
   `;
-  componentsEl.querySelectorAll('.chip-icon').forEach(hideImageOnError);
+  componentsEl.querySelectorAll('.champion-reveal-img').forEach(hideImageOnError);
 
   answersEl.className = 'answers trait-list';
   answersEl.innerHTML = '';
@@ -650,7 +652,7 @@ function handleChampionSubmit() {
   answersEl.append(...wrongOptions);
 
   const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
-  const iconHtml = `<img class="feedback-icon" src="${getChampionImagePath(champion.id)}" alt="" onerror="this.style.display='none'">`;
+  const iconHtml = `<img class="feedback-icon wide" src="${getChampionImagePath(champion.id)}" alt="" onerror="this.style.display='none'">`;
   feedbackEl.innerHTML = `<div class="feedback-title">${iconHtml}${titleText}</div>`;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 

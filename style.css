@@ -348,6 +348,31 @@ header h1 {
   font-weight: 700;
 }
 
+/* Quiz "personnages" : l'image n'est pas recadree (les splash arts du Set 18
+   n'ont pas encore d'icone carree officielle), donc on l'affiche en entier,
+   en grand, plutot que de la rogner dans un petit carre. */
+.champion-reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.champion-reveal-img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #12151d;
+}
+
+.champion-reveal-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
 .name-block {
   display: inline-flex;
   flex-direction: column;
@@ -397,7 +422,7 @@ header h1 {
    La liste verticale de cases a cocher passe en grille 2 colonnes, comme
    les 4 boutons du QCM d'objets, et le cadre a une hauteur minimale fixe. */
 .quiz-card.competitive-mode {
-  min-height: 460px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -496,6 +521,16 @@ header h1 {
   object-fit: cover;
   vertical-align: middle;
   margin-right: 0.4rem;
+}
+
+/* Feedback du quiz "personnages" : meme logique que .champion-reveal-img,
+   pas de recadrage, donc une case plus large que haute au lieu d'un carre. */
+.feedback-icon.wide {
+  width: 64px;
+  height: 38px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: #12151d;
 }
 
 .answer-btn:hover:not(:disabled) {
