@@ -3,6 +3,7 @@
 const state = {
   data: null,              // contenu de items.json une fois charge
   champData: null,         // contenu de champions.json une fois charge
+  augData: null,           // contenu de augments.json une fois charge
   mode: null,               // null = pas encore dans un quiz, sinon 'items' ou 'champions'
   pendingMode: null,        // mode en cours de choix, avant d'avoir choisi entrainement/competitif
   gameMode: 'training',     // 'training' ou 'competitive'
@@ -13,19 +14,25 @@ const state = {
   currentChampion: null,    // personnage du mode "champions"/"names" affiche en ce moment
   nameQuestionType: null,   // 'image_to_name' (image -> nom) ou 'name_to_image' (nom -> image)
   currentNameQuestion: null, // bonne reponse + choix du mode "names" affiche en ce moment
+  currentAugment: null,     // augment du mode "augments" affiche en ce moment
+  augmentQuestionType: null, // 'image_to_name' ou 'name_to_image', comme pour "names"
+  currentAugmentQuestion: null, // bonne reponse + choix du mode "augments" affiche en ce moment
   lastItemId: null,         // id du dernier objet pose en question (mode "objets"), pour ne pas le repeter
   lastChampionId: null,     // id du dernier personnage pose en question, pour ne pas le repeter
+  lastAugmentId: null,      // id du dernier augment pose en question, pour ne pas le repeter
   // "Sac a pioche" : on tire dans une liste melangee sans remise, on ne remelange
   // un nouveau sac que quand il est vide. Ca garantit qu'on ne retombe jamais sur
   // le meme objet/personnage tant que tous les autres ne sont pas deja passes.
   itemBag: { key: null, queue: [] }, // key = filtre emblemes pour lequel le sac a ete prepare
   championBag: [],
+  augmentBag: [],
   answered: false,         // empeche de valider 2 fois la meme question
   scores: {
     // Score du mode entrainement : reinitialise a chaque lancement de partie.
     items: { score: 0, questionCount: 0 },
     champions: { score: 0, questionCount: 0 },
     names: { score: 0, questionCount: 0 },
+    augments: { score: 0, questionCount: 0 },
   },
   competitive: {
     streak: 0,
@@ -42,9 +49,11 @@ const quizScreen = document.getElementById('quiz-screen');
 const homeItemsBtn = document.getElementById('home-items');
 const homeChampionsBtn = document.getElementById('home-champions');
 const homeNamesBtn = document.getElementById('home-names');
+const homeAugmentsBtn = document.getElementById('home-augments');
 const homeItemsHighscoreEl = document.getElementById('home-items-highscore');
 const homeChampionsHighscoreEl = document.getElementById('home-champions-highscore');
 const homeNamesHighscoreEl = document.getElementById('home-names-highscore');
+const homeAugmentsHighscoreEl = document.getElementById('home-augments-highscore');
 
 const itemsSubmenuBackBtn = document.getElementById('items-submenu-back-btn');
 const itemsWithEmblemsBtn = document.getElementById('items-with-emblems');
@@ -65,6 +74,7 @@ const leaderboardItemsWithEl = document.getElementById('leaderboard-items-with')
 const leaderboardItemsWithoutEl = document.getElementById('leaderboard-items-without');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
 const leaderboardNamesEl = document.getElementById('leaderboard-names');
+const leaderboardAugmentsEl = document.getElementById('leaderboard-augments');
 
 const showPodiumsBtn = document.getElementById('show-podiums-btn');
 const podiumsScreen = document.getElementById('podiums-screen');
@@ -74,10 +84,12 @@ const podiumItemsWithEl = document.getElementById('podium-items-with');
 const podiumItemsWithoutEl = document.getElementById('podium-items-without');
 const podiumChampionsEl = document.getElementById('podium-champions');
 const podiumNamesEl = document.getElementById('podium-names');
+const podiumAugmentsEl = document.getElementById('podium-augments');
 
 const homeItemsImgEl = document.getElementById('home-items-img');
 const homeChampionsImgEl = document.getElementById('home-champions-img');
 const homeNamesImgEl = document.getElementById('home-names-img');
+const homeAugmentsImgEl = document.getElementById('home-augments-img');
 const itemsWithEmblemsImgEl = document.getElementById('items-with-emblems-img');
 const itemsWithoutEmblemsImgEl = document.getElementById('items-without-emblems-img');
 
@@ -159,12 +171,14 @@ function escapeHtml(text) {
 // Charge les fichiers JSON avec fetch (comme un "GET http" fait par le navigateur).
 // fetch() est asynchrone : il renvoie une Promise, d'ou le "await".
 async function loadData() {
-  const [itemsResponse, champResponse] = await Promise.all([
+  const [itemsResponse, champResponse, augResponse] = await Promise.all([
     fetch('data/items.json'),
     fetch('data/champions.json'),
+    fetch('data/augments.json'),
   ]);
   state.data = await itemsResponse.json();
   state.champData = await champResponse.json();
+  state.augData = await augResponse.json();
 }
 
 // Retrouve le nom lisible d'un composant a partir de son id (ex: "bf_sword" -> "B.F. Sword").
@@ -196,6 +210,10 @@ function getItemImagePath(id) {
 
 function getChampionImagePath(id) {
   return `assets/images/champions/${id}.png`;
+}
+
+function getAugmentImagePath(id) {
+  return `assets/images/augments/${id}.png`;
 }
 
 // Si le fichier image n'existe pas encore, on cache juste la balise <img>
@@ -236,10 +254,11 @@ function setRandomCardImage(imgEl, pool, getPathFn) {
 }
 
 function randomizeHomeCardImages() {
-  if (!state.data || !state.champData) return;
+  if (!state.data || !state.champData || !state.augData) return;
   setRandomCardImage(homeItemsImgEl, state.data.items, getItemImagePath);
   setRandomCardImage(homeChampionsImgEl, state.champData.champions, getChampionImagePath);
   setRandomCardImage(homeNamesImgEl, state.champData.champions, getChampionImagePath);
+  setRandomCardImage(homeAugmentsImgEl, state.augData.augments, getAugmentImagePath);
 }
 
 function randomizeItemsSubmenuImages() {
@@ -787,6 +806,135 @@ function renderNameQuestion() {
 }
 
 // ---------------------------------------------------------------------------
+// Mode "Augments" (meme principe que "Noms de personnages" : QCM a 4 choix,
+// image -> nom ou nom -> image)
+// ---------------------------------------------------------------------------
+
+// Tire un augment au hasard via le meme "sac a pioche" que pickRandomChampion().
+function pickRandomAugment() {
+  const augments = state.augData.augments;
+
+  if (state.augmentBag.length === 0) {
+    state.augmentBag = shuffle(augments.map((a) => a.id));
+    if (state.augmentBag.length > 1 && state.augmentBag[0] === state.lastAugmentId) {
+      const swapIndex = 1 + Math.floor(Math.random() * (state.augmentBag.length - 1));
+      [state.augmentBag[0], state.augmentBag[swapIndex]] = [
+        state.augmentBag[swapIndex],
+        state.augmentBag[0],
+      ];
+    }
+  }
+
+  const nextId = state.augmentBag.shift();
+  state.lastAugmentId = nextId;
+  return augments.find((a) => a.id === nextId);
+}
+
+// Choix de noms pour la question "image -> nom" : le bon nom + 3 noms au hasard
+// (pas de contrainte de genre ici, contrairement aux personnages).
+function buildAugmentNameChoices(correctAugment) {
+  const pool = state.augData.augments.filter((a) => a.id !== correctAugment.id);
+  shuffle(pool);
+  const picked = [correctAugment, ...pool.slice(0, 3)];
+  return shuffle(picked).map((a) => ({ id: a.id, label: a.name }));
+}
+
+// Choix d'images pour la question "nom -> image" : la bonne image + 3 au hasard.
+function buildAugmentImageChoices(correctAugment) {
+  const pool = state.augData.augments.filter((a) => a.id !== correctAugment.id);
+  shuffle(pool);
+  const picked = [correctAugment, ...pool.slice(0, 3)];
+  return shuffle(picked).map((a) => ({ id: a.id, imagePath: getAugmentImagePath(a.id) }));
+}
+
+// Appele quand le joueur clique sur une reponse en mode "augments" (les 2 sens
+// de question partagent la meme logique de correction, comme pour "names").
+function handleAugmentAnswer(choiceId, btnEl) {
+  if (state.answered) return;
+  state.answered = true;
+
+  const question = state.currentAugmentQuestion;
+  const isCorrect = choiceId === question.correctId;
+  const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
+  feedbackEl.innerHTML = `<div class="feedback-title">${titleText}</div>`;
+  feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+
+  [...answersEl.children].forEach((btn) => {
+    btn.disabled = true;
+    if (btn.dataset.choiceId === question.correctId) {
+      btn.classList.add('correct');
+    } else if (btn === btnEl) {
+      btn.classList.add('incorrect');
+    }
+  });
+
+  finishQuestion(isCorrect);
+}
+
+// Question "image -> nom" : on montre juste l'icone de l'augment, le QCM
+// propose 4 noms.
+function renderAugmentNameFromImageQuestion() {
+  const augment = pickRandomAugment();
+  state.currentAugment = augment;
+
+  promptEl.textContent = 'Quel est le nom de cet augment :';
+  componentsEl.innerHTML = `
+    <div class="augment-reveal">
+      <img class="augment-reveal-img" src="${getAugmentImagePath(augment.id)}" alt="">
+    </div>
+  `;
+  componentsEl.querySelectorAll('.augment-reveal-img').forEach(hideImageOnError);
+
+  const choices = buildAugmentNameChoices(augment);
+  state.currentAugmentQuestion = { correctId: augment.id, choices };
+
+  answersEl.className = 'answers';
+  answersEl.innerHTML = '';
+  choices.forEach((choice) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.dataset.choiceId = choice.id;
+    btn.textContent = choice.label;
+    btn.addEventListener('click', () => handleAugmentAnswer(choice.id, btn));
+    answersEl.appendChild(btn);
+  });
+}
+
+// Question "nom -> image" : on montre juste le nom, le QCM propose 4 icones.
+function renderAugmentImageFromNameQuestion() {
+  const augment = pickRandomAugment();
+  state.currentAugment = augment;
+
+  promptEl.textContent = 'Quelle image correspond a cet augment :';
+  componentsEl.innerHTML = `<span class="chip augment-name-chip">${augment.name}</span>`;
+
+  const choices = buildAugmentImageChoices(augment);
+  state.currentAugmentQuestion = { correctId: augment.id, choices };
+
+  answersEl.className = 'answers';
+  answersEl.innerHTML = '';
+  choices.forEach((choice) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn image-choice';
+    btn.dataset.choiceId = choice.id;
+    btn.innerHTML = `<img class="answer-icon-square" src="${choice.imagePath}" alt="">`;
+    hideImageOnError(btn.querySelector('.answer-icon-square'));
+    btn.addEventListener('click', () => handleAugmentAnswer(choice.id, btn));
+    answersEl.appendChild(btn);
+  });
+}
+
+// Choisit au hasard le sens de la question "augments" (environ 50/50).
+function renderAugmentQuestion() {
+  state.augmentQuestionType = Math.random() < 0.5 ? 'image_to_name' : 'name_to_image';
+  if (state.augmentQuestionType === 'image_to_name') {
+    renderAugmentNameFromImageQuestion();
+  } else {
+    renderAugmentImageFromNameQuestion();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Mode de jeu : entrainement (score classique) ou competitif (serie + chrono)
 // ---------------------------------------------------------------------------
 
@@ -846,9 +994,11 @@ function updateHomeHighscores() {
     .sort((a, b) => a - b)[0];
   const champMs = getHighscoreMs('champions');
   const namesMs = getHighscoreMs('names');
+  const augmentsMs = getHighscoreMs('augments');
   homeItemsHighscoreEl.textContent = itemsMs !== undefined ? formatTime(itemsMs) : '--';
   homeChampionsHighscoreEl.textContent = champMs !== null ? formatTime(champMs) : '--';
   homeNamesHighscoreEl.textContent = namesMs !== null ? formatTime(namesMs) : '--';
+  homeAugmentsHighscoreEl.textContent = augmentsMs !== null ? formatTime(augmentsMs) : '--';
 }
 
 // Appelee a chaque reponse en mode competitif : fait avancer la serie, ou
@@ -1001,12 +1151,14 @@ async function updateHomePodiums() {
   podiumItemsWithoutEl.innerHTML = loadingHtml;
   podiumChampionsEl.innerHTML = loadingHtml;
   podiumNamesEl.innerHTML = loadingHtml;
+  podiumAugmentsEl.innerHTML = loadingHtml;
 
   await Promise.all([
     loadScoreCategory(podiumItemsWithEl, 'items_with', 3, renderPodium),
     loadScoreCategory(podiumItemsWithoutEl, 'items_without', 3, renderPodium),
     loadScoreCategory(podiumChampionsEl, 'champions', 3, renderPodium),
     loadScoreCategory(podiumNamesEl, 'names', 3, renderPodium),
+    loadScoreCategory(podiumAugmentsEl, 'augments', 3, renderPodium),
   ]);
 }
 
@@ -1034,12 +1186,14 @@ async function showLeaderboard() {
   leaderboardItemsWithoutEl.innerHTML = loadingHtml;
   leaderboardChampionsEl.innerHTML = loadingHtml;
   leaderboardNamesEl.innerHTML = loadingHtml;
+  leaderboardAugmentsEl.innerHTML = loadingHtml;
 
   await Promise.all([
     loadScoreCategory(leaderboardItemsWithEl, 'items_with', 10, renderLeaderboardList),
     loadScoreCategory(leaderboardItemsWithoutEl, 'items_without', 10, renderLeaderboardList),
     loadScoreCategory(leaderboardChampionsEl, 'champions', 10, renderLeaderboardList),
     loadScoreCategory(leaderboardNamesEl, 'names', 10, renderLeaderboardList),
+    loadScoreCategory(leaderboardAugmentsEl, 'augments', 10, renderLeaderboardList),
   ]);
 }
 
@@ -1100,6 +1254,11 @@ function chooseNamesMode() {
   showModeSubmenu();
 }
 
+function chooseAugmentsMode() {
+  state.pendingMode = 'augments';
+  showModeSubmenu();
+}
+
 // Lance vraiment le quiz une fois le mode de jeu choisi.
 function startQuiz(gameMode) {
   state.mode = state.pendingMode;
@@ -1141,6 +1300,8 @@ function renderQuestion() {
     renderItemQuestion();
   } else if (state.mode === 'names') {
     renderNameQuestion();
+  } else if (state.mode === 'augments') {
+    renderAugmentQuestion();
   } else {
     renderChampionQuestion();
   }
@@ -1151,6 +1312,7 @@ siteTitleEl.addEventListener('click', showHome);
 homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
 homeNamesBtn.addEventListener('click', chooseNamesMode);
+homeAugmentsBtn.addEventListener('click', chooseAugmentsMode);
 showLeaderboardBtn.addEventListener('click', showLeaderboard);
 leaderboardBackBtn.addEventListener('click', showHome);
 showPodiumsBtn.addEventListener('click', showPodiums);

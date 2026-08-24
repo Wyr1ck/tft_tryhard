@@ -1,0 +1,1604 @@
+{
+  "augments": [
+    {
+      "id": "urf",
+      "name": "U.R.F.",
+      "nameEn": "U.R.F"
+    },
+    {
+      "id": "calltochaos",
+      "name": "Appel du chaos",
+      "nameEn": "Call To Chaos"
+    },
+    {
+      "id": "atwhatcost",
+      "name": "Pas le choix",
+      "nameEn": "At What Cost"
+    },
+    {
+      "id": "allthatshimmersplus",
+      "name": "Tout ce qui brille+",
+      "nameEn": "All That Shimmers+"
+    },
+    {
+      "id": "itemcollector2",
+      "name": "Collectionneur d'objets II",
+      "nameEn": "Item Collector II"
+    },
+    {
+      "id": "itemcollector1",
+      "name": "Collectionneur d'objets I",
+      "nameEn": "Item Collector I"
+    },
+    {
+      "id": "goldenegg",
+      "name": "Œuf d'or",
+      "nameEn": "The Golden Egg"
+    },
+    {
+      "id": "salvagebin",
+      "name": "Bac de recyclage",
+      "nameEn": "Salvage Bin"
+    },
+    {
+      "id": "retribution",
+      "name": "Justice critique",
+      "nameEn": "Retribution"
+    },
+    {
+      "id": "min_max",
+      "name": "Suppresseur doré",
+      "nameEn": "Min-Max"
+    },
+    {
+      "id": "arcaneviktory",
+      "name": "Arcaniquement Viktor-ieux",
+      "nameEn": "Arcane Viktor-y"
+    },
+    {
+      "id": "waterlotus1",
+      "name": "Fleur de lotus I",
+      "nameEn": "Water Lotus I"
+    },
+    {
+      "id": "epicrolldown",
+      "name": "Relances épiques",
+      "nameEn": "Epic Rolldown"
+    },
+    {
+      "id": "maxbuild",
+      "name": "Duplication",
+      "nameEn": "Max Build"
+    },
+    {
+      "id": "firesaleplus",
+      "name": "Cleptomanie",
+      "nameEn": "Firesale"
+    },
+    {
+      "id": "spreadingrootsplus",
+      "name": "Enracinement+",
+      "nameEn": "Spreading Roots+"
+    },
+    {
+      "id": "tinytitans",
+      "name": "P'tits titans",
+      "nameEn": "Tiny Titans"
+    },
+    {
+      "id": "survivor",
+      "name": "Survivant",
+      "nameEn": "Survivor"
+    },
+    {
+      "id": "smallgrabbag",
+      "name": "Petit sac de butin",
+      "nameEn": "Small Grab Bag"
+    },
+    {
+      "id": "unforgotten",
+      "name": "Honneur du Maître de guerre",
+      "nameEn": "Warlord's Honor"
+    },
+    {
+      "id": "teambuilding",
+      "name": "Esprit d'équipe",
+      "nameEn": "Team Building"
+    },
+    {
+      "id": "youngandwildandfree",
+      "name": "Liberté !",
+      "nameEn": "Young and Wild and Free"
+    },
+    {
+      "id": "tacticianskitchen",
+      "name": "Cuisine du Tacticien",
+      "nameEn": "Tactician's Kitchen"
+    },
+    {
+      "id": "hustler",
+      "name": "Gredin",
+      "nameEn": "Hustler"
+    },
+    {
+      "id": "bandofthievesii",
+      "name": "Bande de voleurs II",
+      "nameEn": "Band of Thieves II"
+    },
+    {
+      "id": "giantandmighty",
+      "name": "Grandeur et démesure",
+      "nameEn": "Giant and Mighty"
+    },
+    {
+      "id": "cyberneticimplants_gold",
+      "name": "Implants cybernétiques",
+      "nameEn": "Cybernetic Implants"
+    },
+    {
+      "id": "replication",
+      "name": "Fabrication en série",
+      "nameEn": "Replication"
+    },
+    {
+      "id": "crashtestdummies",
+      "name": "Mannequins de choc",
+      "nameEn": "Crash Test Dummies"
+    },
+    {
+      "id": "luckygloves",
+      "name": "Gants porte-bonheur",
+      "nameEn": "Lucky Gloves"
+    },
+    {
+      "id": "dummify",
+      "name": "Mannequinification",
+      "nameEn": "Dummify"
+    },
+    {
+      "id": "patienceisavirtue",
+      "name": "Jeu de patience",
+      "nameEn": "Patience Is A Virtue"
+    },
+    {
+      "id": "deadliercaps",
+      "name": "Coiffes mortelles",
+      "nameEn": "Deadlier Caps"
+    },
+    {
+      "id": "tinybutdeadly",
+      "name": "Petits mais costauds",
+      "nameEn": "Tiny, but Deadly"
+    },
+    {
+      "id": "augmentedpower",
+      "name": "Optimisation optimisée",
+      "nameEn": "Augmented Power"
+    },
+    {
+      "id": "urfsgrabbag",
+      "name": "Besace d'Urf",
+      "nameEn": "Urf's Grab Bag"
+    },
+    {
+      "id": "scapegoat",
+      "name": "Bouc émissaire",
+      "nameEn": "Scapegoat"
+    },
+    {
+      "id": "foodfighttactics",
+      "name": "Bataille de nourriture",
+      "nameEn": "Mess Hall"
+    },
+    {
+      "id": "baronslair",
+      "name": "Repaire du baron",
+      "nameEn": "Baron's Lair"
+    },
+    {
+      "id": "missedconnections",
+      "name": "Palier 1",
+      "nameEn": "Missed Connections"
+    },
+    {
+      "id": "winout",
+      "name": "Sauter une classe",
+      "nameEn": "Win Out"
+    },
+    {
+      "id": "scoreboardscrapper",
+      "name": "Lutte pour le sommet",
+      "nameEn": "Scoreboard Scrapper"
+    },
+    {
+      "id": "rerolltransfer",
+      "name": "Recyclage de relances",
+      "nameEn": "Reroll Transfer"
+    },
+    {
+      "id": "bronzeforlifeii",
+      "name": "Bronze pour la vie II",
+      "nameEn": "Bronze For Life II"
+    },
+    {
+      "id": "frontlinefoundation",
+      "name": "Fondation de première ligne",
+      "nameEn": "Frontline Foundation"
+    },
+    {
+      "id": "crownguardspirit",
+      "name": "Volonté de la couronne",
+      "nameEn": "Crown's Will"
+    },
+    {
+      "id": "trifecta1",
+      "name": "Tiercé I",
+      "nameEn": "Trifecta I"
+    },
+    {
+      "id": "earlylearnings",
+      "name": "Leçons de combat",
+      "nameEn": "Early Learnings"
+    },
+    {
+      "id": "tombraider2",
+      "name": "Pilleur de tombes II",
+      "nameEn": "Tomb Raider II"
+    },
+    {
+      "id": "thriftshop",
+      "name": "Dépense réfléchie",
+      "nameEn": "Wise Spending"
+    },
+    {
+      "id": "backlineblueprint",
+      "name": "Stratégie de ligne arrière",
+      "nameEn": "Backline Blueprint"
+    },
+    {
+      "id": "fullyadapted",
+      "name": "Adaptation totale",
+      "nameEn": "Fully Adapted"
+    },
+    {
+      "id": "forceofnatureplus",
+      "name": "Nouvelle recrue+",
+      "nameEn": "New Recruit+"
+    },
+    {
+      "id": "trifecta2",
+      "name": "Tiercé II",
+      "nameEn": "Trifecta II"
+    },
+    {
+      "id": "chaosevolution",
+      "name": "Évolution chaotique",
+      "nameEn": "Chaotic Evolution"
+    },
+    {
+      "id": "cognitivetaxplus",
+      "name": "Charge cognitive+",
+      "nameEn": "Cognitive Tax+"
+    },
+    {
+      "id": "youhavemybow",
+      "name": "Mon arc est vôtre",
+      "nameEn": "You Have My Bow"
+    },
+    {
+      "id": "tombraider1",
+      "name": "Pilleur de tombes I",
+      "nameEn": "Tomb Raider I"
+    },
+    {
+      "id": "onebufftwobuff",
+      "name": "Buffs à gogo",
+      "nameEn": "One Buff Two Buff"
+    },
+    {
+      "id": "glasscannon_silver",
+      "name": "Canon de verre I",
+      "nameEn": "Glass Cannon I"
+    },
+    {
+      "id": "pandorasbench",
+      "name": "Banc de Pandore",
+      "nameEn": "Pandora's Bench"
+    },
+    {
+      "id": "crossfire2",
+      "name": "Brut de décoffrage",
+      "nameEn": "Piercing Sight"
+    },
+    {
+      "id": "makeshiftarmori",
+      "name": "Armure improvisée I",
+      "nameEn": "Makeshift Armor I"
+    },
+    {
+      "id": "makeshiftarmorii",
+      "name": "Armure improvisée II",
+      "nameEn": "Makeshift Armor II"
+    },
+    {
+      "id": "upwardmobility",
+      "name": "Ascension sociale",
+      "nameEn": "Upward Mobility"
+    },
+    {
+      "id": "anotherone",
+      "name": "Un autre !",
+      "nameEn": "Another One!"
+    },
+    {
+      "id": "bigfriend",
+      "name": "Ami trapu I",
+      "nameEn": "Big Friend I"
+    },
+    {
+      "id": "explosivegrowthplus",
+      "name": "Croissance explosive+",
+      "nameEn": "Explosive Growth+"
+    },
+    {
+      "id": "aimforthetop",
+      "name": "Visez le sommet !",
+      "nameEn": "Aim For The Top!"
+    },
+    {
+      "id": "riggedshopplus",
+      "name": "Boutique truquée+",
+      "nameEn": "Rigged Shop+"
+    },
+    {
+      "id": "silverdestinyplus",
+      "name": "Destin argenté+",
+      "nameEn": "Silver Destiny+"
+    },
+    {
+      "id": "pumpingup",
+      "name": "Toujours plus vite I",
+      "nameEn": "Pumping Up I"
+    },
+    {
+      "id": "psychicforge",
+      "name": "Forge psychique",
+      "nameEn": "Psychic Forge"
+    },
+    {
+      "id": "bestfriends2",
+      "name": "Meilleurs amis II",
+      "nameEn": "Best Friends II"
+    },
+    {
+      "id": "clutteredmind",
+      "name": "Esprit encombré",
+      "nameEn": "Cluttered Mind"
+    },
+    {
+      "id": "bestfriends1",
+      "name": "Meilleurs amis I",
+      "nameEn": "Best Friends I"
+    },
+    {
+      "id": "heavyisthecrown",
+      "name": "Lourde est la couronne",
+      "nameEn": "Heavy Is the Crown"
+    },
+    {
+      "id": "hardcommit",
+      "name": "Typologie",
+      "nameEn": "Hard Commit"
+    },
+    {
+      "id": "seraphimsstaff",
+      "name": "Bâton angélique",
+      "nameEn": "Seraphim's Staff"
+    },
+    {
+      "id": "grouphugii",
+      "name": "Câlin collectif II",
+      "nameEn": "Group Hug II"
+    },
+    {
+      "id": "buriedtreasuresiii",
+      "name": "Trésors enfouis III",
+      "nameEn": "Buried Treasures III"
+    },
+    {
+      "id": "lastsecondsave",
+      "name": "Sauvetage in extremis",
+      "nameEn": "Last Second Save"
+    },
+    {
+      "id": "storyofseven",
+      "name": "Boules de cristal",
+      "nameEn": "A Story of Seven"
+    },
+    {
+      "id": "howlinggale",
+      "name": "Vent hurlant",
+      "nameEn": "Howling Gale"
+    },
+    {
+      "id": "grouphugi",
+      "name": "Câlin collectif I",
+      "nameEn": "Group Hug I"
+    },
+    {
+      "id": "wovenmagic",
+      "name": "Mana magique",
+      "nameEn": "Woven Magic"
+    },
+    {
+      "id": "expedition",
+      "name": "Expédition",
+      "nameEn": "Expedition"
+    },
+    {
+      "id": "healingorbsi",
+      "name": "Orbes de soins I",
+      "nameEn": "Healing Orbs I"
+    },
+    {
+      "id": "thetraittreeplus",
+      "name": "Emblématiquement+",
+      "nameEn": "The Trait Tree+"
+    },
+    {
+      "id": "tablescraps",
+      "name": "Rebuts",
+      "nameEn": "Table Scraps"
+    },
+    {
+      "id": "climbtheladder2",
+      "name": "Connivence II",
+      "nameEn": "Climb The Ladder II"
+    },
+    {
+      "id": "goldenquest",
+      "name": "Quête dorée",
+      "nameEn": "A Golden Quest"
+    },
+    {
+      "id": "climbtheladder1",
+      "name": "Connivence I",
+      "nameEn": "Climb The Ladder I"
+    },
+    {
+      "id": "golddestinyplus",
+      "name": "Destin doré +",
+      "nameEn": "Gold Destiny Plus"
+    },
+    {
+      "id": "coronation",
+      "name": "Couronnement",
+      "nameEn": "Coronation"
+    },
+    {
+      "id": "commander_teamingup1",
+      "name": "Cours de soutien",
+      "nameEn": "Teaming Up"
+    },
+    {
+      "id": "gildedsteel",
+      "name": "Acier doré",
+      "nameEn": "Gilded Steel"
+    },
+    {
+      "id": "electrochargeii",
+      "name": "Électrocharge II",
+      "nameEn": "Electrocharge II"
+    },
+    {
+      "id": "bloodbank",
+      "name": "Le prix du sang",
+      "nameEn": "Lunch Money"
+    },
+    {
+      "id": "electrochargei",
+      "name": "Électrocharge I",
+      "nameEn": "Electrocharge I"
+    },
+    {
+      "id": "ninelives",
+      "name": "9 vies",
+      "nameEn": "Nine Lives"
+    },
+    {
+      "id": "dravenspoilsofwar",
+      "name": "Butin de guerre I",
+      "nameEn": "Spoils of War I"
+    },
+    {
+      "id": "worththewait",
+      "name": "Attente récompensée",
+      "nameEn": "Worth the Wait"
+    },
+    {
+      "id": "18_branchingoutplus",
+      "name": "Aléatoire jacta est+",
+      "nameEn": "Branching Out+"
+    },
+    {
+      "id": "itemgrabbag",
+      "name": "Sac de butin I",
+      "nameEn": "Item Grab Bag I"
+    },
+    {
+      "id": "goinglong",
+      "name": "Expérience à tout prix",
+      "nameEn": "Going Long"
+    },
+    {
+      "id": "staffsmith",
+      "name": "Fabricant de baguettes",
+      "nameEn": "Staffsmith"
+    },
+    {
+      "id": "expectedunexpectedness",
+      "name": "Lancer de dés",
+      "nameEn": "Expected Unexpectedness"
+    },
+    {
+      "id": "placeboplus",
+      "name": "Placébo+",
+      "nameEn": "Placebo+"
+    },
+    {
+      "id": "quietquitting",
+      "name": "Boutique fermée",
+      "nameEn": "Quiet Quitting"
+    },
+    {
+      "id": "holdtheline",
+      "name": "Tenir le front",
+      "nameEn": "Hold the Line"
+    },
+    {
+      "id": "spiritlink1",
+      "name": "Régénération fluctuante",
+      "nameEn": "Spirit Link"
+    },
+    {
+      "id": "sunfireboard",
+      "name": "Plateau solaire",
+      "nameEn": "Sunfire Board"
+    },
+    {
+      "id": "ironassets",
+      "name": "Entre les PO et l'enclume",
+      "nameEn": "Iron Assets"
+    },
+    {
+      "id": "heftyrolls",
+      "name": "Relances imposantes",
+      "nameEn": "Hefty Rolls"
+    },
+    {
+      "id": "feedtheflames",
+      "name": "Allumer le feu",
+      "nameEn": "Feed the Flames"
+    },
+    {
+      "id": "blazingsoul2",
+      "name": "Âme ardente II",
+      "nameEn": "Blazing Soul II"
+    },
+    {
+      "id": "hedgefund",
+      "name": "Spéculation",
+      "nameEn": "Hedge Fund"
+    },
+    {
+      "id": "cloningfacility",
+      "name": "Clonage",
+      "nameEn": "Cloning Facility"
+    },
+    {
+      "id": "hardbargain",
+      "name": "Carrousels trafiqués",
+      "nameEn": "Hard Bargain"
+    },
+    {
+      "id": "goldengambleplus",
+      "name": "Pile ou face+",
+      "nameEn": "Golden Gamble+"
+    },
+    {
+      "id": "afk",
+      "name": "AFK",
+      "nameEn": "AFK"
+    },
+    {
+      "id": "backupdancers",
+      "name": "Soutien du banc",
+      "nameEn": "Backup Dancers"
+    },
+    {
+      "id": "twomuchvalue",
+      "name": "Avènement des deux",
+      "nameEn": "Two Much Value"
+    },
+    {
+      "id": "heroicgrabbagplus",
+      "name": "Besace héroïque+",
+      "nameEn": "Heroic Grab Bag+"
+    },
+    {
+      "id": "backupbows",
+      "name": "Arcs à gogo",
+      "nameEn": "Backup Bows"
+    },
+    {
+      "id": "plotarmor",
+      "name": "Résistance acharnée",
+      "nameEn": "Plot Armor"
+    },
+    {
+      "id": "pocketrecombobulator",
+      "name": "Recombobulateur de poche",
+      "nameEn": "Pocket Recombobulator"
+    },
+    {
+      "id": "heartofsteel",
+      "name": "Cœur d'acier",
+      "nameEn": "Heart of Steel"
+    },
+    {
+      "id": "chargetransfer1",
+      "name": "Transfert I",
+      "nameEn": "Charge Transfer I"
+    },
+    {
+      "id": "waterlotus2",
+      "name": "Fleur de lotus II",
+      "nameEn": "Water Lotus II"
+    },
+    {
+      "id": "chargetransfer2",
+      "name": "Transfert II",
+      "nameEn": "Charge Transfer II"
+    },
+    {
+      "id": "radiantrefactor",
+      "name": "Réfracteur de lumière",
+      "nameEn": "Radiant Refactor"
+    },
+    {
+      "id": "patientstudy",
+      "name": "Gagnant-gagnant",
+      "nameEn": "Patient Study"
+    },
+    {
+      "id": "urfsgambit",
+      "name": "Gambit d'Urf",
+      "nameEn": "Urf's Gambit"
+    },
+    {
+      "id": "slammin",
+      "name": "Tout doit disparaître",
+      "nameEn": "Slammin'"
+    },
+    {
+      "id": "investmentstrategy",
+      "name": "Stratégie d'investissement II",
+      "nameEn": "Investment Strategy II"
+    },
+    {
+      "id": "bronzeforlifei",
+      "name": "Bronze pour la vie I",
+      "nameEn": "Bronze For Life I"
+    },
+    {
+      "id": "investmentstrategyi",
+      "name": "Stratégie d'investissement I",
+      "nameEn": "Investment Strategy I"
+    },
+    {
+      "id": "cosmicrestart",
+      "name": "Réinitialisation cosmique",
+      "nameEn": "Cosmic Restart"
+    },
+    {
+      "id": "highvoltage",
+      "name": "Haute tension",
+      "nameEn": "High Voltage"
+    },
+    {
+      "id": "sololeveling",
+      "name": "Solo Leveling",
+      "nameEn": "Solo Leveling"
+    },
+    {
+      "id": "distancing",
+      "name": "Exilés I",
+      "nameEn": "Exiles I"
+    },
+    {
+      "id": "treasurehunt",
+      "name": "Chasse au trésor",
+      "nameEn": "Treasure Hunt"
+    },
+    {
+      "id": "slightlymagicroll",
+      "name": "Dés légèrement magiques",
+      "nameEn": "Slightly Magic Roll"
+    },
+    {
+      "id": "twotrick",
+      "name": "Pluie de deux",
+      "nameEn": "Two Trick"
+    },
+    {
+      "id": "blazingsoul",
+      "name": "Âme ardente I",
+      "nameEn": "Blazing Soul I"
+    },
+    {
+      "id": "findyourcenter",
+      "name": "Centre d'excellence",
+      "nameEn": "Find Your Center"
+    },
+    {
+      "id": "18_goodforsomethingi",
+      "name": "Butin funéraire I",
+      "nameEn": "Good For Something I"
+    },
+    {
+      "id": "keepers1",
+      "name": "Sentinelles I",
+      "nameEn": "Keepers I"
+    },
+    {
+      "id": "spiritofredemption",
+      "name": "Esprit de la Rédemption",
+      "nameEn": "Spirit Of Redemption"
+    },
+    {
+      "id": "speedydoublekill",
+      "name": "Deux de moins",
+      "nameEn": "Speedy Double Kill"
+    },
+    {
+      "id": "forwardthinking",
+      "name": "Investissement sur le futur",
+      "nameEn": "Forward Thinking"
+    },
+    {
+      "id": "dhampyr1",
+      "name": "Vitalité vampirique I",
+      "nameEn": "Vampiric Vitality I"
+    },
+    {
+      "id": "keepers2",
+      "name": "Sentinelles II",
+      "nameEn": "Keepers II"
+    },
+    {
+      "id": "flexible",
+      "name": "Emblématique",
+      "nameEn": "Flexible"
+    },
+    {
+      "id": "restartmission",
+      "name": "Nouveau départ",
+      "nameEn": "Restart Mission"
+    },
+    {
+      "id": "18_duoqueue",
+      "name": "Aléatoirement vôtre",
+      "nameEn": "Duo Queue"
+    },
+    {
+      "id": "preparation2",
+      "name": "Préparation II",
+      "nameEn": "Preparation II"
+    },
+    {
+      "id": "bloodrage",
+      "name": "Rage sanglante",
+      "nameEn": "Blood Rage"
+    },
+    {
+      "id": "levelup",
+      "name": "Niveau supérieur !",
+      "nameEn": "Level Up!"
+    },
+    {
+      "id": "secondwind2",
+      "name": "Second souffle II",
+      "nameEn": "Second Wind II"
+    },
+    {
+      "id": "twinguardians",
+      "name": "Gardiens jumeaux",
+      "nameEn": "Twin Guardians"
+    },
+    {
+      "id": "secondwind1",
+      "name": "Second souffle",
+      "nameEn": "Second Wind"
+    },
+    {
+      "id": "anexaltedadventure",
+      "name": "Une aventure exaltante",
+      "nameEn": "An Exalted Adventure"
+    },
+    {
+      "id": "standunited",
+      "name": "Soutien indéfectible",
+      "nameEn": "Stand United"
+    },
+    {
+      "id": "starsareborn",
+      "name": "Des étoiles sont nées",
+      "nameEn": "Stars Are Born"
+    },
+    {
+      "id": "feelinglucky",
+      "name": "Vous vous sentez en veine ?",
+      "nameEn": "Feeling Lucky"
+    },
+    {
+      "id": "advancedloanplus",
+      "name": "Prêt anticipé+",
+      "nameEn": "Advanced Loan+"
+    },
+    {
+      "id": "thegoldendragon",
+      "name": "Mailles en or",
+      "nameEn": "The Golden Dragon"
+    },
+    {
+      "id": "componentquestrod",
+      "name": "Baguettes à gogo",
+      "nameEn": "Continuous Conjuration"
+    },
+    {
+      "id": "18_onetwofive",
+      "name": "Butin aléatoire",
+      "nameEn": "One, Two, Five!"
+    },
+    {
+      "id": "silverspoon",
+      "name": "Par ici l'XP",
+      "nameEn": "Silver Spoon"
+    },
+    {
+      "id": "infinityprotection",
+      "name": "Protection infinie",
+      "nameEn": "Infinity Protection"
+    },
+    {
+      "id": "constructacompanion",
+      "name": "Achat 3 étoiles",
+      "nameEn": "Construct a Companion"
+    },
+    {
+      "id": "homecooking",
+      "name": "Ravitaillement",
+      "nameEn": "Care Package"
+    },
+    {
+      "id": "swordsmith",
+      "name": "Armurier",
+      "nameEn": "Swordsmith"
+    },
+    {
+      "id": "epoch",
+      "name": "Cycle épique",
+      "nameEn": "Epoch"
+    },
+    {
+      "id": "furiousblows",
+      "name": "Kahuna",
+      "nameEn": "Kahunahuna"
+    },
+    {
+      "id": "museumheist",
+      "name": "Composants de guerre",
+      "nameEn": "Component Heist"
+    },
+    {
+      "id": "aurafarming",
+      "name": "Patience",
+      "nameEn": "Aura Farming"
+    },
+    {
+      "id": "beltoverflow",
+      "name": "Abondance de ceintures",
+      "nameEn": "Belt Overflow"
+    },
+    {
+      "id": "forgedinstrength",
+      "name": "Artefacts à la rescousse",
+      "nameEn": "Forged In Strength"
+    },
+    {
+      "id": "onetwosthree",
+      "name": "Un, deux, trois",
+      "nameEn": "One Two Three"
+    },
+    {
+      "id": "eyeforaneye",
+      "name": "Composants funéraires",
+      "nameEn": "Eye For An Eye"
+    },
+    {
+      "id": "teslacoil",
+      "name": "Électrologie",
+      "nameEn": "Tesla Coil"
+    },
+    {
+      "id": "shoppingspree",
+      "name": "Shopping intensif",
+      "nameEn": "Shopping Spree"
+    },
+    {
+      "id": "savingsaccount",
+      "name": "Compte épargne",
+      "nameEn": "Savings Account"
+    },
+    {
+      "id": "craftedcrafting",
+      "name": "Maîtrise de l'artisanat",
+      "nameEn": "Crafted Crafting"
+    },
+    {
+      "id": "jeweledlotus_i",
+      "name": "Lotus précieux I",
+      "nameEn": "Jeweled Lotus I"
+    },
+    {
+      "id": "incoming",
+      "name": "Partage à retardement",
+      "nameEn": "Lit Fuse"
+    },
+    {
+      "id": "birthdayreunion",
+      "name": "Réunion d'anniversaire",
+      "nameEn": "Birthday Reunion"
+    },
+    {
+      "id": "cursedcrown",
+      "name": "Couronne maudite",
+      "nameEn": "Cursed Crown"
+    },
+    {
+      "id": "raininggoldplus",
+      "name": "Pluie d'or+",
+      "nameEn": "Raining Gold+"
+    },
+    {
+      "id": "exclusivecustomization",
+      "name": "Coup de chance",
+      "nameEn": "Exclusive Customization"
+    },
+    {
+      "id": "componentbuffet",
+      "name": "Buffet de composants",
+      "nameEn": "Component Buffet"
+    },
+    {
+      "id": "prizefighter",
+      "name": "Triomphe",
+      "nameEn": "Prizefighter"
+    },
+    {
+      "id": "preparation",
+      "name": "Préparation I",
+      "nameEn": "Preparation I"
+    },
+    {
+      "id": "investedplus",
+      "name": "Investissement+",
+      "nameEn": "Invested+"
+    },
+    {
+      "id": "wandoverflow",
+      "name": "Abondance de baguettes",
+      "nameEn": "Wand Overflow"
+    },
+    {
+      "id": "radiantrascal",
+      "name": "Vaurien de la lumière",
+      "nameEn": "Radiant Rascal"
+    },
+    {
+      "id": "ascension",
+      "name": "Ascension",
+      "nameEn": "Ascension"
+    },
+    {
+      "id": "lineup",
+      "name": "Première ligne",
+      "nameEn": "Lineup"
+    },
+    {
+      "id": "pandorasitemsii",
+      "name": "Objets de Pandore II",
+      "nameEn": "Pandora's Items II"
+    },
+    {
+      "id": "luxurysubscription",
+      "name": "Abonnement premium",
+      "nameEn": "Luxury Subscription"
+    },
+    {
+      "id": "boosterpack",
+      "name": "Booster",
+      "nameEn": "Booster Pack"
+    },
+    {
+      "id": "glasscannon_gold",
+      "name": "Canon de verre II",
+      "nameEn": "Glass Cannon II"
+    },
+    {
+      "id": "recombobulator",
+      "name": "Recombobulateur",
+      "nameEn": "Recombobulator"
+    },
+    {
+      "id": "overencumbered",
+      "name": "Encombrement",
+      "nameEn": "Over Encumbered"
+    },
+    {
+      "id": "littlebuddies",
+      "name": "Choristes",
+      "nameEn": "Little Buddies"
+    },
+    {
+      "id": "efficientshopper",
+      "name": "Carrousels améliorés",
+      "nameEn": "Efficient Shopper"
+    },
+    {
+      "id": "overheal",
+      "name": "Surcharge de PV",
+      "nameEn": "Overheal"
+    },
+    {
+      "id": "thornplatedarmor",
+      "name": "Armure couverte d'épines",
+      "nameEn": "Thorn-Plated Armor"
+    },
+    {
+      "id": "timeskip",
+      "name": "Bye bye boutique",
+      "nameEn": "Time Skip"
+    },
+    {
+      "id": "pumpingup3",
+      "name": "Toujours plus vite III",
+      "nameEn": "Pumping Up III"
+    },
+    {
+      "id": "pumpingup2",
+      "name": "Toujours plus vite II",
+      "nameEn": "Pumping Up II"
+    },
+    {
+      "id": "calledshot",
+      "name": "Victoire annoncée",
+      "nameEn": "Called Shot"
+    },
+    {
+      "id": "commercecore",
+      "name": "Relances régulières",
+      "nameEn": "Commerce Core"
+    },
+    {
+      "id": "focusedfire",
+      "name": "Feu concentré",
+      "nameEn": "Focused Fire"
+    },
+    {
+      "id": "sideeffects",
+      "name": "Effets secondaires",
+      "nameEn": "Side Effects"
+    },
+    {
+      "id": "bodyguardtraining",
+      "name": "Formation de Garde du corps",
+      "nameEn": "Bodyguard Training"
+    },
+    {
+      "id": "crymeariver",
+      "name": "Océan de larmes",
+      "nameEn": "Cry Me A River"
+    },
+    {
+      "id": "magicroll",
+      "name": "Dés magiques",
+      "nameEn": "Magic Roll"
+    },
+    {
+      "id": "swordoverflow",
+      "name": "Abondance de glaives",
+      "nameEn": "Sword Overflow"
+    },
+    {
+      "id": "thetower",
+      "name": "La Tour",
+      "nameEn": "The Tower"
+    },
+    {
+      "id": "westicktogether",
+      "name": "Partage emblématique",
+      "nameEn": "We Stick Together"
+    },
+    {
+      "id": "clearmind",
+      "name": "Lucidité",
+      "nameEn": "Clear Mind"
+    },
+    {
+      "id": "worththewaitii",
+      "name": "Attente récompensée II",
+      "nameEn": "Worth the Wait II"
+    },
+    {
+      "id": "titanictitan",
+      "name": "Liberté conditionnelle",
+      "nameEn": "Titanic Titan"
+    },
+    {
+      "id": "misfits",
+      "name": "Touche-à-tout",
+      "nameEn": "Misfits"
+    },
+    {
+      "id": "headstart",
+      "name": "Départ différé",
+      "nameEn": "Delayed Start"
+    },
+    {
+      "id": "rollingfordays",
+      "name": "Jour de relance",
+      "nameEn": "Rolling For Days"
+    },
+    {
+      "id": "clockworkaccelerator",
+      "name": "Accélérateur mécanique",
+      "nameEn": "Clockwork Accelerator"
+    },
+    {
+      "id": "protagonist",
+      "name": "Star du show",
+      "nameEn": "Protagonist"
+    },
+    {
+      "id": "twotanky",
+      "name": "Tanks jumeaux",
+      "nameEn": "Two Tanky"
+    },
+    {
+      "id": "commander_finalascension",
+      "name": "Ascension finale",
+      "nameEn": "Final Ascension"
+    },
+    {
+      "id": "noblesacrifice",
+      "name": "Noble sacrifice",
+      "nameEn": "Noble Sacrifice"
+    },
+    {
+      "id": "corrosion",
+      "name": "Corrosion",
+      "nameEn": "Corrosion"
+    },
+    {
+      "id": "boxinglessons",
+      "name": "Ligne de front",
+      "nameEn": "Boxing Lessons"
+    },
+    {
+      "id": "starterkit",
+      "name": "Kit de départ",
+      "nameEn": "Starter Kit"
+    },
+    {
+      "id": "lategamespecialist",
+      "name": "Spécialiste des fins de partie",
+      "nameEn": "Late Game Specialist"
+    },
+    {
+      "id": "golemify",
+      "name": "Golemification",
+      "nameEn": "Golemify"
+    },
+    {
+      "id": "birthdaypresent",
+      "name": "Cadeau d'anniversaire",
+      "nameEn": "Birthday Present"
+    },
+    {
+      "id": "pyromaniac",
+      "name": "Pyromanie",
+      "nameEn": "Pyromaniac"
+    },
+    {
+      "id": "justslayer",
+      "name": "Tueur impitoyable",
+      "nameEn": "Indiscriminate Killer"
+    },
+    {
+      "id": "shimmerscaleessence",
+      "name": "Essence des Luminécailles",
+      "nameEn": "Shimmerscale Essence"
+    },
+    {
+      "id": "flowingtears",
+      "name": "Larmes à gogo",
+      "nameEn": "Flowing Tears"
+    },
+    {
+      "id": "soloplate",
+      "name": "Lithoplastron solo",
+      "nameEn": "Solo Plate"
+    },
+    {
+      "id": "sweettreats",
+      "name": "Objets blindés",
+      "nameEn": "Sweet Treats"
+    },
+    {
+      "id": "dravenspoilsofwar3",
+      "name": "Butin de guerre III",
+      "nameEn": "Spoils of War III"
+    },
+    {
+      "id": "dravenspoilsofwar2",
+      "name": "Butin de guerre II",
+      "nameEn": "Spoils of War II"
+    },
+    {
+      "id": "subscriptionservice",
+      "name": "Abonnement",
+      "nameEn": "Subscription Service"
+    },
+    {
+      "id": "prismaticdestiny",
+      "name": "Destin prismatique",
+      "nameEn": "Prismatic Destiny"
+    },
+    {
+      "id": "distancing2",
+      "name": "Exilés II",
+      "nameEn": "Exiles II"
+    },
+    {
+      "id": "shojinspirit",
+      "name": "Volonté de la lance",
+      "nameEn": "Spear's Will"
+    },
+    {
+      "id": "reinfourcement",
+      "name": "Puissance 4",
+      "nameEn": "ReinFOURcement"
+    },
+    {
+      "id": "noscoutnopivot",
+      "name": "Obstination",
+      "nameEn": "NO SCOUT NO PIVOT"
+    },
+    {
+      "id": "goldfordummies",
+      "name": "Mannequins rentables",
+      "nameEn": "Gold For Dummies"
+    },
+    {
+      "id": "lategamescaling",
+      "name": "Fin de partie",
+      "nameEn": "Late Game Scaling"
+    },
+    {
+      "id": "qualityoverquantity",
+      "name": "Qualité avant quantité",
+      "nameEn": "Quality Over Quantity"
+    },
+    {
+      "id": "moneyhungry_notbroken",
+      "name": "Avidité",
+      "nameEn": "Money Hungry"
+    },
+    {
+      "id": "waverider",
+      "name": "Relances étoilées",
+      "nameEn": "On a Roll"
+    },
+    {
+      "id": "maliciousmonetization",
+      "name": "Monétisation malveillante",
+      "nameEn": "Malicious Monetization"
+    },
+    {
+      "id": "unlimitedpower",
+      "name": "Puissance infinie",
+      "nameEn": "Unlimited Power"
+    },
+    {
+      "id": "cookingpot",
+      "name": "Chefs cuisiniers",
+      "nameEn": "Cooking Pot"
+    },
+    {
+      "id": "pandorasitemsiii",
+      "name": "Objets de Pandore III",
+      "nameEn": "Pandora's Items III"
+    },
+    {
+      "id": "tradesector",
+      "name": "Secteur commercial",
+      "nameEn": "Trade Sector"
+    },
+    {
+      "id": "pilfer",
+      "name": "Chapardage",
+      "nameEn": "Pilfer"
+    },
+    {
+      "id": "18_biggrabbag",
+      "name": "Super sac de butin",
+      "nameEn": "Big Grab Bag"
+    },
+    {
+      "id": "caretakersfavor",
+      "name": "Faveur du gardien",
+      "nameEn": "Caretaker's Favor"
+    },
+    {
+      "id": "bardplaybook3",
+      "name": "Bénédiction du gardien",
+      "nameEn": "Caretaker's Chosen"
+    },
+    {
+      "id": "prismaticticket",
+      "name": "Ticket prismatique",
+      "nameEn": "Prismatic Ticket"
+    },
+    {
+      "id": "carveapath",
+      "name": "Glaives à gogo",
+      "nameEn": "Carve a Path"
+    },
+    {
+      "id": "18_caretakersally",
+      "name": "Don du gardien",
+      "nameEn": "Caretaker's Ally"
+    },
+    {
+      "id": "calculatedloss",
+      "name": "Défaite planifiée",
+      "nameEn": "Calculated Loss"
+    },
+    {
+      "id": "riskymoves",
+      "name": "L'amour du risque",
+      "nameEn": "Risky Moves"
+    },
+    {
+      "id": "moonlight",
+      "name": "Étoiles supérieures",
+      "nameEn": "Moonlight"
+    },
+    {
+      "id": "evilbeyondmeasure",
+      "name": "Étoiles filantes",
+      "nameEn": "Evil Beyond Measure"
+    },
+    {
+      "id": "soulawakening",
+      "name": "Éveil de l'âme",
+      "nameEn": "Soul Awakening"
+    },
+    {
+      "id": "bandofthieves",
+      "name": "Bande de voleurs",
+      "nameEn": "Band of Thieves"
+    },
+    {
+      "id": "sliceoflife",
+      "name": "Crescendo aléatoire",
+      "nameEn": "Slice of Life"
+    },
+    {
+      "id": "jeweledlotus_ii",
+      "name": "Lotus précieux II",
+      "nameEn": "Jeweled Lotus II"
+    },
+    {
+      "id": "moneymonsoon",
+      "name": "Pluie d'argent",
+      "nameEn": "Money Monsoon"
+    },
+    {
+      "id": "livingforge",
+      "name": "Forgeron ambulant",
+      "nameEn": "Living Forge"
+    },
+    {
+      "id": "warpath",
+      "name": "Récompenses de guerre",
+      "nameEn": "Warpath"
+    },
+    {
+      "id": "thedarkinblade",
+      "name": "Offrande sanguinaire",
+      "nameEn": "Blood Offering"
+    },
+    {
+      "id": "radiantrelic",
+      "name": "Reliques de la lumière",
+      "nameEn": "Radiant Relics"
+    },
+    {
+      "id": "bigfriend2",
+      "name": "Ami trapu II",
+      "nameEn": "Big Friend II"
+    },
+    {
+      "id": "guardbreakerspirit",
+      "name": "Volonté de la massue",
+      "nameEn": "Mace's Will"
+    },
+    {
+      "id": "knowyourenemy",
+      "name": "Copieur !",
+      "nameEn": "Know Your Enemy"
+    },
+    {
+      "id": "legionofthrees",
+      "name": "Légion des trois",
+      "nameEn": "Legion Of Threes"
+    },
+    {
+      "id": "gaingold",
+      "name": "Gain de 21 PO",
+      "nameEn": "Gain 21 Gold"
+    },
+    {
+      "id": "doubletrouble",
+      "name": "Doublure",
+      "nameEn": "Double Trouble"
+    },
+    {
+      "id": "sizematters",
+      "name": "Question de taille",
+      "nameEn": "Size Matters"
+    },
+    {
+      "id": "tonsofstatsi",
+      "name": "Stats à foison !",
+      "nameEn": "Tons of Stats!"
+    },
+    {
+      "id": "boosterpackplusplus",
+      "name": "Booster++",
+      "nameEn": "Booster Pack++"
+    },
+    {
+      "id": "tiniesttitanplus",
+      "name": "Mini-Tacticien",
+      "nameEn": "Tiniest Titan"
+    },
+    {
+      "id": "partialascension",
+      "name": "Ascension partielle",
+      "nameEn": "Partial Ascension"
+    },
+    {
+      "id": "healingorbsii",
+      "name": "Orbes de soins II",
+      "nameEn": "Healing Orbs II"
+    },
+    {
+      "id": "pandorasitemsi",
+      "name": "Objets de Pandore I",
+      "nameEn": "Pandora's Items I"
+    },
+    {
+      "id": "portableforge",
+      "name": "Forge portative",
+      "nameEn": "Portable Forge"
+    },
+    {
+      "id": "cognitiveoverload",
+      "name": "Surcharge cognitive",
+      "nameEn": "Cognitive Overload"
+    },
+    {
+      "id": "kickstart",
+      "name": "Coup d'envoi",
+      "nameEn": "Kick Start"
+    },
+    {
+      "id": "latentforge",
+      "name": "Forge à retardement",
+      "nameEn": "Latent Forge"
+    },
+    {
+      "id": "comebackstory",
+      "name": "Tentative de comeback",
+      "nameEn": "Comeback Story"
+    },
+    {
+      "id": "cyberneticuplink_gold",
+      "name": "Liaison cybernétique",
+      "nameEn": "Cybernetic Uplink"
+    },
+    {
+      "id": "cyberneticuplink3",
+      "name": "Liaison cybernétique III",
+      "nameEn": "Cybernetic Uplink III"
+    },
+    {
+      "id": "deadlierblades",
+      "name": "Lames tueuses",
+      "nameEn": "Deadlier Blades"
+    },
+    {
+      "id": "kingslayer",
+      "name": "Régicide",
+      "nameEn": "Kingslayer"
+    },
+    {
+      "id": "nestingdollsplus",
+      "name": "Poupées russes",
+      "nameEn": "Nesting Dolls"
+    },
+    {
+      "id": "18_riftbeasttraitaugment",
+      "name": "Monstre de la Jungle omega",
+      "nameEn": "Omega Riftbeast"
+    },
+    {
+      "id": "champdeliveryplusplus",
+      "name": "Livraison de champion ++",
+      "nameEn": "Champ Delivery++"
+    },
+    {
+      "id": "extrabuckles",
+      "name": "Boucles supplémentaires",
+      "nameEn": "Extra Buckles"
+    },
+    {
+      "id": "challengersgrace",
+      "name": "Grâce du Challenger",
+      "nameEn": "Challenger's Grace"
+    },
+    {
+      "id": "moneyhungryplus",
+      "name": "Avidité+",
+      "nameEn": "Money Hungry+"
+    },
+    {
+      "id": "promisedprotection",
+      "name": "Mana du protecteur",
+      "nameEn": "Promised Protection"
+    },
+    {
+      "id": "celestialblessingii",
+      "name": "Bénédiction céleste II",
+      "nameEn": "Celestial Blessing II"
+    },
+    {
+      "id": "celestialblessingiii",
+      "name": "Bénédiction céleste III",
+      "nameEn": "Celestial Blessing III"
+    },
+    {
+      "id": "celestialblessingi",
+      "name": "Bénédiction céleste I",
+      "nameEn": "Celestial Blessing I"
+    },
+    {
+      "id": "underdogs",
+      "name": "Outsiders",
+      "nameEn": "Underdogs"
+    }
+  ]
+}

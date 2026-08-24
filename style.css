@@ -554,9 +554,34 @@ header h1 {
   border-radius: 6px;
 }
 
-/* Question "image -> nom" : le nom du personnage seul, sans image (l'image
-   est deja affichee au-dessus dans .champion-card). */
-.champion-name-chip {
+/* Quiz "augments" : meme principe que "noms de personnages", mais les icones
+   sont deja carrees (pas de splash art a recadrer). */
+.augment-reveal {
+  display: flex;
+  justify-content: center;
+}
+
+.augment-reveal-img {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #12151d;
+}
+
+.answer-icon-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #12151d;
+}
+
+/* Question "image -> nom" : le nom seul, sans image (deja affichee au-dessus
+   dans .champion-card / .augment-reveal). */
+.champion-name-chip,
+.augment-name-chip {
   font-size: 1.1rem;
   font-weight: 600;
 }
