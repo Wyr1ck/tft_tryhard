@@ -240,8 +240,8 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   flex-shrink: 0;
   border-radius: 10px;
   background: linear-gradient(180deg, #262b38, #1b1f2a);
@@ -253,8 +253,8 @@ header h1 {
 }
 
 .home-card-visual-img {
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
 }
 
@@ -337,9 +337,9 @@ header h1 {
 }
 
 .chip-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   object-fit: cover;
 }
 
@@ -483,19 +483,19 @@ header h1 {
 }
 
 .answer-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
   object-fit: cover;
 }
 
 .feedback-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
   object-fit: cover;
   vertical-align: middle;
-  margin-right: 0.3rem;
+  margin-right: 0.4rem;
 }
 
 .answer-btn:hover:not(:disabled) {
