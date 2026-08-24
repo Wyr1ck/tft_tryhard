@@ -145,17 +145,6 @@
         <button id="back-home-btn" class="text-btn">&larr; Retour</button>
       </div>
 
-      <div class="score-bar" id="score-bar">
-        <span>Score : <strong id="score">0</strong></span>
-        <span>Questions : <strong id="question-count">0</strong></span>
-      </div>
-
-      <div class="score-bar hidden" id="competitive-bar">
-        <span>Série : <strong id="streak">0</strong> / 30</span>
-        <span>Temps : <strong id="timer">00:00.0</strong></span>
-        <span>Record : <strong id="highscore">--</strong></span>
-      </div>
-
       <section class="quiz-card" id="quiz-card">
         <p class="prompt" id="prompt-text">Quel objet obtient-on avec :</p>
 
@@ -171,6 +160,20 @@
         <button id="next-btn" class="hidden">Question suivante</button>
         <button id="retry-btn" class="hidden">Rejouer</button>
       </section>
+
+      <!-- Score/chrono affiches sous la carte : sur mobile, la barre d'adresse
+           du navigateur mange de la hauteur en bas d'ecran, donc on garde le
+           bouton Valider le plus haut possible pour ne pas avoir a scroller. -->
+      <div class="score-bar" id="score-bar">
+        <span>Score : <strong id="score">0</strong></span>
+        <span>Questions : <strong id="question-count">0</strong></span>
+      </div>
+
+      <div class="score-bar hidden" id="competitive-bar">
+        <span>Série : <strong id="streak">0</strong> / 30</span>
+        <span>Temps : <strong id="timer">00:00.0</strong></span>
+        <span>Record : <strong id="highscore">--</strong></span>
+      </div>
     </section>
   </main>
 

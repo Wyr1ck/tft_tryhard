@@ -297,7 +297,7 @@ header h1 {
 .score-bar {
   display: flex;
   gap: 2rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   font-size: 1.1rem;
 }
 
