@@ -262,7 +262,11 @@ header h1 {
 .home-card-visual-img {
   width: 52px;
   height: 52px;
-  object-fit: contain;
+  object-fit: cover;
+  /* Les splash arts de personnages (larges, pas encore recadrees officiellement)
+     ont presque toujours la tete decalee vers la droite du cadre plutot que
+     pile au centre : on decale le point de recadrage pour la garder visible. */
+  object-position: 65% 50%;
 }
 
 .home-card-visual-icon {
