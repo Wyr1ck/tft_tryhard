@@ -35,6 +35,18 @@
         </button>
       </div>
 
+      <div class="home-links">
+        <button id="show-podiums-btn" class="text-btn leaderboard-link">Voir les podiums</button>
+        <button id="show-leaderboard-btn" class="text-btn leaderboard-link">Voir le tableau des scores</button>
+      </div>
+    </section>
+
+    <!-- Podiums (top 3) des modes competitifs, accessibles depuis l'accueil. -->
+    <section id="podiums-screen" class="hidden">
+      <div class="quiz-toolbar">
+        <button id="podiums-back-btn" class="text-btn">&larr; Accueil</button>
+      </div>
+      <p class="prompt">Podiums (mode compétitif) :</p>
       <div class="home-podiums">
         <div class="podium-block">
           <h3 class="podium-heading">Objets avec emblèmes</h3>
@@ -49,8 +61,6 @@
           <div class="podium" id="podium-champions"></div>
         </div>
       </div>
-
-      <button id="show-leaderboard-btn" class="text-btn leaderboard-link">Voir le tableau des scores</button>
     </section>
 
     <!-- Tableau des scores partage (Firestore), visible par tout le monde. -->

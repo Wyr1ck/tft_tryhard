@@ -60,6 +60,10 @@ const leaderboardItemsWithEl = document.getElementById('leaderboard-items-with')
 const leaderboardItemsWithoutEl = document.getElementById('leaderboard-items-without');
 const leaderboardChampionsEl = document.getElementById('leaderboard-champions');
 
+const showPodiumsBtn = document.getElementById('show-podiums-btn');
+const podiumsScreen = document.getElementById('podiums-screen');
+const podiumsBackBtn = document.getElementById('podiums-back-btn');
+
 const podiumItemsWithEl = document.getElementById('podium-items-with');
 const podiumItemsWithoutEl = document.getElementById('podium-items-without');
 const podiumChampionsEl = document.getElementById('podium-champions');
@@ -879,11 +883,23 @@ async function updateHomePodiums() {
   ]);
 }
 
+async function showPodiums() {
+  homeScreen.classList.add('hidden');
+  itemsSubmenuScreen.classList.add('hidden');
+  modeSubmenuScreen.classList.add('hidden');
+  quizScreen.classList.add('hidden');
+  leaderboardScreen.classList.add('hidden');
+  podiumsScreen.classList.remove('hidden');
+
+  await updateHomePodiums();
+}
+
 async function showLeaderboard() {
   homeScreen.classList.add('hidden');
   itemsSubmenuScreen.classList.add('hidden');
   modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
+  podiumsScreen.classList.add('hidden');
   leaderboardScreen.classList.remove('hidden');
 
   const loadingHtml = '<p class="leaderboard-empty">Chargement...</p>';
@@ -913,13 +929,13 @@ function updateScoreBar() {
 function showHome() {
   state.mode = null;
   updateHomeHighscores();
-  updateHomePodiums();
   randomizeHomeCardImages();
   homeScreen.classList.remove('hidden');
   itemsSubmenuScreen.classList.add('hidden');
   modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.add('hidden');
   leaderboardScreen.classList.add('hidden');
+  podiumsScreen.classList.add('hidden');
 }
 
 // Sous-menu du quiz "objets" : demande d'abord avec ou sans emblemes.
@@ -1000,6 +1016,8 @@ homeItemsBtn.addEventListener('click', showItemsSubmenu);
 homeChampionsBtn.addEventListener('click', chooseChampionsMode);
 showLeaderboardBtn.addEventListener('click', showLeaderboard);
 leaderboardBackBtn.addEventListener('click', showHome);
+showPodiumsBtn.addEventListener('click', showPodiums);
+podiumsBackBtn.addEventListener('click', showHome);
 
 itemsSubmenuBackBtn.addEventListener('click', showHome);
 itemsWithEmblemsBtn.addEventListener('click', () => chooseItemsFilter('with'));
