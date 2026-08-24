@@ -566,15 +566,15 @@ function renderChampionQuestion() {
 
   promptEl.textContent = 'Quels sont les traits de ce personnage :';
   componentsEl.innerHTML = `
-    <div class="champion-reveal">
-      <img class="champion-reveal-img" src="${getChampionImagePath(champion.id)}" alt="">
-      <span class="champion-reveal-name">
-        ${champion.name}
+    <div class="champion-card">
+      <img class="champion-card-img" src="${getChampionImagePath(champion.id)}" alt="">
+      <div class="champion-card-overlay">
+        <span class="champion-card-name">${champion.name}</span>
         <span class="champion-cost">${champion.cost} <span class="champion-cost-star">★</span></span>
-      </span>
+      </div>
     </div>
   `;
-  componentsEl.querySelectorAll('.champion-reveal-img').forEach(hideImageOnError);
+  componentsEl.querySelectorAll('.champion-card-img').forEach(hideImageOnError);
 
   answersEl.className = 'answers trait-list';
   answersEl.innerHTML = '';
