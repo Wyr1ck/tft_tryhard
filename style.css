@@ -392,6 +392,27 @@ header h1 {
   gap: 0.5rem;
 }
 
+/* Mode competitif : cadre de taille stable pour pouvoir enchainer les
+   questions vite sans que le bouton Valider/Suivant ne saute de place.
+   La liste verticale de cases a cocher passe en grille 2 colonnes, comme
+   les 4 boutons du QCM d'objets, et le cadre a une hauteur minimale fixe. */
+.quiz-card.competitive-mode {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quiz-card.competitive-mode .answers.trait-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.quiz-card.competitive-mode .trait-option {
+  align-items: center;
+}
+
 .trait-option {
   display: flex;
   align-items: flex-start;

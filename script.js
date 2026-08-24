@@ -79,6 +79,7 @@ const streakEl = document.getElementById('streak');
 const timerEl = document.getElementById('timer');
 const highscoreEl = document.getElementById('highscore');
 
+const quizCardEl = document.getElementById('quiz-card');
 const promptEl = document.getElementById('prompt-text');
 const componentsEl = document.getElementById('components');
 const answersEl = document.getElementById('answers');
@@ -367,9 +368,13 @@ function handleItemAnswer(choiceId, btnEl) {
   const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
   const iconHtml = `<img class="feedback-icon" src="${question.feedbackImage}" alt="" onerror="this.style.display='none'">`;
 
+  // En competitif, on n'affiche l'effet que si la partie se termine (mauvaise
+  // reponse) : pas besoin de lire une explication quand on enchaine les
+  // bonnes reponses, ca ferait juste sauter la taille du cadre pour rien.
+  const showDetails = state.gameMode !== 'competitive' || !isCorrect;
   feedbackEl.innerHTML = `
     <div class="feedback-title">${iconHtml}${titleText}</div>
-    <div class="feedback-effect">${question.effectText || 'Effet non renseigne.'}</div>
+    ${showDetails ? `<div class="feedback-effect">${question.effectText || 'Effet non renseigne.'}</div>` : ''}
   `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
@@ -503,9 +508,10 @@ function handleItemReverseSubmit() {
 
   const titleText = isCorrect ? 'Correct !' : 'Incorrect !';
   const iconHtml = `<img class="feedback-icon" src="${getItemImagePath(item.id)}" alt="" onerror="this.style.display='none'">`;
+  const showDetails = state.gameMode !== 'competitive' || !isCorrect;
   feedbackEl.innerHTML = `
     <div class="feedback-title">${iconHtml}${titleText}</div>
-    <div class="feedback-effect">${item.effect || 'Effet non renseigne.'}</div>
+    ${showDetails ? `<div class="feedback-effect">${item.effect || 'Effet non renseigne.'}</div>` : ''}
   `;
   feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
 
@@ -614,7 +620,10 @@ function handleChampionSubmit() {
   // - bon trait non coche -> couleur "manque" (c'etait la bonne reponse, ratee)
   // - mauvais trait coche -> rouge, sans definition
   // - mauvais trait non coche -> cache
-  // Les bons traits (trouves ou manques) affichent toujours leur definition.
+  // Les bons traits (trouves ou manques) affichent leur definition, sauf en
+  // competitif quand la serie continue (voir showDetails plus bas) : pas
+  // besoin de lire une definition entre 2 questions qu'on enchaine vite.
+  const showDetails = state.gameMode !== 'competitive' || !isCorrect;
   [...answersEl.children].forEach((option) => {
     const traitId = option.dataset.traitId;
     const checkbox = option.querySelector('input[type="checkbox"]');
@@ -627,11 +636,13 @@ function handleChampionSubmit() {
       // Meme si le joueur ne l'a pas cochee, on affiche la case cochee pour
       // montrer que c'etait aussi une bonne reponse attendue.
       checkbox.checked = true;
-      const trait = state.champData.traits.find((t) => t.id === traitId);
-      const defEl = document.createElement('span');
-      defEl.className = 'trait-def';
-      defEl.textContent = trait.definition || 'Definition a venir.';
-      option.querySelector('.trait-option-text').appendChild(defEl);
+      if (showDetails) {
+        const trait = state.champData.traits.find((t) => t.id === traitId);
+        const defEl = document.createElement('span');
+        defEl.className = 'trait-def';
+        defEl.textContent = trait.definition || 'Definition a venir.';
+        option.querySelector('.trait-option-text').appendChild(defEl);
+      }
     } else if (wasChecked) {
       option.classList.add('wrong');
     } else {
@@ -956,6 +967,11 @@ function startQuiz(gameMode) {
   state.gameMode = gameMode;
   modeSubmenuScreen.classList.add('hidden');
   quizScreen.classList.remove('hidden');
+
+  // En competitif, on garde un cadre de taille stable (grille au lieu d'une
+  // liste, hauteur minimale) pour pouvoir enchainer les questions vite sans
+  // que le bouton Valider/Suivant ne saute de place a chaque question.
+  quizCardEl.classList.toggle('competitive-mode', gameMode === 'competitive');
 
   if (gameMode === 'competitive') {
     scoreBarEl.classList.add('hidden');
