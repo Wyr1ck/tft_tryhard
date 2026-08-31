@@ -601,7 +601,7 @@ function renderChampionQuestion() {
     <div class="champion-card">
       <img class="champion-card-img" src="${getChampionImagePath(champion.id)}" alt="">
       <div class="champion-card-overlay">
-        <span class="champion-card-name">${champion.name}</span>
+        <span class="champion-card-name">${formatNameWithEn(champion.name, champion.nameEn)}</span>
         <span class="champion-cost">${champion.cost} <span class="champion-cost-star">★</span></span>
       </div>
     </div>
@@ -617,7 +617,7 @@ function renderChampionQuestion() {
     option.innerHTML = `
       <input type="checkbox" value="${trait.id}">
       <span class="trait-option-text">
-        <span class="trait-name">${trait.name}</span>
+        <span class="trait-name">${formatNameWithEn(trait.name, trait.nameEn)}</span>
       </span>
     `;
     answersEl.appendChild(option);
@@ -704,7 +704,7 @@ function buildNameChoices(correctChampion) {
   );
   shuffle(pool);
   const picked = [correctChampion, ...pool.slice(0, 3)];
-  return shuffle(picked).map((c) => ({ id: c.id, label: c.name }));
+  return shuffle(picked).map((c) => ({ id: c.id, label: c.name, labelEn: c.nameEn || '' }));
 }
 
 // Choix d'images pour la question "nom -> image" : la bonne image + 3 images
@@ -764,7 +764,7 @@ function renderNameFromImageQuestion() {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.dataset.choiceId = choice.id;
-    btn.textContent = choice.label;
+    btn.innerHTML = formatNameWithEn(choice.label, choice.labelEn);
     btn.addEventListener('click', () => handleNameAnswer(choice.id, btn));
     answersEl.appendChild(btn);
   });
@@ -776,7 +776,7 @@ function renderImageFromNameQuestion() {
   state.currentChampion = champion;
 
   promptEl.textContent = 'Quelle image correspond a ce personnage :';
-  componentsEl.innerHTML = `<span class="chip champion-name-chip">${champion.name}</span>`;
+  componentsEl.innerHTML = `<span class="chip champion-name-chip">${formatNameWithEn(champion.name, champion.nameEn)}</span>`;
 
   const choices = buildImageChoices(champion);
   state.currentNameQuestion = { correctId: champion.id, choices };

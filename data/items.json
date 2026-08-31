@@ -489,7 +489,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Blossom Emblem"
     },
     {
       "id": "embleme_initiateur",
@@ -511,7 +511,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Elderwood Emblem"
     },
     {
       "id": "embleme_ultrarapide",
@@ -533,7 +533,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Lunar Emblem"
     },
     {
       "id": "embleme_infernal",
@@ -544,7 +544,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Inferno Emblem"
     },
     {
       "id": "embleme_tisseur_sorts",
@@ -555,7 +555,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Spellweaver Emblem"
     },
     {
       "id": "embleme_incantateur",
@@ -577,7 +577,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Sprykin Emblem"
     },
     {
       "id": "embleme_fae",
@@ -588,7 +588,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Fae Emblem"
     },
     {
       "id": "embleme_saccageur",
@@ -599,7 +599,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Ravager Emblem"
     },
     {
       "id": "embleme_chasseur",
@@ -610,7 +610,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Hunter Emblem"
     },
     {
       "id": "embleme_ronce_obscure",
@@ -621,7 +621,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Blackthorn Emblem"
     },
     {
       "id": "embleme_primitif",
@@ -632,7 +632,7 @@
       ],
       "effect": "",
       "category": "emblem",
-      "nameEn": ""
+      "nameEn": "Primal Emblem"
     },
     {
       "id": "bouclier_tacticien",

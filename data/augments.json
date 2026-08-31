@@ -340,7 +340,7 @@
       "id": "bronzeforlifeii",
       "name": "Bronze pour la vie II",
       "nameEn": "Bronze For Life II",
-      "effect": "Votre équipe gagne 2% d'amplification des dégâts et 4 d'armure et de résistance magique pour chaque type au palier Bronze."
+      "effect": "Votre équipe gagne 2.5% d'amplification des dégâts et 4 d'armure et de résistance magique pour chaque type au palier Bronze."
     },
     {
       "id": "frontlinefoundation",
@@ -946,7 +946,7 @@
       "id": "bronzeforlifei",
       "name": "Bronze pour la vie I",
       "nameEn": "Bronze For Life I",
-      "effect": "Votre équipe gagne 2% d'amplification des dégâts pour chaque type au palier Bronze."
+      "effect": "Votre équipe gagne 2.5% d'amplification des dégâts pour chaque type au palier Bronze."
     },
     {
       "id": "investmentstrategy1",
@@ -1264,7 +1264,7 @@
       "id": "shoppingspree",
       "name": "Shopping intensif",
       "nameEn": "Shopping Spree",
-      "effect": "Quand vous gagnez un niveau, vous gagnez un nombre de relances gratuites de la boutique équivalent à votre niveau + 1. Vous gagnez 2 PO."
+      "effect": "Quand vous gagnez un niveau, vous gagnez un nombre de relances gratuites de la boutique équivalent à votre niveau + 1. Vous gagnez 6 PO."
     },
     {
       "id": "savingsaccount",
@@ -1690,7 +1690,7 @@
       "id": "soloplate",
       "name": "Lithoplastron solo",
       "nameEn": "Solo Plate",
-      "effect": "Vous gagnez un Lithoplastron de gargouille. Début du combat: les alliés portant un Lithoplastron de gargouille gagnent 17% de PV max s'ils sont les seuls sur leur rangée."
+      "effect": "Vous gagnez un Lithoplastron de gargouille. Les alliés portant un Lithoplastron de gargouille gagnent 17% de PV max s'ils commencent le combat seuls sur leur rangée."
     },
     {
       "id": "sweettreats",
@@ -2081,12 +2081,6 @@
       "name": "Lames tueuses",
       "nameEn": "Deadlier Blades",
       "effect": "Vous gagnez une Lame funeste. Les Lames funestes gagnent 1% de dégâts d'attaque de manière permanente à chaque fois que leur porteur participe à une élimination."
-    },
-    {
-      "id": "golddestinyplus",
-      "name": "Destin doré +",
-      "nameEn": "Gold Destiny Plus",
-      "effect": "Vous gagnez une optimisation de palier Or aléatoire et 6 PO."
     },
     {
       "id": "buriedtreasuresiii",
